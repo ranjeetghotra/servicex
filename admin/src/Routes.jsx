@@ -4,6 +4,7 @@ import BaseLayout from './components/BaseLayout/BaseLayout';
 import Home from './pages/Home/Home';
 import Login from './pages/Login/Login';
 import { useSelector } from 'react-redux';
+import Appointments from './pages/Appointments/Appointments';
 // import ScrollToTop from './components/ScrollToTop/ScrollToTop';
 
 const AppRoutes = () => {
@@ -17,6 +18,7 @@ const AppRoutes = () => {
                     isLoggedIn ?
                         <>
                             <Route path="/" element={<BaseLayout><Home /></BaseLayout>} />
+                            <Route path="/appointment" element={<BaseLayout><Appointments /></BaseLayout>} />
                         </> :
                         <>
                             <Route path="/" element={<Login />} />
@@ -27,7 +29,7 @@ const AppRoutes = () => {
                 <Route path="/appointment" element={<BaseLayout><Appointment /></BaseLayout>} />
                 <Route path="/contact" element={<BaseLayout><Contact /></BaseLayout>} /> */}
                 {/* <Route path="/404" element={<BaseLayout><NotFound /></BaseLayout>} /> */}
-                <Route path="*" element={<Navigate to="/404" />} />
+                <Route path="*" element={<Navigate to="/" />} />
             </Routes>
         </Router>
     );
