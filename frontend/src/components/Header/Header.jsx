@@ -1,9 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { useLocation } from "react-router-dom";
 // import './Header.scss';
 
 const Header = () => {
     const [isScrolled, setIsScrolled] = useState(false);
+    const [isActive, setActive] = useState(false);
+    const currentRoute = useLocation().pathname.toLowerCase();
+    const handleClick = () => {
+        setActive(!isActive);
+      };
 
     useEffect(() => {
       const handleScroll = () => {
@@ -14,8 +20,8 @@ const Header = () => {
         }
       };
   
-      window.addEventListener('scroll', handleScroll);
-  
+      window.addEventListener('scroll', handleScroll); 
+    
       // Cleanup the event listener when the component unmounts
       return () => {
         window.removeEventListener('scroll', handleScroll);
@@ -53,28 +59,20 @@ const Header = () => {
             </div>
 
             <nav className={stickyTopClass} style={{ top: isScrolled ? '0px' : '-100px' }}>
-                <a href="index.html" class="navbar-brand d-flex align-items-center">
+                <Link to="/" class="navbar-brand d-flex align-items-center">
                     <h1 class="m-0"><i class="fa fa-building text-primary me-3"></i>APEX</h1>
-                </a>
-                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                </Link>
+                <button type="button" onClick={handleClick} class="navbar-toggler" style={{ boxShadow: 'none'}} data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse" id="navbarCollapse">
+                <div className={isActive ? "collapse navbar-collapse show" : "collapse navbar-collapse"} id="navbarCollapse">
                     <div class="navbar-nav ms-auto py-3 py-lg-0">
-                        <Link to="/" class="nav-item nav-link active">Home</Link>
-                        <Link to="/about" class="nav-item nav-link">About Us</Link>
-                        <Link to="/services" class="nav-item nav-link">Our Services</Link>
-                        <div class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
-                            <div class="dropdown-menu bg-light m-0">
-                                <a href="feature.html" class="dropdown-item">Features</a>
-                                <a href="appointment.html" class="dropdown-item">Appointment</a>
-                                <a href="team.html" class="dropdown-item">Our Team</a>
-                                <a href="testimonial.html" class="dropdown-item">Testimonial</a>
-                                <a href="404.html" class="dropdown-item">404 Page</a>
-                            </div>
-                        </div>
-                        <Link to="/contact" class="nav-item nav-link">Contact Us</Link>
+                        <Link to="/" onClick={handleClick} className={currentRoute == '/' ? "nav-item nav-link active" : "nav-item nav-link "}>Home</Link>
+                        <Link to="/about" onClick={handleClick} className={currentRoute.includes("about") ? "nav-item nav-link active" : "nav-item nav-link"}>About Us</Link>
+                        <Link to="/services" onClick={handleClick} className={currentRoute.includes("services") ? "nav-item nav-link active" : "nav-item nav-link"}>Our Services</Link>
+                        <Link to="/appointment" onClick={handleClick} className={currentRoute.includes("appointment") ? "nav-item nav-link active" : "nav-item nav-link"}>Appointment</Link>
+            
+                        <Link to="/contact" onClick={handleClick} className={currentRoute.includes("contact") ? "nav-item nav-link active" : "nav-item nav-link"}>Contact Us</Link>
                     </div>
                 </div>
             </nav>
