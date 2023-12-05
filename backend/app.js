@@ -2,14 +2,25 @@ require('dotenv').config();
 const express = require('express');
 const sequelize = require('./config/database');
 const routes = require('./routes');
+const { AppointmentModel, ServiceModel } = require('./models');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+AppointmentModel.belongsTo(ServiceModel, {
+  foreignKey: 'serviceId',
+  targetKey: 'serviceId',
+});
+
+ServiceModel.hasMany(AppointmentModel, {
+  foreignKey: 'serviceId',
+  sourceKey: 'serviceId',
+});
+
 sequelize.sync({ force: false });
 
 // Express setup
-app.use(express.json());
+app.use(express.json({ limit: '50mb' }));
 
 // Routes
 app.get('/', (req, res) => {

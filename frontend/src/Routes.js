@@ -9,6 +9,8 @@ import Appointment from './pages/Appointment/Appointment';
 import Contact from './pages/Contact/Contact';
 import ScrollToTop from './components/ScrollToTop/ScrollToTop';
 import ServiceOne from './pages/Services/ServiceOne';
+import FilterRefresh from './pages/Services/FilterRefresh';
+import HeatPump from './pages/Services/HeatPump';
 
 const AppRoutes = () => {
     return (
@@ -21,6 +23,8 @@ const AppRoutes = () => {
                 <Route path="/appointment" element={<BaseLayout><Appointment /></BaseLayout>} />
                 <Route path="/contact" element={<BaseLayout><Contact /></BaseLayout>} />
                 <Route path="/404" element={<BaseLayout><NotFound /></BaseLayout>} />
+                <Route path="/service/filter-refresh-services" element={ <BaseLayout><FilterRefresh/></BaseLayout>} />
+                <Route path="/service/heat-pump-services" element={ <BaseLayout><HeatPump/></BaseLayout>} />
                 <Route path="/serviceone" element={ <BaseLayout><ServiceOne/></BaseLayout>} />
                 <Route path="*" element={<Navigate to="/404" />} />
             </Routes>

@@ -6,6 +6,11 @@ const sequelize = new Sequelize({
     database: process.env.DB_NAME,
     host: process.env.DB_HOST,
     dialect: 'mysql',
+    logging: (sql, options) => {
+        if (options.logging === 'error') {
+            console.error(sql);
+        }
+    },
 });
 
 module.exports = sequelize;

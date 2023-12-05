@@ -90,6 +90,12 @@ const Sidebar = () => {
                     <span>Appointments</span></Link>
             </li>
 
+            <li className={'nav-item ' + (pathname === '/service' ? 'active' : '')}>
+                <Link class="nav-link" to="/service">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Services</span></Link>
+            </li>
+
         </ul>
     );
 };

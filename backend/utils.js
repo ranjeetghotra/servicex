@@ -7,5 +7,12 @@ module.exports = {
             otp += digits[randomIndex];
         }
         return otp;
+    },
+    convertToSlug: (Text) => {
+        return Text.toLowerCase()
+            .replace(/[^\w\s-]/g, '')
+            .replace(/\s+/g, '-')
+            .replace(/-+/g, '-')
+            .trim();;
     }
 }

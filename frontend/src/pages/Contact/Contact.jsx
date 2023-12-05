@@ -1,14 +1,30 @@
 import React from 'react';
-import { GoogleReCaptchaProvider, ReCAPTCHA, GoogleReCaptcha } from 'react-google-recaptcha-v3';
 // import { Link } from 'react-router-dom';
 import PageHeader from '../../components/PageHeader/PageHeader';
+import axios from 'axios';
+import { useState } from 'react';
 
 const Contact = () => {
-    const onVerify = () => {
-        console.log('on verify');
-    }
-    const refreshReCaptcha = () => {
-        window.grecaptcha.execute();
+
+    const [formData, setformData] = useState();
+
+    const handleSubmit = async (event) => {
+
+        event.preventDefault();
+
+        try {
+            const response = await axios.post('https://webhook.site/92571f90-a5f4-4e7d-8a6d-ec5ccb2b73d5', formData);
+
+            console.log('Data posted successfully:', response.data);
+            // Perform further actions with the response data as needed
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    };
+
+    const handleInputChange = (e) => {
+        const { id, value } = e.target;
+        setformData({ ...formData, [id]: value });
     }
     return (
         <>
@@ -49,7 +65,7 @@ const Contact = () => {
                         <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s" style={{ minHeight: "450px" }}>
                             <div class="position-relative h-100">
                                 <iframe class="position-relative w-100 h-100" title='Map Location'
-                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3001156.4288297426!2d-78.01371936852176!3d42.72876761954724!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4ccc4bf0f123a5a9%3A0xddcfc6c1de189567!2sNew%20York%2C%20USA!5e0!3m2!1sen!2sbd!4v1603794290143!5m2!1sen!2sbd"
+                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d98318.54618256209!2d176.73198804507103!3d-39.63948321781622!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6d6851486a538aeb%3A0x500ef6143a29918!2sHastings%2C%20New%20Zealand!5e0!3m2!1sen!2sin!4v1701162988172!5m2!1sen!2sin"
                                     frameborder="0" style={{ minHeight: "450px", border: 0 }} allowfullscreen="" aria-hidden="false"
                                     tabindex="0"></iframe>
                             </div>
@@ -64,30 +80,30 @@ const Contact = () => {
                                 <div class="row g-3">
                                     <div class="col-md-6">
                                         <div class="form-floating">
-                                            <input type="text" class="form-control border-0 bg-light" id="name" placeholder="Your Name" />
+                                            <input type="text" class="form-control border-0 bg-light" id="name" placeholder="Your Name" onChange={handleInputChange} />
                                             <label for="name">Your Name</label>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-floating">
-                                            <input type="email" class="form-control border-0 bg-light" id="email" placeholder="Your Email" />
+                                            <input type="email" class="form-control border-0 bg-light" id="email" placeholder="Your Email" onChange={handleInputChange} />
                                             <label for="email">Your Email</label>
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="form-floating">
-                                            <input type="text" class="form-control border-0 bg-light" id="subject" placeholder="Subject" />
+                                            <input type="text" class="form-control border-0 bg-light" id="subject" placeholder="Subject" onChange={handleInputChange} />
                                             <label for="subject">Subject</label>
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="form-floating">
-                                            <textarea class="form-control border-0 bg-light" placeholder="Leave a message here" id="message" style={{ height: "150px" }}></textarea>
+                                            <textarea class="form-control border-0 bg-light" placeholder="Leave a message here" id="message" onChange={handleInputChange} style={{ height: "150px" }}></textarea>
                                             <label for="message">Message</label>
                                         </div>
                                     </div>
                                     <div class="col-12">
-                                        <button class="btn btn-primary py-3 px-5" type="submit">Send Message</button>
+                                        <button class="btn btn-primary py-3 px-5" onClick={handleSubmit} type="submit">Send Message</button>
                                     </div>
                                 </div>
                             </form>
@@ -95,20 +111,6 @@ const Contact = () => {
                     </div>
                 </div>
             </div>
-            <GoogleReCaptchaProvider
-                reCaptchaKey="6Ld2MR8pAAAAAJGOIESEJSIYy2zCB-8QtK1f6-pH"
-                scriptProps={{
-                    async: true, // optional, default to false,
-                    defer: true, // optional, default to false
-                    appendTo: 'head', // optional, default to "head", can be "head" or "body",
-                    nonce: undefined // optional, default undefined
-                }}
-            >
-                <GoogleReCaptcha
-        onVerify={onVerify}
-        refreshReCaptcha={refreshReCaptcha}
-      />
-            </GoogleReCaptchaProvider>
         </>
     );
 };

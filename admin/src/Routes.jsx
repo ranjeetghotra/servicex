@@ -5,6 +5,8 @@ import Home from './pages/Home/Home';
 import Login from './pages/Login/Login';
 import { useSelector } from 'react-redux';
 import Appointments from './pages/Appointments/Appointments';
+import Services from './pages/Services/Services';
+import Service from './pages/Services/Service';
 // import ScrollToTop from './components/ScrollToTop/ScrollToTop';
 
 const AppRoutes = () => {
@@ -19,6 +21,8 @@ const AppRoutes = () => {
                         <>
                             <Route path="/" element={<BaseLayout><Home /></BaseLayout>} />
                             <Route path="/appointment" element={<BaseLayout><Appointments /></BaseLayout>} />
+                            <Route path="/service" element={<BaseLayout><Services /></BaseLayout>} />
+                            <Route path="/service/:id" element={<BaseLayout><Service /></BaseLayout>} />
                         </> :
                         <>
                             <Route path="/" element={<Login />} />

@@ -23,6 +23,11 @@ const Footer = () => {
                         <p><i class="fa fa-envelope me-3"></i>info@example.com</p>
                     </div>
                     <div class="col-lg-3 col-md-6">
+                        <h4 class="text-light mb-4">Services</h4>
+                        <Link class="btn btn-link" to="/service/filter-refresh-services">Filter Refresh Services</Link>
+                        <Link class="btn btn-link" to="/service/heat-pump-services">Heat Pump Services</Link>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
                         <h4 class="text-light mb-4">Quick Links</h4>
                         <Link class="btn btn-link" to="/about">About Us</Link>
                         <Link class="btn btn-link" to="/contact">Contact Us</Link>
@@ -30,14 +35,14 @@ const Footer = () => {
                         <Link class="btn btn-link" to="/">Terms & Condition</Link>
                         <Link class="btn btn-link" to="/">Support</Link>
                     </div>
-                    <div class="col-lg-3 col-md-6">
+                    {/* <div class="col-lg-3 col-md-6">
                         <h4 class="text-light mb-4">Newsletter</h4>
                         <p>Dolor amet sit justo amet elitr clita ipsum elitr est.</p>
                         <div class="position-relative mx-auto" style={{maxWidth: "400px"}}>
                             <input class="form-control bg-transparent w-100 py-3 ps-4 pe-5" type="text" placeholder="Your email" />
                             <button type="button" class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">SignUp</button>
                         </div>
-                    </div>
+                    </div> */}
                 </div>
             </div>
             <div class="container-fluid copyright">

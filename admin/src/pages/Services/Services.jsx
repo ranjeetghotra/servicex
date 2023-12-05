@@ -1,22 +1,25 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchAppointments } from '../../store/slices/appointmentsSlice';
+import { Link } from 'react-router-dom';
+import { fetchServices } from '../../store/slices/servicesSlice';
 
-const Appointments = () => {
+const Services = () => {
     const dispatch = useDispatch();
-    const { appointments, loading, error } = useSelector((state) => state.appointments);
-  
+    const { services, loading, error } = useSelector((state) => state.services);
+
     useEffect(() => {
-      console.log('fetchAppointments')
-      dispatch(fetchAppointments({page: 1}));
+        dispatch(fetchServices(1));
     }, [dispatch]);
 
     return (
         <>
-            <h1 class="h3 mb-2 text-gray-800">Appointments</h1>
+            <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                <Link class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" to='/service/add'>
+                    <i class="fas fa-download fa-sm text-white-50"></i> Add Service</Link>
+            </div>
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Appointments</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">Services</h6>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
@@ -84,4 +87,4 @@ const Appointments = () => {
     );
 };
 
-export default Appointments;
+export default Services;

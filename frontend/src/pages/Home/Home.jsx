@@ -1,20 +1,27 @@
-import React from 'react';
-// import './Home.scss';
+import React, { useState } from 'react';
+import AppointmentForm from '../../components/AppointmentForm/AppointmentForm';
 
 const Home = () => {
+    const [isActive, setActive] = useState(false);
+
+    const handleClick = () => {
+        setActive(!isActive);
+      };
+
+
     return (
         <>
             <div class="container-fluid p-0 mb-5 wow fadeIn" data-wow-delay="0.1s">
                 <div id="header-carousel" class="carousel slide" data-bs-ride="carousel">
                     <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <img class="w-100" src="img/carousel-1.jpg" alt="Image" />
+                        <div className={isActive ? "carousel-item active" : "carousel-item"} >
+                            <img class="w-100" src="img/ac.jpg" alt="Image" />
                             <div class="carousel-caption">
                                 <div class="container">
                                     <div class="row justify-content-center">
                                         <div class="col-12 col-lg-10">
                                             <h5 class="text-light text-uppercase mb-3 animated slideInDown">Welcome to Apex</h5>
-                                            <h1 class="display-2 text-light mb-3 animated slideInDown">A Construction & Renovation Company</h1>
+                                            <h1 class="display-2 text-light mb-3 animated slideInDown">Installation of Air Conditioners & Heat</h1>
                                             <ol class="breadcrumb mb-4 pb-2">
                                                 <li class="breadcrumb-item fs-5 text-light">Commercial</li>
                                                 <li class="breadcrumb-item fs-5 text-light">Residential</li>
@@ -26,14 +33,14 @@ const Home = () => {
                                 </div>
                             </div>
                         </div>
-                        <div class="carousel-item">
-                            <img class="w-100" src="img/carousel-2.jpg" alt="Image" />
+                        <div className={isActive ? "carousel-item " : "carousel-item active"}>
+                            <img class="w-100" src="img/ac3.jpg" alt="Image" />
                             <div class="carousel-caption">
                                 <div class="container">
                                     <div class="row justify-content-center">
                                         <div class="col-12 col-lg-10">
                                             <h5 class="text-light text-uppercase mb-3 animated slideInDown">Welcome to Apex</h5>
-                                            <h1 class="display-2 text-light mb-3 animated slideInDown">Professional Tiling & Painting Services</h1>
+                                            <h1 class="display-2 text-light mb-3 animated slideInDown">Cleaning & Repairing Services</h1>
                                             <ol class="breadcrumb mb-4 pb-2">
                                                 <li class="breadcrumb-item fs-5 text-light">Commercial</li>
                                                 <li class="breadcrumb-item fs-5 text-light">Residential</li>
@@ -46,12 +53,12 @@ const Home = () => {
                             </div>
                         </div>
                     </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#header-carousel"
+                    <button  onClick={handleClick} class="carousel-control-prev" type="button" data-bs-target="#header-carousel"
                         data-bs-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                         <span class="visually-hidden">Previous</span>
                     </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#header-carousel"
+                    <button  onClick={handleClick} class="carousel-control-next" type="button" data-bs-target="#header-carousel"
                         data-bs-slide="next">
                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
                         <span class="visually-hidden">Next</span>
@@ -287,58 +294,7 @@ const Home = () => {
                 </div>
             </div>
 
-            <div class="container-fluid appointment my-5 py-5 wow fadeIn" data-wow-delay="0.1s">
-                <div class="container py-5">
-                    <div class="row g-5">
-                        <div class="col-lg-5 col-md-6 wow fadeIn" data-wow-delay="0.3s">
-                            <div class="border-start border-5 border-primary ps-4 mb-5">
-                                <h6 class="text-white text-uppercase mb-2">Appointment</h6>
-                                <h1 class="display-6 text-white mb-0">A Company Involved In Service And Maintenance</h1>
-                            </div>
-                            <p class="text-white mb-0">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo magna dolore erat amet</p>
-                        </div>
-                        <div class="col-lg-7 col-md-6 wow fadeIn" data-wow-delay="0.5s">
-                            <form>
-                                <div class="row g-3">
-                                    <div class="col-sm-6">
-                                        <div class="form-floating">
-                                            <input type="text" class="form-control bg-dark border-0" id="gname" placeholder="Gurdian Name" />
-                                            <label for="gname">Your Name</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="form-floating">
-                                            <input type="email" class="form-control bg-dark border-0" id="gmail" placeholder="Gurdian Email" />
-                                            <label for="gmail">Your Email</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="form-floating">
-                                            <input type="text" class="form-control bg-dark border-0" id="cname" placeholder="Child Name" />
-                                            <label for="cname">Your Mobile</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="form-floating">
-                                            <input type="text" class="form-control bg-dark border-0" id="cage" placeholder="Child Age" />
-                                            <label for="cage">Service Type</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-12">
-                                        <div class="form-floating">
-                                            <textarea class="form-control bg-dark border-0" placeholder="Leave a message here" id="message" style={{ height: "100px" }}></textarea>
-                                            <label for="message">Message</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-12">
-                                        <button class="btn btn-primary w-100 py-3" type="submit">Get Appointment</button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
+         <AppointmentForm title='Appointment'/>
 
             <div class="container-xxl py-5">
                 <div class="container">
