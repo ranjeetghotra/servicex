@@ -33,4 +33,21 @@ async function uploadBase64(base64Data) {
     }
 }
 
-module.exports = { uploadBase64 }
+async function deleteFileIfExists(filename) {
+    try {
+        // const filePath = path.join(UPLOADS_DIR, filename);
+        const filePath = `${UPLOADS_DIR}/${filename}`;
+        const fileExists = await fs.access(filePath).then(() => true).catch(() => false);
+
+        if (fileExists) {
+            await fs.unlink(filePath);
+        } else {
+            console.log(`File '${filename}' not found`);
+        }
+    } catch (error) {
+        console.error(`Error deleting file '${filename}':`, error);
+        throw new Error('Internal Server Error');
+    }
+}
+
+module.exports = { uploadBase64, deleteFileIfExists }

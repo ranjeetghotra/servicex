@@ -1,29 +1,45 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import serviceService from '../../services/serviceService';
-import { useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 
 const Service = () => {
+    const navigate = useNavigate();
     const { id } = useParams();
+    const isUpdate = id !== 'add';
 
     const [formData, setFormData] = useState({
         name: '',
         description: '',
     });
 
+    useEffect(() => {
+        if (isUpdate) {
+            serviceService.get(id).then(({ service }) => {
+                setFormData({
+                    name: service.serviceName,
+                    description: service.serviceDescription,
+                });
+            })
+        }
+    }, [isUpdate, id]);
+
     const handleInputChange = (e) => {
         const { name, value, type } = e.target;
         if (type === 'file') {
-            const file = e.target.files[0];
-            const reader = new FileReader();
+            if (e.target.files.length) {
 
-            reader.onloadend = () => {
-                setFormData({
-                    ...formData,
-                    [name]: reader.result,
-                });
-            };
+                const file = e.target.files[0];
+                const reader = new FileReader();
 
-            reader.readAsDataURL(file);
+                reader.onloadend = () => {
+                    setFormData({
+                        ...formData,
+                        [name]: reader.result,
+                    });
+                };
+
+                reader.readAsDataURL(file);
+            }
         } else {
             setFormData({ ...formData, [name]: value });
         }
@@ -31,12 +47,20 @@ const Service = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        serviceService.create(formData).finally(() => {
-            setFormData({
-                name: '',
-                description: '',
+        if (isUpdate) {
+            serviceService.update(id, formData).then((res) => {
+                alert('Successfully updated');
+                navigate('/service')
             });
-        })
+        } else {
+            serviceService.create(formData).then(() => {
+                navigate('/service')
+                setFormData({
+                    name: '',
+                    description: '',
+                });
+            })
+        }
     };
 
     return (
@@ -86,6 +110,9 @@ const Service = () => {
                         <button type="submit" className="btn btn-primary">
                             Save
                         </button>
+                        <Link to="/service" className="btn btn-light ml-2">
+                            Cancel
+                        </Link>
                     </form>
                 </div>
             </div>

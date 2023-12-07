@@ -86,13 +86,13 @@ const Sidebar = () => {
 
             <li className={'nav-item ' + (pathname === '/appointment' ? 'active' : '')}>
                 <Link class="nav-link" to="/appointment">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <i class="fas fa-fw fa-calendar-alt"></i>
                     <span>Appointments</span></Link>
             </li>
 
             <li className={'nav-item ' + (pathname === '/service' ? 'active' : '')}>
                 <Link class="nav-link" to="/service">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <i class="fas fa-fw fa-tools"></i>
                     <span>Services</span></Link>
             </li>
 
