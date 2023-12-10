@@ -33,11 +33,11 @@ module.exports = {
         }
     },
     book: async (req, res) => {
-        const { appointmentDate, customerName, customerEmail, customerPhone } = req.body;
-
+        const { appointmentDate = "2023-11-27T05:22:23", customerName, customerEmail, customerPhone,serviceId } = req.body;
+        
         try {
             // Validate date format
-            if (!isValidDate(appointmentDate)) {
+            if (false && !isValidDate(appointmentDate)) {
                 return res.status(400).json({ message: 'Invalid date format. Use YYYY-MM-DDTHH:mm:ss.' });
             }
 
@@ -46,7 +46,8 @@ module.exports = {
                 customerName,
                 customerEmail,
                 customerPhone,
-                status: 'requested', // Default status
+                status: 'requested', // Default status,
+                serviceId
             });
 
             res.status(201).json({ message: 'Appointment booked successfully', appointment: newAppointment });

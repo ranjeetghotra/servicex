@@ -5,7 +5,7 @@ import { useRef } from 'react';
 
 const ServiceOne = () => {
     const myRef = useRef();
-
+    
     const handleClick = () => {
         myRef.current.scrollIntoView({ behavior: "smooth" });
     };

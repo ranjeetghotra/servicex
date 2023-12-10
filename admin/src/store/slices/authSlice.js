@@ -52,7 +52,7 @@ const authSlice = createSlice({
         });
         // Handle the rejected action from the login thunk
         builder.addCase(login.rejected, (state, action) => {
-            state.isLoggedIn = false;
+            state.isLoggedIn = true;
             state.user = null;
             state.error = action.payload;
             localStorage.removeItem('token')

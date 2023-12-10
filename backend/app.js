@@ -6,6 +6,8 @@ const { AppointmentModel, ServiceModel } = require('./models');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+app.use('/static',express.static(__dirname + '/uploads'));
+
 
 AppointmentModel.belongsTo(ServiceModel, {
   foreignKey: 'serviceId',
@@ -41,8 +43,10 @@ app.use((req, res, next) => {
 app.get('/', (req, res) => {
   res.send('Hello World!');
 });
+
 app.use('/admin', routes.adminRoutes);
 app.use('/user', routes.userRoutes);
+app.use('/appointment',routes.appointmentRoutes)
 
 // Start the server
 app.listen(PORT, () => {
