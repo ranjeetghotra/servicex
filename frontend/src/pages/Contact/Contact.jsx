@@ -1,20 +1,27 @@
 import React from 'react';
 // import { Link } from 'react-router-dom';
 import PageHeader from '../../components/PageHeader/PageHeader';
-import axios from 'axios';
+import axios from './../../services/axios';
 import { useState } from 'react';
 
 const Contact = () => {
 
-    const [formData, setformData] = useState();
+    const initialFormvalues = {
+        customerEmail:"",
+        customerName:"",
+        subject:"",
+        message:""
+    }
+    const [formData, setformData] = useState(initialFormvalues);
 
     const handleSubmit = async (event) => {
 
         event.preventDefault();
 
         try {
-            const response = await axios.post('https://webhook.site/92571f90-a5f4-4e7d-8a6d-ec5ccb2b73d5', formData);
-
+            const response = await axios.post('/contact', formData);
+            alert("Message Sent Successfully")
+            setformData(initialFormvalues)
             console.log('Data posted successfully:', response.data);
             // Perform further actions with the response data as needed
         } catch (error) {
@@ -80,25 +87,25 @@ const Contact = () => {
                                 <div class="row g-3">
                                     <div class="col-md-6">
                                         <div class="form-floating">
-                                            <input type="text" class="form-control border-0 bg-light" id="name" placeholder="Your Name" onChange={handleInputChange} />
+                                            <input type="text" value={formData.customerName} class="form-control border-0 bg-light" id="customerName" placeholder="Your Name" onChange={handleInputChange} />
                                             <label for="name">Your Name</label>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-floating">
-                                            <input type="email" class="form-control border-0 bg-light" id="email" placeholder="Your Email" onChange={handleInputChange} />
+                                            <input type="email" value={formData.customerEmail}  class="form-control border-0 bg-light" id="customerEmail" placeholder="Your Email" onChange={handleInputChange} />
                                             <label for="email">Your Email</label>
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="form-floating">
-                                            <input type="text" class="form-control border-0 bg-light" id="subject" placeholder="Subject" onChange={handleInputChange} />
+                                            <input type="text" value={formData.subject} class="form-control border-0 bg-light" id="subject" placeholder="Subject" onChange={handleInputChange} />
                                             <label for="subject">Subject</label>
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="form-floating">
-                                            <textarea class="form-control border-0 bg-light" placeholder="Leave a message here" id="message" onChange={handleInputChange} style={{ height: "150px" }}></textarea>
+                                            <textarea class="form-control border-0 bg-light" placeholder="Leave a message here" value={formData.message} id="message" onChange={handleInputChange} style={{ height: "150px" }}></textarea>
                                             <label for="message">Message</label>
                                         </div>
                                     </div>

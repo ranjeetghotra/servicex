@@ -7,6 +7,7 @@ import { useSelector } from 'react-redux';
 import Appointments from './pages/Appointments/Appointments';
 import Services from './pages/Services/Services';
 import Service from './pages/Services/Service';
+import Contacts from './pages/Contact/Contacts';
 // import ScrollToTop from './components/ScrollToTop/ScrollToTop';
 
 const AppRoutes = () => {
@@ -17,12 +18,13 @@ const AppRoutes = () => {
             {/* <ScrollToTop /> */}
             <Routes>
                 {
-                    isLoggedIn ?
+                    true || isLoggedIn ?
                         <>
                             <Route path="/" element={<BaseLayout><Home /></BaseLayout>} />
                             <Route path="/appointment" element={<BaseLayout><Appointments /></BaseLayout>} />
                             <Route path="/service" element={<BaseLayout><Services /></BaseLayout>} />
                             <Route path="/service/:id" element={<BaseLayout><Service /></BaseLayout>} />
+                            <Route path="/contacts" element={<BaseLayout><Contacts /></BaseLayout>} />
                         </> :
                         <>
                             <Route path="/" element={<Login />} />

@@ -1,81 +1,135 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchAppointments } from '../../store/slices/appointmentsSlice';
-
+import { fetchAppointments,updateStatus } from '../../store/slices/appointmentsSlice';
+import {useSearchParams} from 'react-router-dom'
 const Appointments = () => {
     const dispatch = useDispatch();
-    const { appointments, loading, error } = useSelector((state) => state.appointments);
-  
+    const { appointments, loading, error,pagination } = useSelector((state) => state.appointments);
+    let [searchParams, setSearchParams ]= useSearchParams();
+    let page = searchParams.get('page')
+
+    
     useEffect(() => {
-      console.log('fetchAppointments')
-      dispatch(fetchAppointments({page: 1}));
-    }, [dispatch]);
+      
+      dispatch(fetchAppointments({page: page?page:1}));
+    }, [page]);
+    const handlePageClick = (pageNumber) => {
+        // Dispatch the fetchAppointments action with the selected page number
+        setSearchParams({
+            page:pageNumber
+        })
+      };
+    const onStatusChange  = (event)=>{
+        //on Status Change
+        console.log(event.target.id);
+        dispatch(updateStatus({
+            appointmentId:event.target.id,
+            status:event.target.value
+        }))
+        // console.log(event.target.)
+    }
 
     return (
         <>
-            <h1 class="h3 mb-2 text-gray-800">Appointments</h1>
-            <div class="card shadow mb-4">
-                <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Appointments</h6>
+            <h1 className="h3 mb-2 text-gray-800">Appointments</h1>
+            <div className="card shadow mb-4">
+                <div className="card-header py-3">
+                    <h6 className="m-0 font-weight-bold text-primary">Appointments</h6>
                 </div>
-                <div class="card-body">
-                    <div class="table-responsive">
-                        <table class="table table-bordered" id="dataTable" width="100%" cellSpacing="0">
+                <div className="card-body">
+                    <div className="table-responsive">
+                        <table onChange={onStatusChange}  className="table table-bordered" id="dataTable" width="100%" cellSpacing="0">
                             <thead>
                                 <tr>
+                                    <th>Appointment Id</th>
+                                    <th>Status</th>
+                                    <th>Appointment Date</th>
                                     <th>Name</th>
-                                    <th>Position</th>
-                                    <th>Office</th>
-                                    <th>Age</th>
-                                    <th>Start date</th>
-                                    <th>Salary</th>
+                                    <th>Email</th>
+                                    <th>Mobile</th>
+                                    <th>Service Id</th>
+                                    
+                                    
                                 </tr>
                             </thead>
                             <tfoot>
                                 <tr>
+                                    <th>Appointment Id</th>
+                                    <th>Status</th>
+                                    <th>Appointment Date</th>
                                     <th>Name</th>
-                                    <th>Position</th>
-                                    <th>Office</th>
-                                    <th>Age</th>
-                                    <th>Start date</th>
-                                    <th>Salary</th>
+                                    <th>Email</th>
+                                    <th>Mobile</th>
+                                    <th>Service Id</th>
+                                    
                                 </tr>
                             </tfoot>
                             <tbody>
-                                <tr>
-                                    <td>Tiger Nixon</td>
-                                    <td>System Architect</td>
-                                    <td>Edinburgh</td>
-                                    <td>61</td>
-                                    <td>2011/04/25</td>
-                                    <td>$320,800</td>
-                                </tr>
-                                <tr>
-                                    <td>Garrett Winters</td>
-                                    <td>Accountant</td>
-                                    <td>Tokyo</td>
-                                    <td>63</td>
-                                    <td>2011/07/25</td>
-                                    <td>$170,750</td>
-                                </tr>
-                                <tr>
-                                    <td>Ashton Cox</td>
-                                    <td>Junior Technical Author</td>
-                                    <td>San Francisco</td>
-                                    <td>66</td>
-                                    <td>2009/01/12</td>
-                                    <td>$86,000</td>
-                                </tr>
-                                <tr>
-                                    <td>Cedric Kelly</td>
-                                    <td>Senior Javascript Developer</td>
-                                    <td>Edinburgh</td>
-                                    <td>22</td>
-                                    <td>2012/03/29</td>
-                                    <td>$433,060</td>
-                                </tr>
+                                {
+                                    appointments?.map(appointment=>{
+                                        return(
+                                            <tr key={appointment.appointmentId} >
+                                            <td>{appointment.appointmentId}</td>
+                                            <td>
+                                                <select defaultValue={appointment.status}  name={appointment.appointmentId}   id={appointment.appointmentId}>
+                                                    <option value="confirmed">Confirmed</option>
+                                                    <option value="requested">Requested</option>
+                                                    <option value="completed">Completed</option>
+                                                    <option value="canceled">Canceled</option>
+                                                </select>
+
+                                            </td>
+                                            <td>{new Date(appointment.appointmentDate).toLocaleString()}</td>
+                                            <td>{appointment.customerName}</td>
+                                            <td>{appointment.customerEmail}</td>
+                                            <td>{appointment.customerPhone}</td>
+                                            <td>{appointment.serviceId}</td>
+                                            
+                                        </tr>
+                                 
+                                        )
+                                    })
+                                }
+                                
                             </tbody>
                         </table>
+
+                        <nav aria-label="Page navigation example">
+              <ul className="pagination justify-content-center">
+                <li className={`page-item ${pagination.hasPrevPage ? '' : 'disabled'}`}>
+                  <a
+                    className="page-link"
+                    href="#"
+                    tabIndex="-1"
+                    onClick={() => handlePageClick(pagination.currentPage - 1)}
+                  >
+                    Previous
+                  </a>
+                </li>
+
+                {[...Array(pagination.totalPages).keys()].map((pageNumber) => (
+                  <li key={pageNumber + 1} className={`page-item ${pageNumber+1 == page ? 'active' : ''}`}>
+                    <a
+                      className="page-link"
+                      href="#"
+                      onClick={() => handlePageClick(pageNumber + 1)}
+                    >
+                      {pageNumber + 1}
+                    </a>
+                  </li>
+                ))}
+
+                <li className={`page-item ${pagination.hasNextPage ? '' : 'disabled'}`}>
+                  <a
+                    className="page-link"
+                    href="#"
+                    onClick={() => handlePageClick(pagination.currentPage + 1)}
+                  >
+                    Next
+                  </a>
+                </li>
+              </ul>
+            </nav>
                     </div>
                 </div>
             </div>

@@ -89,6 +89,11 @@ const Sidebar = () => {
                     <i class="fas fa-fw fa-calendar-alt"></i>
                     <span>Appointments</span></Link>
             </li>
+            <li className={'nav-item ' + (pathname === '/contact' ? 'active' : '')}>
+                <Link class="nav-link" to="/contacts">
+                    <i class="fas fa-fw fa-calendar-alt"></i>
+                    <span>Contacts</span></Link>
+            </li>
 
             <li className={'nav-item ' + (pathname === '/service' ? 'active' : '')}>
                 <Link class="nav-link" to="/service">

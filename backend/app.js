@@ -47,6 +47,7 @@ app.get('/', (req, res) => {
 app.use('/admin', routes.adminRoutes);
 app.use('/user', routes.userRoutes);
 app.use('/appointment',routes.appointmentRoutes)
+app.use('/contact',routes.contactRoutes)
 
 // Start the server
 app.listen(PORT, () => {

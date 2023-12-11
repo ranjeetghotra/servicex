@@ -10,12 +10,25 @@ export const fetchAppointments = createAsyncThunk('appointments/fetchAppointment
         return rejectWithValue(error.message || 'Login failed');
     }
 });
+export const updateStatus = createAsyncThunk('appointments/updateStatus', async (params , { rejectWithValue }) => {
+    try {
+        console.log("update status called")
+        const response = await appointmentService.updateStatus(params);
+        return response;
+    } catch (error) {
+        return rejectWithValue(error.message || 'Update status failed');
+    }
+});
+
+
+
 
 
 const appointmentSlice = createSlice({
     name: 'appointments',
     initialState: {
         appointments: [],
+        pagination:{},
         loading: false,
         error: null,
     },
@@ -48,11 +61,35 @@ const appointmentSlice = createSlice({
         builder.addCase(fetchAppointments.fulfilled, (state, action) => {
             state.loading = false;
             state.appointments = action.payload.data;
+            const { currentPage, totalPages, totalItems, hasNextPage, hasPrevPage } = action.payload;
+            state.pagination = {
+                currentPage,
+                totalPages,
+                totalItems,
+                hasNextPage,
+                hasPrevPage,
+              };
+
         });
         builder.addCase(fetchAppointments.rejected, (state, action) => {
             state.loading = false;
             state.error = action.payload;
         });
+        builder.addCase(updateStatus.fulfilled,(state,action)=>{
+            const appointmentId = action.meta.arg.appointmentId
+            const status = action.meta.arg.status
+            console.log({
+                appointmentId,
+                status
+            })
+            const ind  = state.appointments.findIndex((item)=>{
+             return    item.appointmentId == appointmentId
+            })
+            state.appointments[ind].status = status
+        }) 
+        builder.addCase(updateStatus.rejected,(state,action)=>{
+          
+        })
     },
 })
 
