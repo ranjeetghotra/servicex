@@ -71,7 +71,8 @@ const Appointments = () => {
                                             <tr key={appointment.appointmentId} >
                                             <td>{appointment.appointmentId}</td>
                                             <td>
-                                                <select defaultValue={appointment.status}  name={appointment.appointmentId}   id={appointment.appointmentId}>
+                                                <select defaultValue={appointment.status}  name={appointment.appointmentId}   id={appointment.appointmentId} className='form-control w-auto ' 
+                                                >
                                                     <option value="confirmed">Confirmed</option>
                                                     <option value="requested">Requested</option>
                                                     <option value="completed">Completed</option>
