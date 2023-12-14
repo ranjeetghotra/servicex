@@ -54,7 +54,7 @@ const Services = () => {
                             <tbody>
                                 {
                                     services.map(s =>
-                                        <tr>
+                                        <tr key={s.serviceId} >
                                             <td>{s.serviceId}</td>
                                             <td>{s.serviceName}</td>
                                             <td className='text-center'>
