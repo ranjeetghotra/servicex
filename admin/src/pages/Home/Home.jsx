@@ -22,8 +22,8 @@ const Home = () => {
                     <i className="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
             </div>
             <div className="row">
-
-                <div className="col-xl-3 col-md-6 mb-4">
+{/* total earning */}
+                {/* <div className="col-xl-3 col-md-6 mb-4">
                     <div className="card border-left-primary shadow h-100 py-2">
                         <div className="card-body">
                             <div className="row no-gutters align-items-center">
@@ -38,9 +38,9 @@ const Home = () => {
                             </div>
                         </div>
                     </div>
-                </div>
-
-                <div className="col-xl-3 col-md-6 mb-4">
+                </div> */}
+{/* earning annually */}
+                {/* <div className="col-xl-3 col-md-6 mb-4">
                     <div className="card border-left-success shadow h-100 py-2">
                         <div className="card-body">
                             <div className="row no-gutters align-items-center">
@@ -55,8 +55,9 @@ const Home = () => {
                             </div>
                         </div>
                     </div>
-                </div>
-                <div className="col-xl-3 col-md-6 mb-4">
+                </div> */}
+                {/* tasks */}
+                {/* <div className="col-xl-3 col-md-6 mb-4">
                     <div className="card border-left-success shadow h-100 py-2">
                         <div className="card-body">
                             <div className="row no-gutters align-items-center">
@@ -71,7 +72,7 @@ const Home = () => {
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> */}
 
                 <div className="col-xl-3 col-md-6 mb-4">
                     <div className="card border-left-info shadow h-100 py-2">
@@ -137,7 +138,7 @@ const Home = () => {
             </div>
 
 
-            <div className="row">
+            {/* <div className="row">
 
                 <div className="col-xl-8 col-lg-7">
                     <div className="card shadow mb-4">
@@ -352,7 +353,7 @@ const Home = () => {
                     </div>
 
                 </div>
-            </div>
+            </div> */}
 
         </>
     );

@@ -1,12 +1,29 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import AppointmentForm from '../../components/AppointmentForm/AppointmentForm';
-
+import { fetchServices } from '../../store/slices/servicesSlice';
+import { useSelector, useDispatch } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
+import './Home.css'
 const Home = () => {
     const [isActive, setActive] = useState(false);
 
     const handleClick = () => {
         setActive(!isActive);
       };
+
+    const services = useSelector((state) => {
+        return state.services.services;
+    })
+    const dispatch = useDispatch();
+    const navigate = useNavigate()
+
+    useEffect(() => {
+        dispatch(fetchServices());
+    }, []);
+    const handleServiceClick = (serviceId)=>{
+        navigate(`/service/${serviceId}`);
+    }
+
 
 
     return (
@@ -230,66 +247,25 @@ const Home = () => {
                         </div>
                     </div>
                     <div class="row g-4 justify-content-center">
-                        <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                            <div class="service-item bg-light overflow-hidden h-100">
-                                <img class="img-fluid" src="img/service-1.jpg" alt="" />
-                                <div class="service-text position-relative text-center h-100 p-4">
-                                    <h5 class="mb-3">Building Construction</h5>
-                                    <p>Tempor erat elitr rebum at clita dolor diam ipsum sit diam amet diam et eos</p>
-                                    <a class="small" href="">READ MORE<i class="fa fa-arrow-right ms-3"></i></a>
+                    {
+                            services.length && services.map(service=>{
+                                return(
+                                 
+                                    <div key={service.serviceId} onClick={()=>{handleServiceClick(service.serviceId)}}  style={{cursor:"pointer"}}  className="col-lg-4 col-md-6 wow fadeInUp  " data-wow-delay="0.1s"  >
+                                    <div className="service-item bg-light text-center overflow-hidden h-100    ">
+                                        <img className=" equal-height-image" src={`${process.env.REACT_APP_API_BASE_URL}/static/${service.serviceImage}`} alt="" />
+                                        <div className="service-text position-relative text-center h-100 p-4">
+                                            <h5 className="mb-3">{service.serviceName}</h5>
+                                            <p className='ellipses' >{service.serviceDescription}</p>
+                                            <a className="small" to={`/service/${service.serviceId}`}>READ MORE<i className="fa fa-arrow-right ms-3"></i></a>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-                            <div class="service-item bg-light overflow-hidden h-100">
-                                <img class="img-fluid" src="img/service-2.jpg" alt="" />
-                                <div class="service-text position-relative text-center h-100 p-4">
-                                    <h5 class="mb-3">Home Maintainance</h5>
-                                    <p>Tempor erat elitr rebum at clita dolor diam ipsum sit diam amet diam et eos</p>
-                                    <a class="small" href="">READ MORE<i class="fa fa-arrow-right ms-3"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-                            <div class="service-item bg-light overflow-hidden h-100">
-                                <img class="img-fluid" src="img/service-3.jpg" alt="" />
-                                <div class="service-text position-relative text-center h-100 p-4">
-                                    <h5 class="mb-3">Renovation and Painting</h5>
-                                    <p>Tempor erat elitr rebum at clita dolor diam ipsum sit diam amet diam et eos</p>
-                                    <a class="small" href="">READ MORE<i class="fa fa-arrow-right ms-3"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                            <div class="service-item bg-light overflow-hidden h-100">
-                                <img class="img-fluid" src="img/service-4.jpg" alt="" />
-                                <div class="service-text position-relative text-center h-100 p-4">
-                                    <h5 class="mb-3">Wiring and installation</h5>
-                                    <p>Tempor erat elitr rebum at clita dolor diam ipsum sit diam amet diam et eos</p>
-                                    <a class="small" href="">READ MORE<i class="fa fa-arrow-right ms-3"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-                            <div class="service-item bg-light overflow-hidden h-100">
-                                <img class="img-fluid" src="img/service-5.jpg" alt="" />
-                                <div class="service-text position-relative text-center h-100 p-4">
-                                    <h5 class="mb-3">Tiling and Painting</h5>
-                                    <p>Tempor erat elitr rebum at clita dolor diam ipsum sit diam amet diam et eos</p>
-                                    <a class="small" href="">READ MORE<i class="fa fa-arrow-right ms-3"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-                            <div class="service-item bg-light overflow-hidden h-100">
-                                <img class="img-fluid" src="img/service-6.jpg" alt="" />
-                                <div class="service-text position-relative text-center h-100 p-4">
-                                    <h5 class="mb-3">Interior Design</h5>
-                                    <p>Tempor erat elitr rebum at clita dolor diam ipsum sit diam amet diam et eos</p>
-                                    <a class="small" href="">READ MORE<i class="fa fa-arrow-right ms-3"></i></a>
-                                </div>
-                            </div>
-                        </div>
+                                )
+                            })
+                        }
+
+         
                     </div>
                 </div>
             </div>

@@ -5,16 +5,21 @@ import PageHeader from '../../components/PageHeader/PageHeader';
 import AppointmentForm from '../../components/AppointmentForm/AppointmentForm';
 import { useSelector, useDispatch } from 'react-redux'
 import { fetchServices } from './../../store/slices/servicesSlice'
-import {Link } from 'react-router-dom'
+import {Link, useNavigate } from 'react-router-dom'
 const Services = () => {
     const services = useSelector((state) => {
         return state.services.services;
     })
     const dispatch = useDispatch();
+    const navigate = useNavigate()
 
     useEffect(() => {
         dispatch(fetchServices());
     }, []);
+
+    const handleServiceClick = (serviceId)=>{
+        navigate(`/service/${serviceId}`);
+    }
 
     return (
         <>
@@ -32,13 +37,13 @@ const Services = () => {
                             <a className="btn btn-primary py-3 px-5" href="/appointment">BOOK NOW</a>
                         </div>
                     </div>
-                    <div className="row g-4 mt-5 justify-content-center">
+                    <div  className="row g-4 mt-5 justify-content-center">
 
                         {
                             services.length && services.map(service=>{
                                 return(
-                                    <div key={service.serviceId}  className="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                                    <div className="service-item bg-light text-center overflow-hidden h-100   ">
+                                    <div key={service.serviceId} onClick={()=>{handleServiceClick(service.serviceId)}}  style={{cursor:"pointer"}}  className="col-lg-4 col-md-6 wow fadeInUp  " data-wow-delay="0.1s"  >
+                                    <div className="service-item bg-light text-center overflow-hidden h-100    ">
                                         <img className=" equal-height-image" src={`${process.env.REACT_APP_API_BASE_URL}/static/${service.serviceImage}`} alt="" />
                                         <div className="service-text position-relative text-center h-100 p-4">
                                             <h5 className="mb-3">{service.serviceName}</h5>
