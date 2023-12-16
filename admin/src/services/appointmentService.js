@@ -21,6 +21,16 @@ const appointmentService = {
       console.log(error)
       throw new Error(error.response?.data?.message);
     }
+  },
+  countRequested:async()=>{
+    try{
+      const response  = await axios.get('/appointment/countRequested');
+      return response.data;
+
+    }catch(error){
+      console.log(error)
+      throw new Error(error.response?.data?.message);
+    }
   }
 };
 

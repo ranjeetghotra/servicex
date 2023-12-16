@@ -9,6 +9,15 @@ const contactService = {
       console.log(error)
       throw new Error(error.response?.data?.message);
     }
+  },
+  count:async(params)=>{
+    try {
+      const response = await axios.get(`/contact/count`);
+      return response.data;
+    } catch (error) {
+      console.log(error)
+      throw new Error(error.response?.data?.message);
+    }
   }
 };
 

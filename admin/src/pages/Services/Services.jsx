@@ -27,7 +27,7 @@ const Services = () => {
     return (
         <>
             <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                <Link class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" to='/service/add'>
+                <Link class=" d-sm-inline-block btn btn-sm btn-primary shadow-sm" to='/service/add'>
                     <i class="fas fa-plus-circle fa-sm text-white-50"></i> Add Service</Link>
             </div>
             <div class="card shadow mb-4">

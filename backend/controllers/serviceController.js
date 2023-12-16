@@ -102,5 +102,15 @@ module.exports = {
             console.error(error);
             res.status(500).json({ message: 'Internal Server Error' });
         }
+    },  
+    countTotal: async (req, res) => {
+        try {
+            const count = await ServiceModel.count({
+            })
+            res.json({ count });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Internal Server Error' });
+        }
     },
 };

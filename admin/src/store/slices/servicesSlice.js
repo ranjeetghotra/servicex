@@ -10,6 +10,14 @@ export const fetchServices = createAsyncThunk('services/fetchServices', async (p
         return rejectWithValue(error.message || 'Login failed');
     }
 });
+export const countTotal = createAsyncThunk('services/fetchTotal', async (params = {}, { rejectWithValue }) => {
+    try {
+        const response = await serviceService.count();
+        return response;
+    } catch (error) {
+        return rejectWithValue(error.message || 'something went wrong ');
+    }
+});
 
 
 const serviceSlice = createSlice({
@@ -18,6 +26,7 @@ const serviceSlice = createSlice({
         services: [],
         loading: false,
         error: null,
+        total:0
     },
     extraReducers: (builder) => {
         builder.addCase(fetchServices.pending, (state) => {
@@ -31,6 +40,14 @@ const serviceSlice = createSlice({
         builder.addCase(fetchServices.rejected, (state, action) => {
             state.loading = false;
             state.error = action.payload;
+        });
+        builder.addCase(countTotal.fulfilled, (state, action) => {
+            state.loading = false;
+            state.total  = action.payload.count
+        });
+        builder.addCase(countTotal.rejected, (state) => {
+            state.loading = false;
+            state.total = 0;
         });
     },
 })

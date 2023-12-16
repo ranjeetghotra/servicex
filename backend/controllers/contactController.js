@@ -55,6 +55,25 @@ module.exports = {
             res.status(500).json({ message: 'Internal Server Error' });
         }
     },
+    count: async (req, res) => {
+        
+        try {
+            // Validate date format
+            // if (false && !isValidDate(appointmentDate)) {
+            //     return res.status(400).json({ message: 'Invalid date format. Use YYYY-MM-DDTHH:mm:ss.' });
+            // }
+
+            const count = await ContactModel.count({
+
+            })
+            
+            res.status(201).json({ count});
+    
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Internal Server Error' });
+        }
+    },
   
    
 };

@@ -1,6 +1,6 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../config/database');
-
+const {STATUS} = require('./../core/types')
 const Appointment = sequelize.define('Appointment', {
   appointmentId: {
     type: DataTypes.INTEGER,
@@ -28,8 +28,8 @@ const Appointment = sequelize.define('Appointment', {
     allowNull: true,
   },
   status: {
-    type: DataTypes.ENUM('requested', 'confirmed', 'completed', 'canceled'),
-    defaultValue: 'requested',
+    type: DataTypes.ENUM(STATUS.REQUESTED, STATUS.CONFIRMED, STATUS.CANCELED, STATUS.COMPLETED),
+    defaultValue: STATUS.REQUESTED,
   },
 });
 

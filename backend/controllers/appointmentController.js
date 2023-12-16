@@ -1,5 +1,6 @@
 const { AppointmentModel } = require('../models');
 const  { sendMail } = require('./../services/email')
+const {STATUS} = require('./../core/types')
 module.exports = {
     list: async (req, res) => {
         console.log('list called');
@@ -47,7 +48,7 @@ module.exports = {
                 customerName,
                 customerEmail,
                 customerPhone,
-                status: 'requested', // Default status,
+                status: STATUS.REQUESTED, // Default status,
                 serviceId
             });
             res.status(201).json({ message: 'Appointment booked successfully', appointment: newAppointment });
@@ -93,6 +94,23 @@ module.exports = {
                     break;
                 }
             }
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Internal Server Error' });
+        }
+    },
+    countRequested: async (req, res) => {
+   
+        try {
+            const count  = await AppointmentModel.count({
+                where:{
+                    status:STATUS.REQUESTED
+                }
+            })
+
+            res.json({
+                count
+            });
         } catch (error) {
             console.error(error);
             res.status(500).json({ message: 'Internal Server Error' });

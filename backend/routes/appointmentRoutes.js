@@ -7,5 +7,6 @@ const router = express.Router();
 router.post('/', appointmentController.book);
 router.put('/',appointmentController.updateStatus)
 router.get('/',appointmentController.list);
+router.get('/countRequested',appointmentController.countRequested);
 
 module.exports = router;

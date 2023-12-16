@@ -9,6 +9,14 @@ export const fetchContacts = createAsyncThunk('contacts/fetchContacts', async (p
         return rejectWithValue(error.message || 'Something went Wrong');
     }
 });
+export const fetchCountContacts = createAsyncThunk('contacts/countContact', async (params = {}, { rejectWithValue }) => {
+    try {
+        const response = await contactService.count();
+        return response;
+    } catch (error) {
+        return rejectWithValue(error.message || 'Something went Wrong');
+    }
+});
 
 
 const contactSlice = createSlice({
@@ -18,6 +26,7 @@ const contactSlice = createSlice({
         pagination:{},
         loading: false,
         error: null,
+        totalContacts:0
     },
     reducers: {
         // loginSuccess: (state, action) => {
@@ -44,6 +53,7 @@ const contactSlice = createSlice({
         builder.addCase(fetchContacts.pending, (state) => {
             state.loading = true;
             state.error = null;
+            
         })
         builder.addCase(fetchContacts.fulfilled, (state, action) => {
             state.loading = false;
@@ -61,6 +71,12 @@ const contactSlice = createSlice({
             state.loading = false;
             state.error = action.payload;
             state.pagination = {}
+        });
+        builder.addCase(fetchCountContacts.rejected, (state, action) => {
+            state.totalContacts = 0
+        });
+        builder.addCase(fetchCountContacts.fulfilled, (state, action) => {
+           state.totalContacts  = action.payload.count
         });
        
     },

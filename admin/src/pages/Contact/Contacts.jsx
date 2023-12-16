@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchContacts } from '../../store/slices/contactSlice';
 import {useSearchParams} from 'react-router-dom'
 
+
 const Contacts = () => {
     const dispatch = useDispatch();
     const {contacts,pagination} = useSelector((state) => state.contacts);

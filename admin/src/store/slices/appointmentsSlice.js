@@ -20,6 +20,15 @@ export const updateStatus = createAsyncThunk('appointments/updateStatus', async 
     }
 });
 
+export const countRequested = createAsyncThunk('appointments/countRequested', async (params , { rejectWithValue }) => {
+    try {
+        const response = await appointmentService.countRequested();
+        return response;
+    } catch (error) {
+        return rejectWithValue(error.message || 'Update status failed');
+    }
+});
+
 
 
 
@@ -31,6 +40,7 @@ const appointmentSlice = createSlice({
         pagination:{},
         loading: false,
         error: null,
+        countRequested:0
     },
     reducers: {
         // loginSuccess: (state, action) => {
@@ -89,7 +99,14 @@ const appointmentSlice = createSlice({
         }) 
         builder.addCase(updateStatus.rejected,(state,action)=>{
           
-        })
+        });
+        builder.addCase(countRequested.fulfilled,(state,action)=>{
+            state.countRequested   = action.payload.count
+          }) 
+        builder.addCase(countRequested.rejected,(state)=>{
+            state.countRequested   = 0;
+          }) 
+    
     },
 })
 

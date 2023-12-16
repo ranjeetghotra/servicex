@@ -46,6 +46,16 @@ const serviceService = {
       throw new Error(error.response?.data?.message);
     }
   },
+  count: async () => {
+    try {
+      const response = await axios.get(`/admin/service/count`);
+      return response.data;
+    } catch (error) {
+      console.log(error.response?.data?.message)
+      throw new Error(error.response?.data?.message);
+    }
+  },
 };
+
 
 export default serviceService;
