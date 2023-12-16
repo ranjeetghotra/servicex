@@ -1,18 +1,36 @@
-import React from 'react';
+import React,{useEffect, useState} from 'react';
 import PageHeader from '../../components/PageHeader/PageHeader';
 import AppointmentForm from '../../components/AppointmentForm/AppointmentForm';
 import { useRef } from 'react';
-
+import axios from './../../services/axios';
+import { useParams } from 'react-router-dom';
 const ServiceOne = () => {
     const myRef = useRef();
-    
+    const {serviceId} = useParams();
     const handleClick = () => {
         myRef.current.scrollIntoView({ behavior: "smooth" });
     };
-
+    const [serviceDetail,setServiceDetail] = useState({})
+    useEffect(()=>{
+        console.log('hello')
+        getServiceDetail()
+    },[])
+    console.log('serviced',serviceDetail)
+    
+    const getServiceDetail  = async()=>{
+        try{
+            const response  = await axios.get(`/admin/service/${serviceId}`);
+            const data  = await response.data;
+            
+            setServiceDetail(data?.service);
+        }
+        catch(error){
+            console.log(error.message);
+        }
+    }
     return (
         <>
-            <PageHeader title="Our Services" content="Ac Service" />
+            <PageHeader title={serviceDetail.serviceName} content="Ac Service" />
             <div class="container-xxl py-5">
                 <div class="container">
                     <div class="row g-5">
@@ -24,7 +42,10 @@ const ServiceOne = () => {
                                 <button onClick={handleClick} class="btn btn-primary w-100 py-3" style={{ marginTop: '20px' }} type="submit">Get Appointment</button>
                             </div>
                             <p class="mb-5">
-                                This AC service company surpasses expectations with unparalleled excellence. Boasting top-tier technicians skilled in diagnosing and repairing units flawlessly, they pair their expertise with premium products, ensuring optimal performance. Their commitment to quality service and superior equipment defines them as the pinnacle of reliability and efficiency.</p>
+                                {
+                                    serviceDetail.serviceDescription
+                                }
+                                </p>
                             <div class="row gy-5 gx-4">
                                 <div class="col-sm-6 wow fadeIn" data-wow-delay="0.1s">
                                     <div class="d-flex align-items-center mb-3">

@@ -22,6 +22,7 @@ const AppointmentHeader = () => {
     })
     useEffect(() => {
 
+        //in future it will fetch only list of serviceId
         dispatch(fetchServices())
         setFormData({ ...formData, serviceId: serviceId ? serviceId : "" });
 
