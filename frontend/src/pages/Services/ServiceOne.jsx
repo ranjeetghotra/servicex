@@ -6,7 +6,7 @@ import axios from './../../services/axios';
 import { useParams } from 'react-router-dom';
 const ServiceOne = () => {
     const myRef = useRef();
-    const {serviceId} = useParams();
+    const {serviceSlug} = useParams();
     const handleClick = () => {
         myRef.current.scrollIntoView({ behavior: "smooth" });
     };
@@ -19,7 +19,7 @@ const ServiceOne = () => {
     
     const getServiceDetail  = async()=>{
         try{
-            const response  = await axios.get(`/admin/service/${serviceId}`);
+            const response  = await axios.get(`/admin/service/${serviceSlug}`);
             const data  = await response.data;
             
             setServiceDetail(data?.service);
@@ -30,7 +30,7 @@ const ServiceOne = () => {
     }
     return (
         <>
-            <PageHeader title={serviceDetail.serviceName} content="Ac Service" />
+            <PageHeader title={serviceDetail?.serviceName} backgroundUrl={process.env.REACT_APP_API_BASE_URL + '/static/' + serviceDetail?.serviceImage} content="Ac Service" />
             <div class="container-xxl py-5">
                 <div class="container">
                     <div class="row g-5">
@@ -38,7 +38,7 @@ const ServiceOne = () => {
                         <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
                             <div class="border-start border-5 border-primary ps-4 mb-5">
                                 <h6 class="text-body text-uppercase mb-2">Why Choose Us!</h6>
-                                <h1 class="display-6 mb-0">Our Technicians And Equipments</h1>
+                                <h1 class="display-6 mb-0">{serviceDetail.serviceName}</h1>
                                 <button onClick={handleClick} class="btn btn-primary w-100 py-3" style={{ marginTop: '20px' }} type="submit">Get Appointment</button>
                             </div>
                             <p class="mb-5">

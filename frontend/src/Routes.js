@@ -25,7 +25,7 @@ const AppRoutes = () => {
                 <Route path="/404" element={<BaseLayout><NotFound /></BaseLayout>} />
                 <Route path="/service/filter-refresh-services" element={ <BaseLayout><FilterRefresh/></BaseLayout>} />
                 <Route path="/service/heat-pump-services" element={ <BaseLayout><HeatPump/></BaseLayout>} />
-                <Route path="/service/:serviceId" element={ <BaseLayout><ServiceOne/></BaseLayout>} />
+                <Route path="/service/:serviceSlug" element={ <BaseLayout><ServiceOne/></BaseLayout>} />
                 <Route path="*" element={<Navigate to="/404" />} />
             </Routes>
         </Router>

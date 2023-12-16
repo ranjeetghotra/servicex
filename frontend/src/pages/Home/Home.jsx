@@ -20,8 +20,8 @@ const Home = () => {
     useEffect(() => {
         dispatch(fetchServices());
     }, []);
-    const handleServiceClick = (serviceId)=>{
-        navigate(`/service/${serviceId}`);
+    const handleServiceClick = (serviceSlug)=>{
+        navigate(`/service/${serviceSlug}`);
     }
 
 
@@ -251,7 +251,7 @@ const Home = () => {
                             services.length && services.map(service=>{
                                 return(
                                  
-                                    <div key={service.serviceId} onClick={()=>{handleServiceClick(service.serviceId)}}  style={{cursor:"pointer"}}  className="col-lg-4 col-md-6 wow fadeInUp  " data-wow-delay="0.1s"  >
+                                    <div key={service.serviceId} onClick={()=>{handleServiceClick(service.serviceSlug)}}  style={{cursor:"pointer"}}  className="col-lg-4 col-md-6 wow fadeInUp  " data-wow-delay="0.1s"  >
                                     <div className="service-item bg-light text-center overflow-hidden h-100    ">
                                         <img className=" equal-height-image" src={`${process.env.REACT_APP_API_BASE_URL}/static/${service.serviceImage}`} alt="" />
                                         <div className="service-text position-relative text-center h-100 p-4">

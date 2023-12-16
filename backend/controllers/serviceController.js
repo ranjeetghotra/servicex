@@ -18,10 +18,14 @@ module.exports = {
         }
     },
     get: async (req, res) => {
-        const { id } = req.params;
+        const { slug } = req.params;
 
         try {
-            const service = await ServiceModel.findByPk(id);
+            const service = await ServiceModel.findOne({
+                where:{
+                    serviceSlug:slug
+                }
+            });
 
             if (!service) {
                 return res.status(404).json({ message: 'Service not found' });
