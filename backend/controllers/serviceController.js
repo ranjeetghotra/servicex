@@ -37,6 +37,26 @@ module.exports = {
             res.status(500).json({ message: 'Internal Server Error' });
         }
     },
+    getById: async (req, res) => {
+        const { id } = req.params;
+
+        try {
+            const service = await ServiceModel.findOne({
+                where:{
+                    serviceId:id
+                }
+            });
+
+            if (!service) {
+                return res.status(404).json({ message: 'Service not found' });
+            }
+
+            return res.json({ service });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Internal Server Error' });
+        }
+    },
     create: async (req, res) => {
         const { name: serviceName, description: serviceDescription, image } = req.body;
 

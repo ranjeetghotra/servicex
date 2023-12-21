@@ -61,6 +61,11 @@ const Sidebar = () => {
                     <i class="fas fa-fw fa-tools"></i>
                     <span>Services</span></Link>
             </li>
+            <li className={'nav-item ' + (pathname === '/holiday' ? 'active' : '')}>
+                <Link class="nav-link" to="/holiday">
+                    <i class="fas fa-fw  fa-holly-berry"></i>
+                    <span>Holidays</span></Link>
+            </li>
 
         </ul>
     );

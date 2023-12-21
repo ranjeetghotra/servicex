@@ -12,7 +12,7 @@ const serviceService = {
   },
   get: async (id) => {
     try {
-      const response = await axios.get(`/admin/service/${id}`);
+      const response = await axios.get(`/admin/service/id/${id}`);
       return response.data;
     } catch (error) {
       console.log(error.response?.data?.message)

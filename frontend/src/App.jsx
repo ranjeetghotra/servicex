@@ -1,7 +1,8 @@
 import React from 'react';
 import Routes from './Routes';
 import './App.scss';
-
+import "react-datepicker/dist/react-datepicker.css";
+process.env.TZ='UTC'
 const App = () => {
 
   return <Routes />;

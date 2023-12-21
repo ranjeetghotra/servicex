@@ -5,13 +5,22 @@ import axios from './../../services/axios';
 import { useSelector, useDispatch } from 'react-redux'
 import { fetchServices } from './../../store/slices/servicesSlice'
 import { useParams } from 'react-router-dom';
+import DatePicker from 'react-datepicker'
+import { fetchHolidays } from '../../store/slices/holidaysSlice';
+
+const padTo2Digits = (num) =>{
+
+    return num.toString().padStart(2, '0');
+  }
+
 const AppointmentHeader = () => {
     const initialFormData = {
         customerEmail:"",
         customerName:"",
         customerPhone:"",
         message:"",
-        serviceId:""
+        serviceId:"",
+        appointmentDate:""
     }
     const [formData, setFormData] = useState(initialFormData);
     const [isVerified, setIsVerified] = useState(false);
@@ -20,10 +29,48 @@ const AppointmentHeader = () => {
     const services = useSelector((state) => {
         return state.services.services;
     })
+    const holidays = useSelector((state) => {
+        return state.holidays.holidays;
+    })
+
+    //for react date timepicker  state
+    let a = 1;
+    const [date, setDate] = useState("");
+    //filter function for date timepicker
+        const filterWeekends = date => {
+            // 0 is Sunday, 6 is Saturday
+            const day = date.getDay();
+            return day !== 0 && day !== 6;
+        };
+
+    const handleDateChange=(date)=>{
+
+      const formattedDate =   [
+            date.getFullYear(),
+            padTo2Digits(date.getMonth() + 1),
+            padTo2Digits(date.getDate()),
+          ].join('-') +
+          'T' +
+          [
+            padTo2Digits(date.getHours()),
+            padTo2Digits(date.getMinutes()),
+            padTo2Digits(date.getSeconds()),
+          ].join(':')
+        console.log('formatted date',formattedDate);
+        
+        console.log('custom ',formattedDate);
+        setFormData({ ...formData, appointmentDate: formattedDate });
+
+
+        setDate(date);
+    }
+        
+    
     useEffect(() => {
 
         //in future it will fetch only list of serviceId
         dispatch(fetchServices())
+        dispatch(fetchHolidays())
         setFormData({ ...formData, serviceId: serviceId ? serviceId : "" });
 
     }, [])
@@ -40,6 +87,7 @@ const AppointmentHeader = () => {
             const response = await axios.post('/appointment', formData);
             alert("Appointment Booked");
             setFormData(initialFormData);
+            setDate("")
             console.log('Data posted successfully:', response.data);
             // Perform further actions with the response data as needed
         } catch (error) {
@@ -58,8 +106,10 @@ const AppointmentHeader = () => {
     const handleInputChange = (e) => {
         const { id, value } = e.target;
         console.log({
-            serviceId, value
+             serviceId, value
         })
+        console.log(formData)
+
         setFormData({ ...formData, [id]: value });
     }
 
@@ -109,10 +159,44 @@ const AppointmentHeader = () => {
                                             </select>
                                         </div>
                                     </div>
+                                    {/* <div class="col-sm-6">
+                                        <div class="form-floating">
+                                            <input type="datetime-local" value={formData.appointmentDate}  maxLength={10} class="form-control bg-light border-0" id="appointmentDate" onChange={handleInputChange} min={new Date().toISOString().split('.')[0]}  placeholder="Child Name" />
+                                            <label for="appointmentDate">Appointment Date</label>
+                                        </div>
+                                    </div> */}
+                                    <div class="col-sm-12">
+                                        <DatePicker  showIcon selected={date} onChange={(date) => handleDateChange(date) }       className="form-control"  showTimeSelect 
+                                        dateFormat="dd-mm-yy hh:mm:ss a"
+                                        filterDate={filterWeekends} withPortal
+                                        holidays={[
+                                            ...holidays?.map(holiday=>{
+                                                return {
+                                                    date:holiday.holidayDate,
+                                                    holidayName:holiday.holidayTitle
+                                                }
+                                            })
+                                        ]}
+                                              excludeDates={[
+                                                ...holidays?.map(holiday=>{
+                                                    return new Date(holiday.holidayDate)
+                                                })
+                                              ]}
+                                              minTime={new Date().setHours(9, 0, 0)}
+                                              maxTime={new Date().setHours(21, 0, 0)}
+
+
+                                        >
+                                             <div className='text-primary'>Off on Weekends!</div>
+                                            </DatePicker>
+                                        
+                                    </div>
+                                
+                                    
 
                                     <div class="col-12">
                                         <div class="form-floating">
-                                            <textarea class="form-control bg-light border-0" placeholder="Leave a message here" onChange={handleInputChange} id="message" style={{ height: "100px" }}></textarea>
+                                            <textarea class="form-control bg-light border-0" placeholder="Leave a message here" value={formData.message} onChange={handleInputChange} id="message" style={{ height: "100px" }}></textarea>
                                             <label for="message">Message</label>
                                         </div>
                                     </div>

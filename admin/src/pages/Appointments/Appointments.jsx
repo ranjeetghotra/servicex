@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchAppointments,updateStatus } from '../../store/slices/appointmentsSlice';
 import {useSearchParams} from 'react-router-dom'
+import {DateTime} from 'luxon'
 const Appointments = () => {
     const dispatch = useDispatch();
     const { appointments, loading, error,pagination } = useSelector((state) => state.appointments);
@@ -80,7 +81,7 @@ const Appointments = () => {
                                                 </select>
 
                                             </td>
-                                            <td>{new Date(appointment.appointmentDate).toLocaleString()}</td>
+                                            <td>{DateTime.fromISO(appointment.appointmentDate).setZone('Pacific/Auckland').toFormat('yyyy-LL-dd HH:mm:ss')}</td>
                                             <td>{appointment.customerName}</td>
                                             <td>{appointment.customerEmail}</td>
                                             <td>{appointment.customerPhone}</td>

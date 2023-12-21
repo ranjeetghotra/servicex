@@ -8,6 +8,10 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 app.use('/static',express.static(__dirname + '/uploads'));
 
+//changing node js thread time to utc +00:00
+process.env.TZ = 'UTC';
+
+console.log(Date())
 
 AppointmentModel.belongsTo(ServiceModel, {
   foreignKey: 'serviceId',
@@ -48,7 +52,7 @@ app.use('/admin', routes.adminRoutes);
 app.use('/user', routes.userRoutes);
 app.use('/appointment',routes.appointmentRoutes)
 app.use('/contact',routes.contactRoutes)
-
+app.use('/holiday',routes.holidayRoutes);
 // Start the server
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
