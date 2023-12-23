@@ -52,7 +52,7 @@ const Sidebar = () => {
             </li>
             <li className={'nav-item ' + (pathname === '/contact' ? 'active' : '')}>
                 <Link class="nav-link" to="/contacts">
-                    <i class="fas fa-fw fa-calendar-alt"></i>
+                    <i class="fas fa-fw fa-envelope"></i>
                     <span>Contacts</span></Link>
             </li>
 
@@ -63,7 +63,7 @@ const Sidebar = () => {
             </li>
             <li className={'nav-item ' + (pathname === '/holiday' ? 'active' : '')}>
                 <Link class="nav-link" to="/holiday">
-                    <i class="fas fa-fw  fa-holly-berry"></i>
+                    <i class="fas fa-fw  fa-toggle-off"></i>
                     <span>Holidays</span></Link>
             </li>
 

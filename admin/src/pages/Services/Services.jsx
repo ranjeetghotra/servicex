@@ -26,13 +26,11 @@ const Services = () => {
 
     return (
         <>
-            <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                <Link class=" d-sm-inline-block btn btn-sm btn-primary shadow-sm" to='/service/add'>
-                    <i class="fas fa-plus-circle fa-sm text-white-50"></i> Add Service</Link>
-            </div>
             <div class="card shadow mb-4">
-                <div class="card-header py-3">
+                <div class="card-header d-flex justify-content-between py-3">
                     <h6 class="m-0 font-weight-bold text-primary">Services</h6>
+                    <Link class=" d-sm-inline-block btn btn-sm btn-primary shadow-sm" to='/service/add'>
+                        <i class="fas fa-plus-circle fa-sm text-white-50"></i> Add Service</Link>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">

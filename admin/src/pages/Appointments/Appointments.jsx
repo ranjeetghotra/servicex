@@ -32,7 +32,6 @@ const Appointments = () => {
 
     return (
         <>
-            <h1 className="h3 mb-2 text-gray-800">Appointments</h1>
             <div className="card shadow mb-4">
                 <div className="card-header py-3">
                     <h6 className="m-0 font-weight-bold text-primary">Appointments</h6>
