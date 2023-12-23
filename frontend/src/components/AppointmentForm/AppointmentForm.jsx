@@ -8,23 +8,23 @@ import { useParams } from 'react-router-dom';
 import DatePicker from 'react-datepicker'
 import { fetchHolidays } from '../../store/slices/holidaysSlice';
 
-const padTo2Digits = (num) =>{
+const padTo2Digits = (num) => {
 
     return num.toString().padStart(2, '0');
-  }
+}
 
-const AppointmentHeader = () => {
+const AppointmentHeader = (props) => {
     const initialFormData = {
-        customerEmail:"",
-        customerName:"",
-        customerPhone:"",
-        message:"",
-        serviceId:"",
-        appointmentDate:""
+        customerEmail: "",
+        customerName: "",
+        customerPhone: "",
+        message: "",
+        serviceId: props.serviceId || "",
+        appointmentDate: ""
     }
     const [formData, setFormData] = useState(initialFormData);
     const [isVerified, setIsVerified] = useState(false);
-    const { serviceId } = useParams()
+    // const { serviceId } = useParams()
     const dispatch = useDispatch()
     const services = useSelector((state) => {
         return state.services.services;
@@ -33,45 +33,43 @@ const AppointmentHeader = () => {
         return state.holidays.holidays;
     })
 
-    //for react date timepicker  state
-    let a = 1;
     const [date, setDate] = useState("");
     //filter function for date timepicker
-        const filterWeekends = date => {
-            // 0 is Sunday, 6 is Saturday
-            const day = date.getDay();
-            return day !== 0 && day !== 6;
-        };
+    const filterWeekends = date => {
+        // 0 is Sunday
+        const day = date.getDay();
+        return day !== 0;
+    };
 
-    const handleDateChange=(date)=>{
+    const handleDateChange = (date) => {
 
-      const formattedDate =   [
+        const formattedDate = [
             date.getFullYear(),
             padTo2Digits(date.getMonth() + 1),
             padTo2Digits(date.getDate()),
-          ].join('-') +
-          'T' +
-          [
-            padTo2Digits(date.getHours()),
-            padTo2Digits(date.getMinutes()),
-            padTo2Digits(date.getSeconds()),
-          ].join(':')
-        console.log('formatted date',formattedDate);
-        
-        console.log('custom ',formattedDate);
+        ].join('-') +
+            'T' +
+            [
+                padTo2Digits(date.getHours()),
+                padTo2Digits(date.getMinutes()),
+                padTo2Digits(date.getSeconds()),
+            ].join(':')
+        console.log('formatted date', formattedDate);
+
+        console.log('custom ', formattedDate);
         setFormData({ ...formData, appointmentDate: formattedDate });
 
 
         setDate(date);
     }
-        
-    
+
+
     useEffect(() => {
 
         //in future it will fetch only list of serviceId
         dispatch(fetchServices())
         dispatch(fetchHolidays())
-        setFormData({ ...formData, serviceId: serviceId ? serviceId : "" });
+        // setFormData({ ...formData, serviceId: serviceId ? serviceId : "" });
 
     }, [])
     // const handleRecaptchaChange = (value) => {
@@ -79,8 +77,6 @@ const AppointmentHeader = () => {
     //     setIsVerified(!!value);
     // };
     const handleSubmit = async (event) => {
-        console.log(formData);
-
         event.preventDefault();
         // handleRecaptchaChange()
         try {
@@ -105,9 +101,6 @@ const AppointmentHeader = () => {
 
     const handleInputChange = (e) => {
         const { id, value } = e.target;
-        console.log({
-             serviceId, value
-        })
         console.log(formData)
 
         setFormData({ ...formData, [id]: value });
@@ -137,7 +130,7 @@ const AppointmentHeader = () => {
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="form-floating">
-                                            <input type="email" value={formData.customerEmail}  class="form-control bg-light border-0" id="customerEmail" onChange={handleInputChange} placeholder="Gurdian Email" />
+                                            <input type="email" value={formData.customerEmail} class="form-control bg-light border-0" id="customerEmail" onChange={handleInputChange} placeholder="Gurdian Email" />
                                             <label for="gmail">Your Email</label>
                                         </div>
                                     </div>
@@ -152,8 +145,8 @@ const AppointmentHeader = () => {
 
                                             <label for="service"></label>
                                             <select id="serviceId" value={formData.serviceId} style={{ padding: '1rem 0.75rem' }} class="form-control bg-light border-0" name="cars" onChange={handleInputChange} placeholder="Child Name">
-                                                <option value="" >Service Type</option>
-                                                {services.length && services.map(service => {
+                                                <option value="" hidden>Service Type</option>
+                                                {!!services.length && services.map(service => {
                                                     return <option key={service.serviceId} value={service.serviceId}>{service.serviceName}</option>
                                                 })}
                                             </select>
@@ -166,33 +159,36 @@ const AppointmentHeader = () => {
                                         </div>
                                     </div> */}
                                     <div class="col-sm-12">
-                                        <DatePicker  showIcon selected={date} onChange={(date) => handleDateChange(date) }       className="form-control"  showTimeSelect 
-                                        dateFormat="dd-mm-yy hh:mm:ss a"
-                                        filterDate={filterWeekends} withPortal
-                                        holidays={[
-                                            ...holidays?.map(holiday=>{
-                                                return {
-                                                    date:holiday.holidayDate,
-                                                    holidayName:holiday.holidayTitle
-                                                }
-                                            })
-                                        ]}
-                                              excludeDates={[
-                                                ...holidays?.map(holiday=>{
+                                        <DatePicker
+                                            selected={date}
+                                            onChange={(date) => handleDateChange(date)}
+                                            className="form-control bg-light border-0"
+                                            showTimeSelect
+                                            dateFormat="MMMM d, yyyy h:mm aa"
+                                            filterDate={filterWeekends} withPortal
+                                            // holidays={[
+                                            //     ...holidays?.map(holiday => {
+                                            //         return {
+                                            //             date: holiday.holidayDate,
+                                            //             holidayName: holiday.holidayTitle
+                                            //         }
+                                            //     })
+                                            // ]}
+                                            excludeDates={[
+                                                ...holidays?.map(holiday => {
                                                     return new Date(holiday.holidayDate)
                                                 })
-                                              ]}
-                                              minTime={new Date().setHours(9, 0, 0)}
-                                              maxTime={new Date().setHours(21, 0, 0)}
-
-
+                                            ]}
+                                            minTime={new Date().setHours(9, 0, 0)}
+                                            maxTime={new Date().setHours(21, 0, 0)}
+                                            placeholderText="Select date and time"
                                         >
-                                             <div className='text-primary'>Off on Weekends!</div>
-                                            </DatePicker>
-                                        
+                                            <div className='text-primary'>Off on Weekends!</div>
+                                        </DatePicker>
+
                                     </div>
-                                
-                                    
+
+
 
                                     <div class="col-12">
                                         <div class="form-floating">

@@ -1,12 +1,10 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
 import { fetchHolidays } from '../../store/slices/holidaysSlice';
 import { deleteHoliday } from '../../store/slices/holidaysSlice';
 
 const Holidays = () => {
-    const navigate = useNavigate();
     const dispatch = useDispatch();
     const { holidays, loading, error } = useSelector((state) => state.holidays);
     console.log(holidays)
@@ -14,12 +12,8 @@ const Holidays = () => {
         dispatch(fetchHolidays({}));
     }, [dispatch]);
 
-    const handleEdit = (id) => {
-        navigate(`/holiday/${id}`);
-    };
-
     const handleDelete = (id) => {
-       dispatch(deleteHoliday(id));
+        dispatch(deleteHoliday(id));
     };
 
     return (
@@ -37,7 +31,7 @@ const Holidays = () => {
                         <table class="table table-bordered" id="dataTable" width="100%" cellSpacing="0">
                             <thead>
                                 <tr>
-                                    <th>Date</th>
+                                    <th style={{ width: 150 }}>Date</th>
                                     <th>Title</th>
                                     <th style={{ width: 150 }} className='text-center'>Actions</th>
                                 </tr>
@@ -51,7 +45,7 @@ const Holidays = () => {
                             </tfoot>
                             <tbody>
                                 {
-                                   holidays &&  holidays?.map(s =>
+                                    holidays.map(s =>
                                         <tr key={s.holidayId} >
                                             <td>{s.holidayDate}</td>
                                             <td>{s.holidayTitle}</td>

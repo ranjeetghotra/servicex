@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import holidayService from './../../services/holidayService'
 import { Link, useNavigate, useParams } from 'react-router-dom';
-import {useDispatch} from 'react-redux'
+
 const Holiday = () => {
     const navigate = useNavigate();
     const { id } = useParams();
@@ -10,7 +10,15 @@ const Holiday = () => {
         holidayDate: '',
         holidayTitle: '',
     });
-    
+    const minDate = getCurrentDate();
+
+    function getCurrentDate() {
+      const currentDate = new Date();
+      const year = currentDate.getFullYear();
+      const month = String(currentDate.getMonth() + 1).padStart(2, '0');
+      const day = String(currentDate.getDate()).padStart(2, '0');
+      return `${year}-${month}-${day}`;
+    }
     useEffect(() => {
         if (isUpdate) {
             holidayService.get(id).then(({ holiday }) => {
@@ -29,17 +37,10 @@ const Holiday = () => {
     };
 
     const handleSubmit = (e) => {
-        console.log('submit called')
         e.preventDefault();
-        if (isUpdate) {
-            console.log("is update")
-            // serviceService.update(id, formData).then((res) => {
-            //     alert('Successfully updated');
-            //     // navigate('/service')
-            // });
-        } else {
+        if (!isUpdate) {
             holidayService.add(formData).then(() => {
-                // navigate('/holiday')
+                navigate('/holiday')
                 setFormData({
                     holidayDate: '',
                     holidayTitle: '',
@@ -63,6 +64,7 @@ const Holiday = () => {
                                 className="form-control"
                                 id="holidayDate"
                                 name="holidayDate"
+                                min={minDate}
                                 value={formData.holidayDate}
                                 onChange={handleInputChange}
                                 required
@@ -82,7 +84,7 @@ const Holiday = () => {
                         <button type="submit" className="btn btn-primary">
                             Save
                         </button>
-                        <Link to="/service" className="btn btn-light ml-2">
+                        <Link to="/holiday" className="btn btn-light ml-2">
                             Cancel
                         </Link>
                     </form>

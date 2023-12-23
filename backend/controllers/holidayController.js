@@ -1,3 +1,4 @@
+const { Op } = require('sequelize');
 const { HolidayModel } = require('../models');
 module.exports = {
     get: async (req, res) => {
@@ -5,7 +6,7 @@ module.exports = {
 
         try {
             const holiday = await HolidayModel.findOne({
-                where:{
+                where: {
                     holidayId
                 }
             });
@@ -21,19 +22,21 @@ module.exports = {
         }
     },
     list: async (req, res) => {
-    
-
         try {
-         
+            const currentDate = new Date();
             const holidays = await HolidayModel.findAll(
                 {
-                    attributes: ['holidayId', 'holidayDate','holidayTitle']
-
+                    attributes: ['holidayId', 'holidayDate', 'holidayTitle'],
+                    where: {
+                        holidayDate: {
+                            [Op.gte]: currentDate,
+                        },
+                    },
+                    order: [['holidayDate', 'ASC']],
                 }
             );
 
             res.json({
-                
                 data: holidays,
             });
         } catch (error) {
@@ -42,9 +45,9 @@ module.exports = {
         }
     },
     add: async (req, res) => {
-        const { holidayDate,holidayTitle } = req.body;
-        console.log("holidayDate",holidayDate)
-        
+        const { holidayDate, holidayTitle } = req.body;
+        console.log("holidayDate", holidayDate)
+
         try {
             // Validate date format
             if (!isValidDate(holidayDate)) {
@@ -55,7 +58,7 @@ module.exports = {
                 holidayDate,
                 holidayTitle
             });
-            res.status(201).json({ message: 'Holiday Added  successfully', holiday:newHoliday  });
+            res.status(201).json({ message: 'Holiday Added  successfully', holiday: newHoliday });
         } catch (error) {
             console.error(error);
             res.status(500).json({ message: 'Internal Server Error' });
@@ -77,8 +80,8 @@ module.exports = {
             console.error(error);
             res.status(500).json({ message: 'Internal Server Error' });
         }
-    },  
-   
+    },
+
 };
 
 const isValidDate = (dateString) => {

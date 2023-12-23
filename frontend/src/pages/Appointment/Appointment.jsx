@@ -7,7 +7,7 @@ const Appointment = () => {
 
     return (
         <>
-            <PageHeader title="Our Services" content="Appointment" />
+            <PageHeader title="Book Appointment" />
             <AppointmentForm />
         </>
     );

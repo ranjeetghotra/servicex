@@ -1,3 +1,7 @@
 // @import '~bootstrap/scss/bootstrap';
 @import './assets/css/bootstrap.min.css';
 @import './assets/css/style.css';
+
+.btn.btn-link:focus {
+    box-shadow: none;
+}

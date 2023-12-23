@@ -2,7 +2,7 @@ import React, { useState,useEffect } from 'react';
 import AppointmentForm from '../../components/AppointmentForm/AppointmentForm';
 import { fetchServices } from '../../store/slices/servicesSlice';
 import { useSelector, useDispatch } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 import './Home.css'
 const Home = () => {
     const [isActive, setActive] = useState(false);
@@ -44,7 +44,7 @@ const Home = () => {
                                                 <li class="breadcrumb-item fs-5 text-light">Residential</li>
                                                 <li class="breadcrumb-item fs-5 text-light">Industrial</li>
                                             </ol>
-                                            <a href="" class="btn btn-primary py-3 px-5">More Details</a>
+                                            <Link to="/appointment" class="btn btn-primary py-3 px-5">More Details</Link>
                                         </div>
                                     </div>
                                 </div>
@@ -63,7 +63,7 @@ const Home = () => {
                                                 <li class="breadcrumb-item fs-5 text-light">Residential</li>
                                                 <li class="breadcrumb-item fs-5 text-light">Industrial</li>
                                             </ol>
-                                            <a href="" class="btn btn-primary py-3 px-5">More Details</a>
+                                            <Link to="/appointment" class="btn btn-primary py-3 px-5">More Details</Link>
                                         </div>
                                     </div>
                                 </div>
@@ -248,7 +248,7 @@ const Home = () => {
                     </div>
                     <div class="row g-4 justify-content-center">
                     {
-                            services.length && services.map(service=>{
+                            !!services.length && services.map(service=>{
                                 return(
                                  
                                     <div key={service.serviceId} onClick={()=>{handleServiceClick(service.serviceSlug)}}  style={{cursor:"pointer"}}  className="col-lg-4 col-md-6 wow fadeInUp  " data-wow-delay="0.1s"  >

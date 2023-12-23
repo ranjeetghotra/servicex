@@ -20,7 +20,7 @@ const PageHeader = ({ title, breadcrumb,backgroundUrl }) => {
                                     <li key={bc} class="breadcrumb-item"><Link to={bc.to}>{bc.title}</Link></li>
                                 )
                             }
-                            <li class="breadcrumb-item text-primary active">service</li>
+                            <li class="breadcrumb-item text-primary active">{title}</li>
                         </ol>
                     </nav>
                 </div>

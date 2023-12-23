@@ -30,7 +30,7 @@ const holidaySlice = createSlice({
         holidays: [],
         loading: false,
         error: null,
-        countRequested:0
+        countRequested: 0
     },
     reducers: {
         // loginSuccess: (state, action) => {
@@ -68,14 +68,11 @@ const holidaySlice = createSlice({
             state.error = action.payload;
         });
         builder.addCase(deleteHoliday.fulfilled, (state, action) => {
-            const holidayId = action.meta.arg.holidayId
-            state.holidays  = state.holidays.findIndex((item)=>{
-             return    item.holidayId !== holidayId
-            })
+            const holidayId = action.meta.arg
+            state.holidays = state.holidays.filter((item) => item.holidayId !== holidayId)
             state.loading = false;
-            state.error = action.payload;
         });
-    
+
     },
 })
 

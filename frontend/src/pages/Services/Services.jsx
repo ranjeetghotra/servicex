@@ -7,15 +7,9 @@ import { useSelector, useDispatch } from 'react-redux'
 import { fetchServices } from './../../store/slices/servicesSlice'
 import {Link, useNavigate } from 'react-router-dom'
 const Services = () => {
-    const services = useSelector((state) => {
-        return state.services.services;
-    })
+    const services = useSelector((state) => state.services.services)
     const dispatch = useDispatch();
     const navigate = useNavigate()
-
-    useEffect(() => {
-        dispatch(fetchServices());
-    }, []);
 
     const handleServiceClick = (serviceSlug)=>{
         navigate(`/service/${serviceSlug}`);
@@ -40,7 +34,7 @@ const Services = () => {
                     <div  className="row g-4 mt-5 justify-content-center">
 
                         {
-                            services.length && services.map(service=>{
+                            !!services.length && services.map(service=>{
                                 return(
                                     <div key={service.serviceId} onClick={()=>{handleServiceClick(service.serviceSlug)}}  style={{cursor:"pointer"}}  className="col-lg-4 col-md-6 wow fadeInUp  " data-wow-delay="0.1s"  >
                                     <div className="service-item bg-light text-center overflow-hidden h-100    ">

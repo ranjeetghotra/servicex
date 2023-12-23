@@ -54,7 +54,7 @@ const Contacts = () => {
                             </tfoot>
                             <tbody>
                                 {
-                                    contacts?.length && contacts.map(contact=>{
+                                    !!contacts?.length && contacts.map(contact=>{
                                         return (
                                             <tr key={contact.contactId} >
 
