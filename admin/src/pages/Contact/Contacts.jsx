@@ -11,7 +11,7 @@ const Contacts = () => {
   let page = searchParams.get('page')
   useEffect(() => {
     dispatch(fetchContacts({ page: page ? page : 1 }));
-  }, [page]);
+  }, [dispatch, page]);
 
   const handlePageClick = (pageNumber) => {
     // Dispatch the fetchAppointments action with the selected page number
@@ -31,24 +31,20 @@ const Contacts = () => {
             <table className="table table-bordered" id="dataTable" width="100%" cellSpacing="0">
               <thead>
                 <tr>
-                  <th>Contact Id</th>
+                  <th>#</th>
                   <th>Name</th>
                   <th>Email</th>
                   <th>Subject</th>
                   <th>Messge</th>
-
-
-
                 </tr>
               </thead>
               <tfoot>
                 <tr>
-                  <th>Contact Id</th>
+                  <th>#</th>
                   <th>Name</th>
                   <th>Email</th>
                   <th>Subject</th>
                   <th>Messge</th>
-
                 </tr>
               </tfoot>
               <tbody>

@@ -39,7 +39,7 @@ const Contact = () => {
             <div class="container-xxl py-5">
                 <div class="container">
                     <div class="row g-5">
-                        <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
+                        {/* <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
                             <div class="row g-4 align-items-center">
                                 <div class="col-sm-6">
                                     <img class="img-fluid" src="img/team-1.jpg" alt="" />
@@ -68,7 +68,7 @@ const Contact = () => {
                                     <p class="mb-0">Email: sales@example.com</p>
                                 </div>
                             </div>
-                        </div>
+                        </div> */}
                         <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s" style={{ minHeight: "450px" }}>
                             <div class="position-relative h-100">
                                 <iframe class="position-relative w-100 h-100" title='Map Location'
@@ -82,7 +82,7 @@ const Contact = () => {
                                 <h6 class="text-body text-uppercase mb-2">Contact Us</h6>
                                 <h1 class="display-6 mb-0">If You Have Any Query, Please Contact Us</h1>
                             </div>
-                            <p class="mb-4">The contact form is currently inactive. Get a functional and working contact form with Ajax & PHP in a few minutes. Just copy and paste the files, add a little code and you're done. <a href="https://htmlcodex.com/contact-form">Download Now</a>.</p>
+                            {/* <p class="mb-4">The contact form is currently inactive. Get a functional and working contact form with Ajax & PHP in a few minutes. Just copy and paste the files, add a little code and you're done. <a href="https://htmlcodex.com/contact-form">Download Now</a>.</p> */}
                             <form>
                                 <div class="row g-3">
                                     <div class="col-md-6">

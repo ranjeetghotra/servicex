@@ -19,9 +19,11 @@ const Services = () => {
     };
 
     const handleDelete = (id) => {
-        serviceService.delete(id).then(() => {
-            dispatch(fetchServices({ page: 1 }));
-        })
+        if (window.confirm('Are you sure to delete?')) {
+            serviceService.delete(id).then(() => {
+                dispatch(fetchServices({ page: 1 }));
+            })
+        }
     };
 
     return (
@@ -37,14 +39,14 @@ const Services = () => {
                         <table class="table table-bordered" id="dataTable" width="100%" cellSpacing="0">
                             <thead>
                                 <tr>
-                                    <th>ID</th>
+                                    <th style={{ maxWidth: 70 }}>#</th>
                                     <th>Name</th>
-                                    <th style={{ width: 150 }} className='text-center'>Actions</th>
+                                    <th style={{ maxWidth: 50 }} className='text-center'>Actions</th>
                                 </tr>
                             </thead>
                             <tfoot>
                                 <tr>
-                                    <th>ID</th>
+                                    <th>#</th>
                                     <th>Name</th>
                                     <th className='text-center'>Actions</th>
                                 </tr>
@@ -56,8 +58,12 @@ const Services = () => {
                                             <td>{s.serviceId}</td>
                                             <td>{s.serviceName}</td>
                                             <td className='text-center'>
-                                                <button onClick={() => handleEdit(s.serviceId)} className='btn btn-info btn-sm mr-2'>Edit</button>
-                                                <button onClick={() => handleDelete(s.serviceId)} className='btn btn-info btn-sm'>Delete</button>
+                                                <button onClick={() => handleEdit(s.serviceId)} className='btn btn-light btn-sm mr-2'>
+                                                    <i class="fas fa-pencil-alt fa-sm text-info"></i>
+                                                </button>
+                                                <button onClick={() => handleDelete(s.serviceId)} className='btn btn-light btn-sm'>
+                                                    <i class="fas fa-trash fa-sm text-danger"></i>
+                                                </button>
                                             </td>
                                         </tr>
                                     )

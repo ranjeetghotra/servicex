@@ -60,7 +60,7 @@ const Header = () => {
 
             <nav className={stickyTopClass} style={{ top: isScrolled ? '0px' : '-100px' }}>
                 <Link to="/" class="navbar-brand d-flex align-items-center">
-                    <h1 class="m-0"><i class="fa fa-building text-primary me-3"></i>APEX</h1>
+                    <h1 class="m-0"><i class="fab fa-xing text-primary me-3"></i>SERVICE X</h1>
                 </Link>
                 <button type="button" onClick={handleClick} class="navbar-toggler" style={{ boxShadow: 'none'}} data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                     <span class="navbar-toggler-icon"></span>

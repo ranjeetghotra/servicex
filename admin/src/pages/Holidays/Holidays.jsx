@@ -13,7 +13,9 @@ const Holidays = () => {
     }, [dispatch]);
 
     const handleDelete = (id) => {
-        dispatch(deleteHoliday(id));
+        if (window.confirm('Are you sure to delete?')) {
+            dispatch(deleteHoliday(id));
+        }
     };
 
     return (
@@ -48,8 +50,9 @@ const Holidays = () => {
                                             <td>{s.holidayDate}</td>
                                             <td>{s.holidayTitle}</td>
                                             <td className='text-center'>
-                                                {/* <button onClick={() => handleEdit(s.holidayId)} className='btn btn-info btn-sm mr-2'>Edit</button> */}
-                                                <button onClick={() => handleDelete(s.holidayId)} className='btn btn-info btn-sm'>Delete</button>
+                                                <button onClick={() => handleDelete(s.holidayId)} className='btn btn-light btn-sm'>
+                                                    <i class="fas fa-trash fa-sm text-danger"></i>
+                                                </button>
                                             </td>
                                         </tr>
                                     )

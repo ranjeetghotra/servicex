@@ -30,9 +30,9 @@ const Sidebar = () => {
 
             <Link class="sidebar-brand d-flex align-items-center justify-content-center" to="/">
                 <div class="sidebar-brand-icon rotate-n-15">
-                    <i class="fas fa-laugh-wink"></i>
+                    <i class="fab fa-xing"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
+                <div class="sidebar-brand-text mx-3">Service X</div>
             </Link>
 
             <hr class="sidebar-divider my-0" />

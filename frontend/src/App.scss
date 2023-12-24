@@ -7,6 +7,23 @@
     box-shadow: none;
 }
 
-.react-datepicker__input-container > .form-control:not(:placeholder-shown) {
-    padding: 1rem 0.75rem !important;
+.carousel-caption {
+    right: 0;
+    bottom: 0;
+    left: 0;
+    text-align: left;
+}
+
+.react-datepicker__input-container>.form-control {
+    height: calc(3.5rem + 2px);
+    padding: 1rem 0.75rem;
+}
+
+.carousel-control-next-icon,
+.carousel-control-prev-icon {
+    background-color: var(--dark);
+    border: 15px solid var(--dark);
+    border-radius: 50px;
+    height: 4rem;
+    width: 4rem;
 }

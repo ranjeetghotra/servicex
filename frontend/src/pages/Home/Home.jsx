@@ -32,38 +32,38 @@ const Home = () => {
                 <div id="header-carousel" class="carousel slide" data-bs-ride="carousel">
                     <div class="carousel-inner">
                         <div className={isActive ? "carousel-item active" : "carousel-item"} >
-                            <img class="w-100" src="img/ac.jpg" alt="Image" />
+                            <img class="w-100" src="/images/carousel-2.jpg" alt="Image" />
                             <div class="carousel-caption">
                                 <div class="container">
                                     <div class="row justify-content-center">
                                         <div class="col-12 col-lg-10">
-                                            <h5 class="text-light text-uppercase mb-3 animated slideInDown">Welcome to Apex</h5>
+                                            <h5 class="text-light text-uppercase mb-3 animated slideInDown">Welcome to ServiceX</h5>
                                             <h1 class="display-2 text-light mb-3 animated slideInDown">Installation of Air Conditioners & Heat</h1>
                                             <ol class="breadcrumb mb-4 pb-2">
                                                 <li class="breadcrumb-item fs-5 text-light">Commercial</li>
                                                 <li class="breadcrumb-item fs-5 text-light">Residential</li>
                                                 <li class="breadcrumb-item fs-5 text-light">Industrial</li>
                                             </ol>
-                                            <Link to="/appointment" class="btn btn-primary py-3 px-5">More Details</Link>
+                                            <Link to="/appointment" class="btn btn-primary py-3 px-5">Book Appointment</Link>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div className={isActive ? "carousel-item " : "carousel-item active"}>
-                            <img class="w-100" src="img/ac3.jpg" alt="Image" />
+                            <img class="w-100" src="/images/carousel-1.jpg" alt="Image" />
                             <div class="carousel-caption">
                                 <div class="container">
                                     <div class="row justify-content-center">
                                         <div class="col-12 col-lg-10">
-                                            <h5 class="text-light text-uppercase mb-3 animated slideInDown">Welcome to Apex</h5>
+                                            <h5 class="text-light text-uppercase mb-3 animated slideInDown">Welcome to ServiceX</h5>
                                             <h1 class="display-2 text-light mb-3 animated slideInDown">Cleaning & Repairing Services</h1>
                                             <ol class="breadcrumb mb-4 pb-2">
                                                 <li class="breadcrumb-item fs-5 text-light">Commercial</li>
                                                 <li class="breadcrumb-item fs-5 text-light">Residential</li>
                                                 <li class="breadcrumb-item fs-5 text-light">Industrial</li>
                                             </ol>
-                                            <Link to="/appointment" class="btn btn-primary py-3 px-5">More Details</Link>
+                                            <Link to="/appointment" class="btn btn-primary py-3 px-5">Book Appointment</Link>
                                         </div>
                                     </div>
                                 </div>

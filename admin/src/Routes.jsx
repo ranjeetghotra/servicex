@@ -10,6 +10,7 @@ import Service from './pages/Services/Service';
 import Contacts from './pages/Contact/Contacts';
 import Holidays from './pages/Holidays/Holidays';
 import Holiday from './pages/Holidays/Holiday'
+import Appointment from './pages/Appointments/Appointment';
 // import ScrollToTop from './components/ScrollToTop/ScrollToTop';
 
 const AppRoutes = () => {
@@ -24,6 +25,7 @@ const AppRoutes = () => {
                         <>
                             <Route path="/" element={<BaseLayout><Home /></BaseLayout>} />
                             <Route path="/appointment" element={<BaseLayout><Appointments /></BaseLayout>} />
+                            <Route path="/appointment/:id" element={<BaseLayout><Appointment /></BaseLayout>} />
                             <Route path="/service" element={<BaseLayout><Services /></BaseLayout>} />
                             <Route path="/service/:id" element={<BaseLayout><Service /></BaseLayout>} />
                             <Route path="/contacts" element={<BaseLayout><Contacts /></BaseLayout>} />
@@ -35,11 +37,6 @@ const AppRoutes = () => {
                             <Route path="/" element={<Login />} />
                         </>
                 }
-                {/* <Route path="/about" element={<BaseLayout><About /></BaseLayout>} />
-                <Route path="/services" element={<BaseLayout><Services /></BaseLayout>} />
-                <Route path="/appointment" element={<BaseLayout><Appointment /></BaseLayout>} />
-                <Route path="/contact" element={<BaseLayout><Contact /></BaseLayout>} /> */}
-                {/* <Route path="/404" element={<BaseLayout><NotFound /></BaseLayout>} /> */}
                 <Route path="*" element={<Navigate to="/" />} />
             </Routes>
         </Router>
