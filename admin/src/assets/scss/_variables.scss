@@ -16,16 +16,27 @@ $gray-800: #5a5c69 !default;
 $gray-900: #3a3b45 !default;
 $black: #000 !default;
 
-$blue: #4e73df !default;
-$indigo: #6610f2 !default;
-$purple: #6f42c1 !default;
-$pink: #e83e8c !default;
-$red: #e74a3b !default;
-$orange: #fd7e14 !default;
-$yellow: #f6c23e !default;
-$green: #1cc88a !default;
-$teal: #20c9a6 !default;
-$cyan: #36b9cc !default;
+// $blue: #4e73df !default;
+// $indigo: #6610f2 !default;
+// $purple: #6f42c1 !default;
+// $pink: #e83e8c !default;
+// $red: #e74a3b !default;
+// $orange: #fd7e14 !default;
+// $yellow: #f6c23e !default;
+// $green: #1cc88a !default;
+// $teal: #20c9a6 !default;
+// $cyan: #36b9cc !default;
+
+$blue: #46344E !default;
+$indigo: #59306C !default; // Adjusted to complement the new blue
+$purple: #704F8E !default; // Adjusted to complement the new blue
+$pink: #B23E73 !default; // Adjusted to complement the new blue
+$red: #B53540 !default; // Adjusted to complement the new blue
+$orange: #E05F14 !default; // Adjusted to complement the new blue
+$yellow: #CDA23A !default; // Adjusted to complement the new blue
+$green: #2E7E5E !default; // Adjusted to complement the new blue
+$teal: #007F8E !default; // Adjusted to complement the new blue
+$cyan: #197493 !default; // Adjusted to complement the new blue
 
 // Custom Colors
 $brand-google: #ea4335 !default;

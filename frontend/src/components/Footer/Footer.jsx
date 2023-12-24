@@ -59,7 +59,7 @@ const Footer = () => {
                 <div class="container">
                     <div class="row">
                         <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                            &copy; {new Date().getFullYear()} <Link to="/">Your Site Name</Link>, All Right Reserved.
+                            &copy; {new Date().getFullYear()} <Link to="/">ServiceX</Link>, All Right Reserved.
                         </div>
                         {/* <div class="col-md-6 text-center text-md-end">
                             Designed By <a href="https://htmlcodex.com">HTML Codex</a>

@@ -1,7 +1,12 @@
 // @import '~bootstrap/scss/bootstrap';
-@import './assets/css/bootstrap.min.css';
+// @import './assets/css/bootstrap.min.css';
+@import './assets/scss/bootstrap.scss';
 @import './assets/css/style.css';
 
 .btn.btn-link:focus {
     box-shadow: none;
+}
+
+.react-datepicker__input-container > .form-control:not(:placeholder-shown) {
+    padding: 1rem 0.75rem !important;
 }
