@@ -5,6 +5,7 @@ const router = express.Router();
 
 // Admin login route
 router.post('/login', adminController.signIn);
+router.get('/dashboard', adminController.dashboard);
 router.post('/service', serviceController.create);
 router.get('/service', serviceController.list);
 router.get('/service/count',serviceController.countTotal);

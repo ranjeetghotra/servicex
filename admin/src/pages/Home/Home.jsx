@@ -1,19 +1,24 @@
 import React, { useEffect } from 'react';
-import {useSelector,useDispatch} from 'react-redux'
-import { countRequested } from './../../store/slices/appointmentsSlice';
-import { fetchCountContacts } from '../../store/slices/contactSlice';
-import { countTotal as countTotalService } from '../../store/slices/servicesSlice';
+import { useSelector, useDispatch } from 'react-redux'
+import { fetchDashboard } from '../../store/slices/dashboardSlice';
+import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
+    const navigate = useNavigate();
     const dispatch = useDispatch();
-    const requestedAppointMentCount = useSelector((state)=>state.appointments.countRequested);
-    const contactsFormCount = useSelector((state)=>state.contacts.totalContacts);
-    const totalServices = useSelector((state)=>state.services.total);
-    useEffect(()=>{
-        dispatch(countRequested());
-        dispatch(fetchCountContacts());
-        dispatch(countTotalService())
-    },[])
+    const { counts } = useSelector((state) => state.dashboard);
+
+    useEffect(() => {
+        dispatch(fetchDashboard())
+    }, [dispatch])
+
+    const navigateAppointments = () => {
+        navigate('/appointment')
+    }
+
+    const navigateHolidays = () => {
+        navigate('/holiday')
+    }
 
     return (
         <>
@@ -21,114 +26,66 @@ const Home = () => {
                 <h1 className="h3 mb-0 text-gray-800">Dashboard</h1>
             </div>
             <div className="row">
-{/* total earning */}
-                {/* <div className="col-xl-3 col-md-6 mb-4">
-                    <div className="card border-left-primary shadow h-100 py-2">
+
+                <div className="col-xl-3 col-md-6 mb-4">
+                    <div className="card border-left-primary shadow h-100 py-2" role='button' onClick={navigateAppointments}>
                         <div className="card-body">
                             <div className="row no-gutters align-items-center">
                                 <div className="col mr-2">
                                     <div className="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                        Earnings (Monthly)</div>
-                                    <div className="h5 mb-0 font-weight-bold text-gray-800">$40,000</div>
+                                        New Appointments</div>
+                                    <div className="h5 mb-0 font-weight-bold text-gray-800">{counts.requestedAppointments}</div>
                                 </div>
                                 <div className="col-auto">
-                                    <i className="fas fa-calendar fa-2x text-gray-300"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div> */}
-{/* earning annually */}
-                {/* <div className="col-xl-3 col-md-6 mb-4">
-                    <div className="card border-left-success shadow h-100 py-2">
-                        <div className="card-body">
-                            <div className="row no-gutters align-items-center">
-                                <div className="col mr-2">
-                                    <div className="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                        Earnings (Annual)</div>
-                                    <div className="h5 mb-0 font-weight-bold text-gray-800">$215,000</div>
-                                </div>
-                                <div className="col-auto">
-                                    <i className="fas fa-dollar-sign fa-2x text-gray-300"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div> */}
-                {/* tasks */}
-                {/* <div className="col-xl-3 col-md-6 mb-4">
-                    <div className="card border-left-success shadow h-100 py-2">
-                        <div className="card-body">
-                            <div className="row no-gutters align-items-center">
-                                <div className="col mr-2">
-                                    <div className="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                        Total Services</div>
-                                    <div className="h5 mb-0 font-weight-bold text-gray-800">{totalServices}</div>
-                                </div>
-                                <div className="col-auto">
-                                    <i className="fas fa-wrench fa-2x text-gray-300"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div> */}
-
-                <div className="col-xl-3 col-md-6 mb-4">
-                    <div className="card border-left-info shadow h-100 py-2">
-                        <div className="card-body">
-                            <div className="row no-gutters align-items-center">
-                                <div className="col mr-2">
-                                    <div className="text-xs font-weight-bold text-info text-uppercase mb-1">Tasks
-                                    </div>
-                                    <div className="row no-gutters align-items-center">
-                                        <div className="col-auto">
-                                            <div className="h5 mb-0 mr-3 font-weight-bold text-gray-800">50%</div>
-                                        </div>
-                                        <div className="col">
-                                            <div className="progress progress-sm mr-2">
-                                                <div className="progress-bar bg-info" role="progressbar"
-                                                    style={{ width: "50%" }} aria-valuenow="50" aria-valuemin="0"
-                                                    aria-valuemax="100"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="col-auto">
-                                    <i className="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                                    <i className="fas fa-calendar-plus fa-2x text-gray-300 " />
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
                 <div className="col-xl-3 col-md-6 mb-4">
-                    <div className="card border-left-warning shadow h-100 py-2">
+                    <div className="card border-left-success shadow h-100 py-2" role='button' onClick={navigateAppointments}>
                         <div className="card-body">
                             <div className="row no-gutters align-items-center">
                                 <div className="col mr-2">
-                                    <div className="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                        Contact US Forms</div>
-                                    <div className="h5 mb-0 font-weight-bold text-gray-800">{contactsFormCount}</div>
+                                    <div className="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                        Confirmed Appointments</div>
+                                    <div className="h5 mb-0 font-weight-bold text-gray-800">{counts.confirmedAppointments}</div>
                                 </div>
                                 <div className="col-auto">
-                                    <i className="fas  fa-address-book fa-2x text-gray-300 " />
+                                    <i className="fas fa-check-circle fa-2x text-gray-300 " />
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
                 <div className="col-xl-3 col-md-6 mb-4">
-                    <div className="card border-left-warning shadow h-100 py-2">
+                    <div className="card border-left-info shadow h-100 py-2" role='button' onClick={navigateAppointments}>
+                        <div className="card-body">
+                            <div className="row no-gutters align-items-center">
+                                <div className="col mr-2">
+                                    <div className="text-xs font-weight-bold text-info text-uppercase mb-1">
+                                        Completed Appointments</div>
+                                    <div className="h5 mb-0 font-weight-bold text-gray-800">{counts.completedAppointments}</div>
+                                </div>
+                                <div className="col-auto">
+                                    <i className="fas fa-calendar-check fa-2x text-gray-300 " />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className="col-xl-3 col-md-6 mb-4">
+                    <div className="card border-left-warning shadow h-100 py-2" role='button' onClick={navigateHolidays}>
                         <div className="card-body">
                             <div className="row no-gutters align-items-center">
                                 <div className="col mr-2">
                                     <div className="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                        Pending Appointment Requests</div>
-                                    <div className="h5 mb-0 font-weight-bold text-gray-800">{requestedAppointMentCount}</div>
+                                        Upcoming Holidays</div>
+                                    <div className="h5 mb-0 font-weight-bold text-gray-800">{counts.upcomingHolidays}</div>
                                 </div>
                                 <div className="col-auto">
-                                    <i className="fas fa-comments fa-2x text-gray-300"></i>
+                                    <i className="fas fa-gift fa-2x text-gray-300 " />
                                 </div>
                             </div>
                         </div>

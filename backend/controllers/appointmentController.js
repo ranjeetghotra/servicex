@@ -1,4 +1,4 @@
-const { AppointmentModel } = require('../models');
+const { AppointmentModel, ServiceModel } = require('../models');
 const  { sendMail } = require('./../services/email')
 const {STATUS} = require('./../core/types')
 const {DateTime}  = require('luxon');
@@ -13,6 +13,9 @@ module.exports = {
                 limit,
                 offset,
                 order: [['createdAt', 'DESC']],
+                include: [{
+                    model: ServiceModel, as: "service"
+                }]
             });
 
             const totalPages = Math.ceil(count / limit);

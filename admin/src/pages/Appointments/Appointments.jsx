@@ -48,7 +48,7 @@ const Appointments = () => {
                   <th>Name</th>
                   <th>Email</th>
                   <th>Mobile</th>
-                  <th>Service Id</th>
+                  <th>Service</th>
                   <th></th>
 
                 </tr>
@@ -61,7 +61,7 @@ const Appointments = () => {
                   <th>Name</th>
                   <th>Email</th>
                   <th>Mobile</th>
-                  <th>Service Id</th>
+                  <th>Service</th>
                   <th></th>
 
                 </tr>
@@ -86,7 +86,7 @@ const Appointments = () => {
                         <td>{appointment.customerName}</td>
                         <td>{appointment.customerEmail}</td>
                         <td>{appointment.customerPhone}</td>
-                        <td>{appointment.serviceId}</td>
+                        <td>{appointment.service.serviceName}</td>
                         <td>
                           <Link to={`/appointment/${appointment.appointmentId}`} className='btn btn-light btn-sm'>
                             <i class="fas fa-eye fa-sm text-primary"></i>
