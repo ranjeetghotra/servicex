@@ -8,7 +8,7 @@ import serviceService from '../../services/serviceService';
 const Services = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
-    const { services, loading, error } = useSelector((state) => state.services);
+    const { services } = useSelector((state) => state.services);
 
     useEffect(() => {
         dispatch(fetchServices({ page: 1 }));
@@ -28,15 +28,19 @@ const Services = () => {
 
     return (
         <>
-            <div class="card shadow mb-4">
-                <div class="card-header d-flex justify-content-between py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Services</h6>
-                    <Link class=" d-sm-inline-block btn btn-sm btn-primary shadow-sm" to='/service/add'>
-                        <i class="fas fa-plus-circle fa-sm text-white-50"></i> Add Service</Link>
+            <div className="card shadow mb-4">
+                <div className="card-header d-flex justify-content-between align-items-center py-3">
+                    <h6 className="m-0 font-weight-bold text-primary">Services</h6>
+                    <Link className="btn btn-icon-split btn-sm btn-primary shadow-sm" to='/service/add'>
+                        <span className="icon text-white-50">
+                            <i className="fas fa-plus-circle fa-sm"></i>
+                        </span>
+                        <span className="text">Add Service</span>
+                    </Link>
                 </div>
-                <div class="card-body">
-                    <div class="table-responsive">
-                        <table class="table table-bordered" id="dataTable" width="100%" cellSpacing="0">
+                <div className="card-body p-0">
+                    <div className="table-responsive">
+                        <table className="table table-striped" id="dataTable" width="100%" cellSpacing="0">
                             <thead>
                                 <tr>
                                     <th style={{ maxWidth: 70 }}>#</th>
@@ -59,10 +63,10 @@ const Services = () => {
                                             <td>{s.serviceName}</td>
                                             <td className='text-center'>
                                                 <button onClick={() => handleEdit(s.serviceId)} className='btn btn-light btn-sm mr-2'>
-                                                    <i class="fas fa-pencil-alt fa-sm text-info"></i>
+                                                    <i className="fas fa-pencil-alt fa-sm text-info"></i>
                                                 </button>
                                                 <button onClick={() => handleDelete(s.serviceId)} className='btn btn-light btn-sm'>
-                                                    <i class="fas fa-trash fa-sm text-danger"></i>
+                                                    <i className="fas fa-trash fa-sm text-danger"></i>
                                                 </button>
                                             </td>
                                         </tr>

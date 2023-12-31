@@ -37,17 +37,15 @@ const Appointments = () => {
         <div className="card-header py-3">
           <h6 className="m-0 font-weight-bold text-primary">Appointments</h6>
         </div>
-        <div className="card-body">
+        <div className="card-body p-0">
           <div className="table-responsive">
-            <table onChange={onStatusChange} className="table table-bordered" id="dataTable" width="100%" cellSpacing="0">
+            <table onChange={onStatusChange} className="table table-striped" id="dataTable" width="100%" cellSpacing="0">
               <thead>
                 <tr>
                   <th>#</th>
                   <th>Status</th>
                   <th>Appointment Date</th>
                   <th>Name</th>
-                  <th>Email</th>
-                  <th>Mobile</th>
                   <th>Service</th>
                   <th></th>
 
@@ -59,8 +57,6 @@ const Appointments = () => {
                   <th>Status</th>
                   <th>Appointment Date</th>
                   <th>Name</th>
-                  <th>Email</th>
-                  <th>Mobile</th>
                   <th>Service</th>
                   <th></th>
 
@@ -71,25 +67,23 @@ const Appointments = () => {
                   appointments?.map(appointment => {
                     return (
                       <tr key={appointment.appointmentId} >
-                        <td>{appointment.appointmentId}</td>
+                        <td>{appointment.invoiceNumber}</td>
                         <td>
                           <select defaultValue={appointment.status} name={appointment.appointmentId} id={appointment.appointmentId} className='form-control w-auto '
                           >
+                            <option value="requested" hidden>Requested</option>
                             <option value="confirmed">Confirmed</option>
-                            <option value="requested">Requested</option>
                             <option value="completed">Completed</option>
                             <option value="canceled">Canceled</option>
                           </select>
 
                         </td>
-                        <td>{DateTime.fromISO(appointment.appointmentDate).setZone('Pacific/Auckland').toFormat('yyyy-LL-dd HH:mm:ss')}</td>
+                        <td>{DateTime.fromISO(appointment.appointmentDate).setZone('Pacific/Auckland').toLocaleString(DateTime.DATETIME_MED)}</td>
                         <td>{appointment.customerName}</td>
-                        <td>{appointment.customerEmail}</td>
-                        <td>{appointment.customerPhone}</td>
                         <td>{appointment.service.serviceName}</td>
                         <td>
                           <Link to={`/appointment/${appointment.appointmentId}`} className='btn btn-light btn-sm'>
-                            <i class="fas fa-eye fa-sm text-primary"></i>
+                            <i className="fas fa-eye fa-sm text-primary"></i>
                           </Link>
                         </td>
                       </tr>

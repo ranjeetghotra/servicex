@@ -10,24 +10,43 @@ const appointmentService = {
       throw new Error(error.response?.data?.message);
     }
   },
-  updateStatus:async(params)=>{
-    try{
-      const response  = await axios.put('/appointment',{
-        appointmentId:params.appointmentId,status:params.status
-      })
+  get: async (id) => {
+    try {
+      const response = await axios.get(`/appointment/${id}`);
       return response.data;
-
-    }catch(error){
+    } catch (error) {
       console.log(error)
       throw new Error(error.response?.data?.message);
     }
   },
-  countRequested:async()=>{
-    try{
-      const response  = await axios.get('/appointment/countRequested');
+  update: async (id, params) => {
+    try {
+      const response = await axios.put(`/appointment/${id}`, params)
       return response.data;
 
-    }catch(error){
+    } catch (error) {
+      console.log(error)
+      throw new Error(error.response?.data?.message);
+    }
+  },
+  updateStatus: async (params) => {
+    try {
+      const response = await axios.put('/appointment', {
+        appointmentId: params.appointmentId, status: params.status
+      })
+      return response.data;
+
+    } catch (error) {
+      console.log(error)
+      throw new Error(error.response?.data?.message);
+    }
+  },
+  countRequested: async () => {
+    try {
+      const response = await axios.get('/appointment/countRequested');
+      return response.data;
+
+    } catch (error) {
       console.log(error)
       throw new Error(error.response?.data?.message);
     }

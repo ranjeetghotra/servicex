@@ -4,7 +4,7 @@ import axios from './../../services/axios';
 // import { GoogleReCaptchaProvider } from 'react-google-recaptcha-v3';
 import { useSelector, useDispatch } from 'react-redux'
 import { fetchServices } from './../../store/slices/servicesSlice'
-import { useParams } from 'react-router-dom';
+import { NotificationManager } from 'react-notifications';
 import DatePicker from 'react-datepicker'
 import { fetchHolidays } from '../../store/slices/holidaysSlice';
 
@@ -81,7 +81,7 @@ const AppointmentHeader = (props) => {
         // handleRecaptchaChange()
         try {
             const response = await axios.post('/appointment', formData);
-            alert("Appointment Booked");
+            NotificationManager.success('Appointment requested');
             setFormData(initialFormData);
             setDate("")
             console.log('Data posted successfully:', response.data);
@@ -108,43 +108,43 @@ const AppointmentHeader = (props) => {
 
     return (
         <>
-            <div class="container-xxl py-5">
+            <div className="container-xxl py-5">
 
-                <div class="container">
-                    <div class="row g-5">
-                        <div class="col-lg-5 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                            <div class="border-start border-5 border-primary ps-4 mb-5">
-                                <h6 class="text-body text-uppercase mb-2">Appointment</h6>
-                                <h1 class="display-6 mb-0">A Company Involved In Service And Maintenance</h1>
+                <div className="container">
+                    <div className="row g-5">
+                        <div className="col-lg-5 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                            <div className="border-start border-5 border-primary ps-4 mb-5">
+                                <h6 className="text-body text-uppercase mb-2">Appointment</h6>
+                                <h1 className="display-6 mb-0">Schedule Your Service with Ease!</h1>
                             </div>
-                            <p class="mb-0">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo magna dolore erat amet</p>
+                            <p className="mb-0">We're thrilled to assist you in booking our top-notch services. Please fill out the form below to schedule a convenient time for our team to take care of your cleaning, AC repair, or filter replacement needs.</p>
                         </div>
-                        <div class="col-lg-7 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-                            <form>
-                                <div class="row g-3">
-                                    <div class="col-sm-6">
-                                        <div class="form-floating">
-                                            <input type="text" value={formData.customerName} class="form-control bg-light border-0" id="customerName" onChange={handleInputChange} placeholder="Gurdian Name" />
+                        <div className="col-lg-7 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                            <form onSubmit={handleSubmit}>
+                                <div className="row g-3">
+                                    <div className="col-sm-6">
+                                        <div className="form-floating">
+                                            <input type="text" value={formData.customerName} className="form-control bg-light border-0" id="customerName" onChange={handleInputChange} placeholder="Gurdian Name" required />
                                             <label for="name">Your Name</label>
                                         </div>
                                     </div>
-                                    <div class="col-sm-6">
-                                        <div class="form-floating">
-                                            <input type="email" value={formData.customerEmail} class="form-control bg-light border-0" id="customerEmail" onChange={handleInputChange} placeholder="Gurdian Email" />
+                                    <div className="col-sm-6">
+                                        <div className="form-floating">
+                                            <input type="email" value={formData.customerEmail} className="form-control bg-light border-0" id="customerEmail" onChange={handleInputChange} placeholder="Gurdian Email" required />
                                             <label for="gmail">Your Email</label>
                                         </div>
                                     </div>
-                                    <div class="col-sm-6">
-                                        <div class="form-floating">
-                                            <input type="text" value={formData.customerPhone} keyboardType="numeric" maxLength={10} class="form-control bg-light border-0" id="customerPhone" onChange={handleInputChange} placeholder="Child Name" />
+                                    <div className="col-sm-6">
+                                        <div className="form-floating">
+                                            <input type="tel" value={formData.customerPhone} keyboardType="numeric" maxLength={10} className="form-control bg-light border-0" id="customerPhone" onChange={handleInputChange} placeholder="Child Name" required />
                                             <label for="mobile">Your Mobile</label>
                                         </div>
                                     </div>
-                                    <div class="col-sm-6">
-                                        <div class="form-floating">
+                                    <div className="col-sm-6">
+                                        <div className="form-floating">
 
                                             <label for="service"></label>
-                                            <select id="serviceId" value={formData.serviceId} style={{ padding: '1rem 0.75rem' }} class="form-control bg-light border-0" name="cars" onChange={handleInputChange} placeholder="Child Name">
+                                            <select id="serviceId" value={formData.serviceId} style={{ padding: '1rem 0.75rem' }} className="form-control bg-light border-0" name="cars" onChange={handleInputChange} placeholder="Child Name" required>
                                                 <option value="" hidden>Service Type</option>
                                                 {!!services.length && services.map(service => {
                                                     return <option key={service.serviceId} value={service.serviceId}>{service.serviceName}</option>
@@ -152,20 +152,20 @@ const AppointmentHeader = (props) => {
                                             </select>
                                         </div>
                                     </div>
-                                    {/* <div class="col-sm-6">
-                                        <div class="form-floating">
-                                            <input type="datetime-local" value={formData.appointmentDate}  maxLength={10} class="form-control bg-light border-0" id="appointmentDate" onChange={handleInputChange} min={new Date().toISOString().split('.')[0]}  placeholder="Child Name" />
+                                    {/* <div className="col-sm-6">
+                                        <div className="form-floating">
+                                            <input type="datetime-local" value={formData.appointmentDate}  maxLength={10} className="form-control bg-light border-0" id="appointmentDate" onChange={handleInputChange} min={new Date().toISOString().split('.')[0]}  placeholder="Child Name" />
                                             <label for="appointmentDate">Appointment Date</label>
                                         </div>
                                     </div> */}
-                                    <div class="col-sm-12">
+                                    <div className="col-sm-12">
                                         <DatePicker
                                             selected={date}
                                             onChange={(date) => handleDateChange(date)}
                                             className="form-control bg-light border-0"
                                             showTimeSelect
                                             dateFormat="MMMM d, yyyy h:mm aa"
-                                            filterDate={filterWeekends} withPortal
+                                            filterDate={filterWeekends}
                                             // holidays={[
                                             //     ...holidays?.map(holiday => {
                                             //         return {
@@ -182,6 +182,7 @@ const AppointmentHeader = (props) => {
                                             minTime={new Date().setHours(9, 0, 0)}
                                             maxTime={new Date().setHours(21, 0, 0)}
                                             placeholderText="Select date and time"
+                                            required
                                         >
                                             <div className='text-primary'>Off on Weekends!</div>
                                         </DatePicker>
@@ -190,13 +191,13 @@ const AppointmentHeader = (props) => {
 
 
 
-                                    <div class="col-12">
-                                        <div class="form-floating">
-                                            <textarea class="form-control bg-light border-0" placeholder="Leave a message here" value={formData.message} onChange={handleInputChange} id="message" style={{ height: "100px" }}></textarea>
+                                    <div className="col-12">
+                                        <div className="form-floating">
+                                            <textarea className="form-control bg-light border-0" placeholder="Leave a message here" value={formData.message} onChange={handleInputChange} id="message" style={{ height: "100px" }} required></textarea>
                                             <label for="message">Message</label>
                                         </div>
                                     </div>
-                                    <div class="col-12">
+                                    <div className="col-12">
                                         {/* <GoogleReCaptchaProvider
                                   reCaptchaKey="6Ld2MR8pAAAAAJGOIESEJSIYy2zCB-8QtK1f6-pH"
                                   scriptProps={{
@@ -206,7 +207,7 @@ const AppointmentHeader = (props) => {
                                       nonce: undefined // optional, default undefined
                                   }}
                               ></GoogleReCaptchaProvider> */}
-                                        <button class="btn btn-primary w-100 py-3" onClick={handleSubmit} type="submit">Get Appointment</button>
+                                        <button className="btn btn-primary w-100 py-3" type="submit">Get Appointment</button>
                                     </div>
                                 </div>
                             </form>

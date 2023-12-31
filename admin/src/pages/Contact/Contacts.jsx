@@ -26,9 +26,9 @@ const Contacts = () => {
         <div className="card-header py-3">
           <h6 className="m-0 font-weight-bold text-primary">Contacts Messages</h6>
         </div>
-        <div className="card-body">
+        <div className="card-body p-0">
           <div className="table-responsive">
-            <table className="table table-bordered" id="dataTable" width="100%" cellSpacing="0">
+            <table className="table table-striped" id="dataTable" width="100%" cellSpacing="0">
               <thead>
                 <tr>
                   <th>#</th>

@@ -14,5 +14,10 @@ module.exports = {
             .replace(/\s+/g, '-')
             .replace(/-+/g, '-')
             .trim();;
+    },
+    filterObject: (originalObject, desiredProperties) => {
+        return Object.fromEntries(
+            Object.entries(originalObject).filter(([key]) => desiredProperties.includes(key))
+        );
     }
 }

@@ -11,6 +11,7 @@ import Contacts from './pages/Contact/Contacts';
 import Holidays from './pages/Holidays/Holidays';
 import Holiday from './pages/Holidays/Holiday'
 import Appointment from './pages/Appointments/Appointment';
+import Invoice from './pages/Invoice/Invoice';
 // import ScrollToTop from './components/ScrollToTop/ScrollToTop';
 
 const AppRoutes = () => {
@@ -21,7 +22,7 @@ const AppRoutes = () => {
             {/* <ScrollToTop /> */}
             <Routes>
                 {
-                    true || isLoggedIn ?
+                    isLoggedIn ?
                         <>
                             <Route path="/" element={<BaseLayout><Home /></BaseLayout>} />
                             <Route path="/appointment" element={<BaseLayout><Appointments /></BaseLayout>} />
@@ -31,7 +32,7 @@ const AppRoutes = () => {
                             <Route path="/contacts" element={<BaseLayout><Contacts /></BaseLayout>} />
                             <Route path="/holiday" element={<BaseLayout><Holidays /></BaseLayout>} />
                             <Route path="/holiday/:id" element={<BaseLayout><Holiday /></BaseLayout>} />
-                            
+                            <Route path="/invoice/:id" element={<Invoice />} />
                         </> :
                         <>
                             <Route path="/" element={<Login />} />

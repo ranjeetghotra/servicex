@@ -1,7 +1,10 @@
+const { DateTime } = require('luxon');
 const { AppointmentModel, ServiceModel } = require('../models');
-const  { sendMail } = require('./../services/email')
-const {STATUS} = require('./../core/types')
-const {DateTime}  = require('luxon');
+const { sendMail } = require('./../services/email')
+const generateInvoiceNumber = require('../services/generateInvoiceNumber');
+const { STATUS } = require('./../core/types')
+const { filterObject } = require('../utils')
+
 module.exports = {
     list: async (req, res) => {
         const page = parseInt(req.query.page) || 1;
@@ -36,12 +39,27 @@ module.exports = {
             res.status(500).json({ message: 'Internal Server Error' });
         }
     },
+    get: async (req, res) => {
+        const { id } = req.params;
+
+        try {
+            const appointment = await AppointmentModel.findByPk(id);
+
+            if (!appointment) {
+                return res.status(404).json({ message: 'Appointment not found' });
+            }
+
+            return res.json({ appointment });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Internal Server Error' });
+        }
+    },
     book: async (req, res) => {
-        const { appointmentDate , customerName, customerEmail, customerPhone,serviceId } = req.body;
-        console.log("date ",appointmentDate);
-        const timestamp = DateTime.fromISO(appointmentDate,{ zone: "Pacific/Auckland"}).toUTC();
+        const { appointmentDate, customerName, customerEmail, customerPhone, serviceId } = req.body;
+        const timestamp = DateTime.fromISO(appointmentDate, { zone: "Pacific/Auckland" }).toUTC();
         // const timestamp = DateTime.fromISO(appointmentDate,{ zone: "Asia/Kolkata"}).toUTC();
-       
+
         try {
             // Validate date format
             // if ( !isValidDate(appointmentDate)) {
@@ -50,10 +68,11 @@ module.exports = {
             // }
 
             const newAppointment = await AppointmentModel.create({
-                appointmentDate:timestamp,
+                appointmentDate: timestamp,
                 customerName,
                 customerEmail,
                 customerPhone,
+                invoiceNumber: await generateInvoiceNumber(),
                 status: STATUS.REQUESTED, // Default status,
                 serviceId
             });
@@ -65,11 +84,19 @@ module.exports = {
             res.status(500).json({ message: 'Internal Server Error' });
         }
     },
+    update: async (req, res) => {
+        const { id: appointmentId } = req.params;
+        const data = filterObject(req.body, ['customerAddress', 'customerEmail', 'customerName', 'customerPhone', 'orderItems']);
+        try {
+            await AppointmentModel.update(data, { where: { appointmentId } });
+            res.json({ message: 'Appointment updated' });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Internal Server Error' });
+        }
+    },
     updateStatus: async (req, res) => {
         const { appointmentId, status } = req.body;
-        console.log({
-            appointmentId,status
-        })
 
         try {
             const updatedAppointment = await AppointmentModel.update(
@@ -77,51 +104,32 @@ module.exports = {
                 { where: { appointmentId }, returning: true }
             );
             const appointment = await AppointmentModel.findByPk(appointmentId)
-            console.log("appointment",appointment.dataValues)
-            const {customerEmail,customerName} = appointment.dataValues
-               
-            if (updatedAppointment[0] === 0) {
-                return res.status(404).json({ message: 'Appointment not found' });
-            }
+            const { customerEmail, customerName } = appointment.dataValues
 
-            res.json({ message: 'Appointment status updated successfully', appointment: updatedAppointment[1][0] });
-            switch(status){
-                case "confirmed":{
-                    console.log("confirmed")
-                    const result =   await sendMail(customerEmail,"testing",`<h1>Hii! ${customerName}, Your appointment has been confirmed successfully !</h1>`)
-                    break;
-                }
-                case "completed":{
-
-                    break;
-                }
-                case "canceled":{
-
-                    break;
-                }
-            }
+            res.json({ message: 'Appointment status updated successfully' });
+            await sendMail(customerEmail, `Appointment ${status}`, `Hii! ${customerName}, Your appointment has been ${status}!`)
         } catch (error) {
             console.error(error);
             res.status(500).json({ message: 'Internal Server Error' });
         }
     },
-    countRequested: async (req, res) => {
-   
-        try {
-            const count  = await AppointmentModel.count({
-                where:{
-                    status:STATUS.REQUESTED
-                }
-            })
+    // countRequested: async (req, res) => {
 
-            res.json({
-                count
-            });
-        } catch (error) {
-            console.error(error);
-            res.status(500).json({ message: 'Internal Server Error' });
-        }
-    },
+    //     try {
+    //         const count = await AppointmentModel.count({
+    //             where: {
+    //                 status: STATUS.REQUESTED
+    //             }
+    //         })
+
+    //         res.json({
+    //             count
+    //         });
+    //     } catch (error) {
+    //         console.error(error);
+    //         res.status(500).json({ message: 'Internal Server Error' });
+    //     }
+    // },
 };
 
 const isValidDate = (dateString) => {

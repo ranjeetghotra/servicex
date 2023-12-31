@@ -39,7 +39,6 @@ app.use((req, res, next) => {
     // Respond to preflight requests
     res.sendStatus(200);
   } else {
-    // Continue with the actual request
     next();
   }
 });

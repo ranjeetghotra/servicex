@@ -2,10 +2,11 @@ import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
-import {  setToggled } from '../../store/slices/headerSidebarSlice';
+import { setToggled } from '../../store/slices/headerSidebarSlice';
+
 const Sidebar = () => {
     let { pathname } = useLocation();
-    const isToggled = useSelector((state)=>{
+    const isToggled = useSelector((state) => {
         return state.headerSidebar.isToggled
     })
     const dispatch = useDispatch()
@@ -24,46 +25,52 @@ const Sidebar = () => {
         return () => {
             window.removeEventListener('resize', handleResize);
         };
-    }, []);
-    return (
-        <ul class={`navbar-nav bg-gradient-primary sidebar sidebar-dark accordion  ${isToggled?"":"d-none"} ` } id="accordionSidebar">
+    }, [dispatch]);
 
-            <Link class="sidebar-brand d-flex align-items-center justify-content-center" to="/">
-                <div class="sidebar-brand-icon rotate-n-15">
-                    <i class="fab fa-xing"></i>
+    const closeMenu = () => {
+        if (window.innerWidth <= 768) {
+            dispatch(setToggled(false))
+        }
+    }
+    return (
+        <ul className={`navbar-nav bg-gradient-primary sidebar sidebar-dark accordion  ${isToggled ? "" : "d-none"} `} id="accordionSidebar">
+
+            <Link className="sidebar-brand d-flex align-items-center justify-content-center" to="/">
+                <div className="sidebar-brand-icon rotate-n-15">
+                    <i className="fab fa-xing"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3">Service X</div>
+                <div className="sidebar-brand-text mx-3">Service X</div>
             </Link>
 
-            <hr class="sidebar-divider my-0" />
+            <hr className="sidebar-divider my-0" />
 
             <li className={'nav-item ' + (pathname === '/' ? 'active' : '')}>
-                <Link class="nav-link" to="/">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                <Link className="nav-link" to="/" onClick={closeMenu}>
+                    <i className="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></Link>
             </li>
 
-            <hr class="sidebar-divider" />
+            <hr className="sidebar-divider" />
 
             <li className={'nav-item ' + (pathname === '/appointment' ? 'active' : '')}>
-                <Link class="nav-link" to="/appointment">
-                    <i class="fas fa-fw fa-calendar-alt"></i>
+                <Link className="nav-link" to="/appointment" onClick={closeMenu}>
+                    <i className="fas fa-fw fa-calendar-alt"></i>
                     <span>Appointments</span></Link>
             </li>
             <li className={'nav-item ' + (pathname === '/contact' ? 'active' : '')}>
-                <Link class="nav-link" to="/contacts">
-                    <i class="fas fa-fw fa-envelope"></i>
+                <Link className="nav-link" to="/contacts" onClick={closeMenu}>
+                    <i className="fas fa-fw fa-envelope"></i>
                     <span>Contacts</span></Link>
             </li>
 
             <li className={'nav-item ' + (pathname === '/service' ? 'active' : '')}>
-                <Link class="nav-link" to="/service">
-                    <i class="fas fa-fw fa-tools"></i>
+                <Link className="nav-link" to="/service" onClick={closeMenu}>
+                    <i className="fas fa-fw fa-tools"></i>
                     <span>Services</span></Link>
             </li>
             <li className={'nav-item ' + (pathname === '/holiday' ? 'active' : '')}>
-                <Link class="nav-link" to="/holiday">
-                    <i class="fas fa-fw  fa-toggle-off"></i>
+                <Link className="nav-link" to="/holiday" onClick={closeMenu}>
+                    <i className="fas fa-fw  fa-toggle-off"></i>
                     <span>Holidays</span></Link>
             </li>
 

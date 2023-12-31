@@ -1,6 +1,7 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../config/database');
-const {STATUS} = require('./../core/types')
+const { STATUS } = require('./../core/types')
+
 const Appointment = sequelize.define('Appointment', {
   appointmentId: {
     type: DataTypes.INTEGER,
@@ -15,6 +16,10 @@ const Appointment = sequelize.define('Appointment', {
     type: DataTypes.STRING,
     allowNull: false,
   },
+  customerAddress: {
+    type: DataTypes.STRING,
+    allowNull: true,
+  },
   customerEmail: {
     type: DataTypes.STRING,
     allowNull: false,
@@ -22,6 +27,16 @@ const Appointment = sequelize.define('Appointment', {
   customerPhone: {
     type: DataTypes.STRING,
     allowNull: false,
+  },
+  invoiceNumber: {
+    type: DataTypes.STRING,
+    allowNull: false,
+    unique: true,
+  },
+  orderItems: {
+    type: DataTypes.JSON,
+    allowNull: false,
+    defaultValue: [],
   },
   serviceId: {
     type: DataTypes.INTEGER,

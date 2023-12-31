@@ -23,8 +23,8 @@ const Services = () => {
                     <div className="row g-5 align-items-end mb-5">
                         <div className="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
                             <div className="border-start border-5 border-primary ps-4">
-                                <h6 className="text-body text-uppercase mb-2">Our Services</h6>
-                                <h1 className="display-6 mb-0">Installation And Maintenance</h1>
+                                <h6 className="text-body text-uppercase mb-2">Domestic and Commercial</h6>
+                                <h1 className="display-6 mb-0">Discover Our Services</h1>
                             </div>
                         </div>
                         <div className="col-lg-6 text-lg-end wow fadeInUp" data-wow-delay="0.3s">

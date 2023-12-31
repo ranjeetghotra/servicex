@@ -65,11 +65,11 @@ const Service = () => {
 
     return (
         <>
-            <div class="card shadow mb-4">
-                <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">{id === 'add' ? 'Add' : 'Update'} Service</h6>
+            <div className="card shadow mb-4">
+                <div className="card-header py-3">
+                    <h6 className="m-0 font-weight-bold text-primary">{id === 'add' ? 'Add' : 'Update'} Service</h6>
                 </div>
-                <div class="card-body">
+                <div className="card-body">
                     <form onSubmit={handleSubmit}>
                         <div className="form-group">
                             <label htmlFor="name">Name:</label>

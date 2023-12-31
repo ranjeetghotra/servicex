@@ -10,7 +10,7 @@ export const fetchAppointments = createAsyncThunk('appointments/fetchAppointment
         return rejectWithValue(error.message || 'Login failed');
     }
 });
-export const updateStatus = createAsyncThunk('appointments/updateStatus', async (params , { rejectWithValue }) => {
+export const updateStatus = createAsyncThunk('appointments/updateStatus', async (params, { rejectWithValue }) => {
     try {
         console.log("update status called")
         const response = await appointmentService.updateStatus(params);
@@ -20,7 +20,7 @@ export const updateStatus = createAsyncThunk('appointments/updateStatus', async 
     }
 });
 
-export const countRequested = createAsyncThunk('appointments/countRequested', async (params , { rejectWithValue }) => {
+export const countRequested = createAsyncThunk('appointments/countRequested', async (params, { rejectWithValue }) => {
     try {
         const response = await appointmentService.countRequested();
         return response;
@@ -37,10 +37,10 @@ const appointmentSlice = createSlice({
     name: 'appointments',
     initialState: {
         appointments: [],
-        pagination:{},
+        pagination: {},
         loading: false,
         error: null,
-        countRequested:0
+        countRequested: 0
     },
     reducers: {
         // loginSuccess: (state, action) => {
@@ -78,35 +78,31 @@ const appointmentSlice = createSlice({
                 totalItems,
                 hasNextPage,
                 hasPrevPage,
-              };
+            };
 
         });
         builder.addCase(fetchAppointments.rejected, (state, action) => {
             state.loading = false;
             state.error = action.payload;
         });
-        builder.addCase(updateStatus.fulfilled,(state,action)=>{
+        builder.addCase(updateStatus.fulfilled, (state, action) => {
             const appointmentId = action.meta.arg.appointmentId
             const status = action.meta.arg.status
-            console.log({
-                appointmentId,
-                status
-            })
-            const ind  = state.appointments.findIndex((item)=>{
-             return    item.appointmentId == appointmentId
-            })
-            state.appointments[ind].status = status
-        }) 
-        builder.addCase(updateStatus.rejected,(state,action)=>{
-          
+            const ind = state.appointments.findIndex((item) => item.appointmentId === appointmentId)
+            if (state.appointments[ind]) {
+                state.appointments[ind].status = status
+            }
+        })
+        builder.addCase(updateStatus.rejected, (state, action) => {
+
         });
-        builder.addCase(countRequested.fulfilled,(state,action)=>{
-            state.countRequested   = action.payload.count
-          }) 
-        builder.addCase(countRequested.rejected,(state)=>{
-            state.countRequested   = 0;
-          }) 
-    
+        builder.addCase(countRequested.fulfilled, (state, action) => {
+            state.countRequested = action.payload.count
+        })
+        builder.addCase(countRequested.rejected, (state) => {
+            state.countRequested = 0;
+        })
+
     },
 })
 

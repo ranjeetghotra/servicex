@@ -3,6 +3,10 @@
 @import './assets/scss/bootstrap.scss';
 @import './assets/css/style.css';
 
+.notification-success {
+    background-color: #46344E !important;
+}
+
 .btn.btn-link:focus {
     box-shadow: none;
 }
@@ -12,6 +16,10 @@
     bottom: 0;
     left: 0;
     text-align: left;
+}
+
+.react-datepicker-wrapper {
+    width: 100%;
 }
 
 .react-datepicker__input-container>.form-control {
@@ -26,4 +34,8 @@
     border-radius: 50px;
     height: 4rem;
     width: 4rem;
+}
+
+.facts-overlay h1 {
+    -webkit-text-stroke: 2px #8D9297;
 }
