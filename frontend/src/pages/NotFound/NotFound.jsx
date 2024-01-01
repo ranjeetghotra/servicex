@@ -1,8 +1,13 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import PageHeader from '../../components/PageHeader/PageHeader';
 
 const Header = () => {
+
+    useEffect(() => {
+        document.title = `Not Found - ServiceX`
+    }, [])
+
     return (
         <>
             <PageHeader title="404 Error" />

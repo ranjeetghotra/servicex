@@ -1,10 +1,15 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PageHeader from '../../components/PageHeader/PageHeader';
 
 const About = () => {
+
+    useEffect(() => {
+        document.title = `About us - ServiceX`
+    }, [])
+
     return (
         <>
-            <PageHeader title="About us"/>
+            <PageHeader title="About us" />
             <div className="container-xxl py-5">
                 <div className="container">
                     <div className="row g-5">

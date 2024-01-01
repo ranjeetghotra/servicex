@@ -13,7 +13,6 @@ const ServiceOne = () => {
     };
     const [serviceDetail, setServiceDetail] = useState({})
     useEffect(() => {
-        console.log('hello')
         getServiceDetail()
     }, [])
 
@@ -21,7 +20,7 @@ const ServiceOne = () => {
         try {
             const response = await axios.get(`/admin/service/${serviceSlug}`);
             const data = await response.data;
-
+            document.title = `${data?.service?.serviceName} - ServiceX`
             setServiceDetail(data?.service);
         }
         catch (error) {

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 // import { Link } from 'react-router-dom';
 import { NotificationManager } from 'react-notifications';
 import PageHeader from '../../components/PageHeader/PageHeader';
@@ -8,12 +8,16 @@ import axios from './../../services/axios';
 const Contact = () => {
 
     const initialFormValues = {
-        customerEmail:"",
-        customerName:"",
-        subject:"",
-        message:""
+        customerEmail: "",
+        customerName: "",
+        subject: "",
+        message: ""
     }
     const [formData, setFormData] = useState(initialFormValues);
+
+    useEffect(() => {
+        document.title = `Contact us - ServiceX`
+    }, [])
 
     const handleSubmit = async (event) => {
 
@@ -92,7 +96,7 @@ const Contact = () => {
                                     </div>
                                     <div className="col-md-6">
                                         <div className="form-floating">
-                                            <input type="email" value={formData.customerEmail}  className="form-control border-0 bg-light" id="customerEmail" placeholder="Your Email" onChange={handleInputChange} required />
+                                            <input type="email" value={formData.customerEmail} className="form-control border-0 bg-light" id="customerEmail" placeholder="Your Email" onChange={handleInputChange} required />
                                             <label for="email">Your Email</label>
                                         </div>
                                     </div>
