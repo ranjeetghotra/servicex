@@ -60,7 +60,7 @@ const Header = () => {
 
             <nav className={stickyTopClass} style={{ top: isScrolled ? '0px' : '-100px' }}>
                 <Link to="/" className="navbar-brand">
-                    <img src="/logo.svg" alt="ServiceX" style={{ height: 50 }} />
+                    <img src="/logo.png" alt="ServiceX" style={{ height: 50 }} />
                     {/* <h1 className="m-0"><i className="fab fa-xing text-primary me-3"></i>SERVICE X</h1> */}
                 </Link>
                 <button type="button" onClick={handleClick} className="navbar-toggler" style={{ boxShadow: 'none'}} data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
