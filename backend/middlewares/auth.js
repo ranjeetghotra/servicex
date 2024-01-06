@@ -4,7 +4,7 @@ const authenticateToken = async (req, res, next) => {
   const authHeader = req.headers['authorization'];
 
   if (!authHeader) {
-    return res.status(403).json({ error: 'Authorization header not provided' });
+    return res.status(401).json({ error: 'Authorization header not provided' });
   }
 
   const [_, token] = authHeader.split(' ');
@@ -18,7 +18,7 @@ const authenticateToken = async (req, res, next) => {
     req.user = user;
     next();
   } catch (err) {
-    return res.status(403).json({ error: 'Invalid token.' });
+    return res.status(401).json({ error: 'Invalid token.' });
   }
 };
 
