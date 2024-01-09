@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 const PageHeader = ({ title, breadcrumb,backgroundUrl }) => {
     const style = {};
     if(backgroundUrl){
-        style.background=`linear-gradient(rgba(0, 0, 0, .65), rgba(0, 0, 0, .65)), url(${  backgroundUrl } ) center center no-repeat`
+        style.background=`linear-gradient(rgba(0, 0, 0, .65), rgba(0, 0, 0, .65)), url(${  backgroundUrl } ) center center/cover no-repeat`
     }
     return (
         <>

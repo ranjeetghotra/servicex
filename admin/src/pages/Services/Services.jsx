@@ -2,7 +2,8 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
-import { fetchServices,updateCarousel } from '../../store/slices/servicesSlice';
+import Switch from "react-switch";
+import { fetchServices, updateCarousel } from '../../store/slices/servicesSlice';
 import serviceService from '../../services/serviceService';
 
 const Services = () => {
@@ -25,17 +26,12 @@ const Services = () => {
             })
         }
     };
-    const updateOnCarousel = (event)=>{
-        const serviceId = event.target.dataset.serviceid;
-
-        // Access the checked property of the checkbox
-        const onCarousel = event.target.checked;
+    const onSliderChecked = (onCarousel, serviceId) => {
         dispatch(updateCarousel(
             {
-                onCarousel,serviceId
+                onCarousel, serviceId
             }
         ));
-        event.stopPropagation()
     }
 
     return (
@@ -57,10 +53,8 @@ const Services = () => {
                                 <tr>
                                     <th style={{ maxWidth: 70 }}>#</th>
                                     <th>Name</th>
+                                    <th className='text-center'>Slides</th>
                                     <th style={{ maxWidth: 50 }} className='text-center'>Actions</th>
-                                    <th 
-                                    className='text-center'
-                                    >Show on Banner</th>
 
                                 </tr>
                             </thead>
@@ -68,8 +62,8 @@ const Services = () => {
                                 <tr>
                                     <th>#</th>
                                     <th>Name</th>
+                                    <th className='text-center'>Slides</th>
                                     <th className='text-center'>Actions</th>
-                                    <th className='text-center' >Show on Banner</th>
                                 </tr>
                             </tfoot>
                             <tbody>
@@ -79,16 +73,15 @@ const Services = () => {
                                             <td>{s.serviceId}</td>
                                             <td>{s.serviceName}</td>
                                             <td className='text-center'>
+                                                <Switch onChange={(checked) => onSliderChecked(checked, s.serviceId)} checked={s.onCarousel} uncheckedIcon={false} checkedIcon={false} onColor="#46344E" />
+                                            </td>
+                                            <td className='text-center'>
                                                 <button onClick={() => handleEdit(s.serviceId)} className='btn btn-light btn-sm mr-2'>
                                                     <i className="fas fa-pencil-alt fa-sm text-info"></i>
                                                 </button>
                                                 <button onClick={() => handleDelete(s.serviceId)} className='btn btn-light btn-sm'>
                                                     <i className="fas fa-trash fa-sm text-danger"></i>
                                                 </button>
-                                            </td>
-                                            <td className='text-center'>
-                                                <input className="form-group" type="checkbox" checked={s.onCarousel}   data-serviceid={s.serviceId}  onChange={updateOnCarousel} />
-
                                             </td>
                                         </tr>
                                     )

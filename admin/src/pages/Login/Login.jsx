@@ -8,7 +8,8 @@ const Login = () => {
 
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    const handleLogin = () => {
+    const handleLogin = (e) => {
+        e.preventDefault()
         dispatch(login({ username, password }));
     };
 
@@ -27,15 +28,15 @@ const Login = () => {
                                             <div className="text-center">
                                                 <h1 className="h4 text-gray-900 mb-4">Welcome Back!</h1>
                                             </div>
-                                            <form className="user">
+                                            <form className="user" onSubmit={handleLogin}>
                                                 <div className="form-group">
                                                     <input type="email" className="form-control form-control-user"
                                                         id="exampleInputEmail" aria-describedby="emailHelp"
-                                                        placeholder="Enter Email Address..." value={username} onChange={(e) => setUsername(e.target.value)} />
+                                                        placeholder="Enter Email Address..." value={username} onChange={(e) => setUsername(e.target.value)} required />
                                                 </div>
                                                 <div className="form-group">
                                                     <input type="password" className="form-control form-control-user"
-                                                        id="exampleInputPassword" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
+                                                        id="exampleInputPassword" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required />
                                                 </div>
                                                 {/* <div className="form-group">
                                                 <div className="custom-control custom-checkbox small">
@@ -44,7 +45,7 @@ const Login = () => {
                                                         Me</label>
                                                 </div>
                                             </div> */}
-                                                <button type='button' className="btn btn-primary btn-user btn-block" onClick={handleLogin}>
+                                                <button type='submit' className="btn btn-primary btn-user btn-block">
                                                     Login
                                                 </button>
                                                 {/* <hr />
