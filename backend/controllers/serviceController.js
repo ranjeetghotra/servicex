@@ -105,6 +105,26 @@ module.exports = {
             res.status(500).json({ message: 'Internal Server Error' });
         }
     },
+    updateCarousel: async (req, res) => {
+        const { id } = req.params;
+        const { onCarousel } = req.body;
+        try {
+            const existingService = await ServiceModel.findByPk(id);
+
+            if (!existingService) {
+                return res.status(404).json({ error: 'Service not found' });
+            }
+
+            existingService.onCarousel = onCarousel;
+
+            await existingService.save();
+
+            res.json({ message: 'Added on Carousel successfully', service: existingService });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Internal Server Error' });
+        }
+    },
     remove: async (req, res) => {
         const { id } = req.params;
 

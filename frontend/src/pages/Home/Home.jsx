@@ -5,15 +5,23 @@ import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate, Link } from 'react-router-dom'
 import './Home.css'
 const Home = () => {
-    const [isActive, setActive] = useState(false);
+    const [carouselNumber, setCarouselNumber] = useState(0);
 
-    const handleClick = () => {
-        setActive(!isActive);
+    const next = () => {
+          if (carouselNumber < services?.length -1)    setCarouselNumber(carouselNumber+1);
+          else 
+          setCarouselNumber(0);
+          
     };
+    const previous = ()=>{
+       if (carouselNumber>=1)  setCarouselNumber(carouselNumber-1);
+       else setCarouselNumber(services.length-1)
+    }
 
     const services = useSelector((state) => {
         return state.services.services;
     })
+    console.log('services',services)
     const dispatch = useDispatch();
     const navigate = useNavigate()
 
@@ -31,51 +39,39 @@ const Home = () => {
             <div className="container-fluid p-0 mb-5 wow fadeIn" data-wow-delay="0.1s">
                 <div id="header-carousel" className="carousel slide" data-bs-ride="carousel">
                     <div className="carousel-inner">
-                        <div className={isActive ? "carousel-item active" : "carousel-item"} >
-                            <img className="w-100" src="/images/carousel-2.jpg" alt="Image" />
-                            <div className="carousel-caption">
-                                <div className="container">
-                                    <div className="row justify-content-center">
-                                        <div className="col-12 col-lg-10">
-                                            <h5 className="text-light text-uppercase mb-3 animated slideInDown">Welcome to ServiceX</h5>
-                                            <h1 className="display-2 text-light mb-3 animated slideInDown">Installation of Air Conditioners & Heat</h1>
-                                            <ol className="breadcrumb mb-4 pb-2">
-                                                <li className="breadcrumb-item fs-5 text-light">Commercial</li>
-                                                <li className="breadcrumb-item fs-5 text-light">Residential</li>
-                                                <li className="breadcrumb-item fs-5 text-light">Industrial</li>
-                                            </ol>
-                                            <Link to="/appointment" className="btn btn-primary py-3 px-5">Book Appointment</Link>
+                        {!!services?.length && services.filter((service)=>{
+                            console.log(service.onCarousel)
+                            return service.onCarousel
+                        }).map((service,index)=>{
+                            return (
+                                <div key={service.serviceId} className={carouselNumber == index ? "carousel-item active " : "carousel-item "}>
+                                <img className="w-100" src={process.env.REACT_APP_API_BASE_URL + '/static/' + service.serviceImage} alt="Image" />
+                                <div className="carousel-caption">
+                                    <div className="container">
+                                        <div className="row justify-content-center">
+                                            <div className="col-12 col-lg-10">
+                                                <h5 className="text-light text-uppercase mb-3 animated slideInDown">Welcome to ServiceX</h5>
+                                                <h1 className="display-2 text-light mb-3 animated slideInDown">{service.serviceName}</h1>
+                                                <ol className="breadcrumb mb-4 pb-2">
+                                                    <li className="breadcrumb-item fs-5 text-light">Commercial</li>
+                                                    <li className="breadcrumb-item fs-5 text-light">Residential</li>
+                                                    <li className="breadcrumb-item fs-5 text-light">Industrial</li>
+                                                </ol>
+                                                <Link to="/appointment" className="btn btn-primary py-3 px-5">Book Appointment</Link>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div className={isActive ? "carousel-item " : "carousel-item active"}>
-                            <img className="w-100" src="/images/carousel-1.jpg" alt="Image" />
-                            <div className="carousel-caption">
-                                <div className="container">
-                                    <div className="row justify-content-center">
-                                        <div className="col-12 col-lg-10">
-                                            <h5 className="text-light text-uppercase mb-3 animated slideInDown">Welcome to ServiceX</h5>
-                                            <h1 className="display-2 text-light mb-3 animated slideInDown">Cleaning & Repairing Services</h1>
-                                            <ol className="breadcrumb mb-4 pb-2">
-                                                <li className="breadcrumb-item fs-5 text-light">Commercial</li>
-                                                <li className="breadcrumb-item fs-5 text-light">Residential</li>
-                                                <li className="breadcrumb-item fs-5 text-light">Industrial</li>
-                                            </ol>
-                                            <Link to="/appointment" className="btn btn-primary py-3 px-5">Book Appointment</Link>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                            )
+                        })}
                     </div>
-                    <button onClick={handleClick} className="carousel-control-prev" type="button" data-bs-target="#header-carousel"
+                    <button onClick={previous} className="carousel-control-prev" type="button" data-bs-target="#header-carousel"
                         data-bs-slide="prev">
                         <span className="carousel-control-prev-icon" aria-hidden="true"></span>
                         <span className="visually-hidden">Previous</span>
                     </button>
-                    <button onClick={handleClick} className="carousel-control-next" type="button" data-bs-target="#header-carousel"
+                    <button onClick={next} className="carousel-control-next" type="button" data-bs-target="#header-carousel"
                         data-bs-slide="next">
                         <span className="carousel-control-next-icon" aria-hidden="true"></span>
                         <span className="visually-hidden">Next</span>

@@ -13,6 +13,6 @@ router.get('/service', serviceController.list);
 router.get('/service/:slug', serviceController.get);
 router.get('/service/id/:id', serviceController.getById);
 router.put('/service/:id', authenticateToken, serviceController.update);
+router.put('/service/onCarousel/:id', authenticateToken, serviceController.updateCarousel);
 router.delete('/service/:id', authenticateToken, serviceController.remove);
-
 module.exports = router;

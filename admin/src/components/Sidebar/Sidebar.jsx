@@ -10,10 +10,14 @@ const Sidebar = () => {
         return state.headerSidebar.isToggled
     })
     const dispatch = useDispatch()
+    const dispatchSetToggled = (value )=>{
+        dispatch(setToggled(value));
+
+    }
     useEffect(() => {
         const handleResize = () => {
             if (window.innerWidth > 768) {
-                dispatch(setToggled(true));
+                dispatchSetToggled(true);
             }
         };
         // Initial call
@@ -29,11 +33,14 @@ const Sidebar = () => {
 
     const closeMenu = () => {
         if (window.innerWidth <= 768) {
-            dispatch(setToggled(false))
+            dispatchSetToggled(false)
+
         }
     }
+
+
     return (
-        <ul className={`navbar-nav bg-gradient-primary sidebar sidebar-dark accordion  ${isToggled ? "" : "d-none"} `} id="accordionSidebar">
+        <ul  className={`navbar-nav bg-gradient-primary sidebar sidebar-dark accordion  ${isToggled ? "" : "d-none"} `} id="accordionSidebar">
 
             <Link className="sidebar-brand d-flex align-items-center justify-content-center" to="/">
                 <div className="sidebar-brand-icon rotate-n-15">

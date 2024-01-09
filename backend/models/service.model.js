@@ -23,6 +23,11 @@ const Service = sequelize.define('Service', {
     allowNull: false,
     unique: true,
   },
+  onCarousel:{
+    type:DataTypes.BOOLEAN,
+    defaultValue:false,
+    allowNull:true
+  }
 });
 
 module.exports = Service;

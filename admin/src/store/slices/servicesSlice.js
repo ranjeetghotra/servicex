@@ -18,7 +18,14 @@ export const countTotal = createAsyncThunk('services/fetchTotal', async (params 
         return rejectWithValue(error.message || 'something went wrong ');
     }
 });
-
+export const updateCarousel = createAsyncThunk('services/updateCarousel', async (params = {}, { rejectWithValue }) => {
+    try {
+        const response = await serviceService.setCarousel(params.serviceId,{onCarousel:params.onCarousel});
+        return response;
+    } catch (error) {
+        return rejectWithValue(error.message || 'Login failed');
+    }
+});
 
 const serviceSlice = createSlice({
     name: 'services',
@@ -49,6 +56,16 @@ const serviceSlice = createSlice({
             state.loading = false;
             state.total = 0;
         });
+        builder.addCase(updateCarousel.fulfilled, (state,action) => {
+            state.loading = false;
+            const serviceId = action.payload.service.serviceId
+            const onCarousel = action.payload.service.onCarousel
+            const ind = state.services.findIndex((item) => item.serviceId === serviceId)
+            if (state.services[ind]) {
+                state.services[ind].onCarousel = onCarousel
+            }
+        });
+        
     },
 })
 

@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
-import { fetchServices } from '../../store/slices/servicesSlice';
+import { fetchServices,updateCarousel } from '../../store/slices/servicesSlice';
 import serviceService from '../../services/serviceService';
 
 const Services = () => {
@@ -12,7 +12,7 @@ const Services = () => {
 
     useEffect(() => {
         dispatch(fetchServices({ page: 1 }));
-    }, [dispatch]);
+    }, []);
 
     const handleEdit = (id) => {
         navigate(`/service/${id}`);
@@ -25,6 +25,18 @@ const Services = () => {
             })
         }
     };
+    const updateOnCarousel = (event)=>{
+        const serviceId = event.target.dataset.serviceid;
+
+        // Access the checked property of the checkbox
+        const onCarousel = event.target.checked;
+        dispatch(updateCarousel(
+            {
+                onCarousel,serviceId
+            }
+        ));
+        event.stopPropagation()
+    }
 
     return (
         <>
@@ -46,6 +58,10 @@ const Services = () => {
                                     <th style={{ maxWidth: 70 }}>#</th>
                                     <th>Name</th>
                                     <th style={{ maxWidth: 50 }} className='text-center'>Actions</th>
+                                    <th 
+                                    className='text-center'
+                                    >Show on Banner</th>
+
                                 </tr>
                             </thead>
                             <tfoot>
@@ -53,6 +69,7 @@ const Services = () => {
                                     <th>#</th>
                                     <th>Name</th>
                                     <th className='text-center'>Actions</th>
+                                    <th className='text-center' >Show on Banner</th>
                                 </tr>
                             </tfoot>
                             <tbody>
@@ -68,6 +85,10 @@ const Services = () => {
                                                 <button onClick={() => handleDelete(s.serviceId)} className='btn btn-light btn-sm'>
                                                     <i className="fas fa-trash fa-sm text-danger"></i>
                                                 </button>
+                                            </td>
+                                            <td className='text-center'>
+                                                <input className="form-group" type="checkbox" checked={s.onCarousel}   data-serviceid={s.serviceId}  onChange={updateOnCarousel} />
+
                                             </td>
                                         </tr>
                                     )

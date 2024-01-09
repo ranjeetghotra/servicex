@@ -37,6 +37,16 @@ const serviceService = {
       throw new Error(error.response?.data?.message);
     }
   },
+  setCarousel: async (id, data) => {
+    try {
+
+      const response = await axios.put(`/admin/service/onCarousel/${id}`, data);
+      return response.data;
+    } catch (error) {
+      console.log(error.response?.data?.message)
+      throw new Error(error.response?.data?.message);
+    }
+  },
   delete: async (id) => {
     try {
       const response = await axios.delete(`/admin/service/${id}`);
