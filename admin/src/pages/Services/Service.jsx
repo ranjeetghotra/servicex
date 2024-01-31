@@ -104,7 +104,7 @@ const Service = () => {
                                 name="image"
                                 accept="image/*"
                                 onChange={handleInputChange}
-                                required
+                                required={!isUpdate}
                             />
                         </div>
                         <button type="submit" className="btn btn-primary">
