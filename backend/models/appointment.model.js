@@ -34,9 +34,15 @@ const Appointment = sequelize.define('Appointment', {
     unique: true,
   },
   orderItems: {
-    type: DataTypes.JSON,
+    type: DataTypes.TEXT,
     allowNull: false,
-    defaultValue: [],
+    defaultValue: '[]',
+    get: function() {
+        return JSON.parse(this.getDataValue('orderItems'));
+    }, 
+    set: function(val) {
+        return this.setDataValue('orderItems', JSON.stringify(val));
+    }
   },
   serviceId: {
     type: DataTypes.INTEGER,
