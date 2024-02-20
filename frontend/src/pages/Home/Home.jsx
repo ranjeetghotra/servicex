@@ -26,7 +26,7 @@ const Home = () => {
 
     useEffect(() => {
         dispatch(fetchServices());
-        document.title = `ServiceX - Commercial & Residential Services`
+        document.title = `ServiceX`
     }, [dispatch]);
 
     const handleServiceClick = (serviceSlug) => {

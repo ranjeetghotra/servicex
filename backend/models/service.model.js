@@ -23,11 +23,22 @@ const Service = sequelize.define('Service', {
     allowNull: false,
     unique: true,
   },
-  onCarousel:{
-    type:DataTypes.BOOLEAN,
-    defaultValue:false,
-    allowNull:true
-  }
+  onCarousel: {
+    type: DataTypes.BOOLEAN,
+    defaultValue: false,
+    allowNull: true
+  },
+  highlights: {
+    type: DataTypes.TEXT,
+    allowNull: false,
+    defaultValue: '[]',
+    get: function () {
+      return JSON.parse(this.getDataValue('highlights'));
+    },
+    set: function (val) {
+      return this.setDataValue('highlights', JSON.stringify(val));
+    }
+  },
 });
 
 module.exports = Service;

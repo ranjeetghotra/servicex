@@ -22,8 +22,8 @@ module.exports = {
 
         try {
             const service = await ServiceModel.findOne({
-                where:{
-                    serviceSlug:slug
+                where: {
+                    serviceSlug: slug
                 }
             });
 
@@ -42,8 +42,8 @@ module.exports = {
 
         try {
             const service = await ServiceModel.findOne({
-                where:{
-                    serviceId:id
+                where: {
+                    serviceId: id
                 }
             });
 
@@ -58,7 +58,7 @@ module.exports = {
         }
     },
     create: async (req, res) => {
-        const { name: serviceName, description: serviceDescription, image } = req.body;
+        const { name: serviceName, description: serviceDescription, highlights, image } = req.body;
 
         try {
             let serviceImage
@@ -71,6 +71,7 @@ module.exports = {
                 serviceDescription,
                 serviceSlug,
                 serviceImage,
+                highlights,
             });
 
             res.status(201).json({ message: 'Service created successfully', appointment: newAppointment });
@@ -81,7 +82,7 @@ module.exports = {
     },
     update: async (req, res) => {
         const { id } = req.params;
-        const { name: serviceName, description: serviceDescription, image } = req.body;
+        const { name: serviceName, description: serviceDescription, highlights, image } = req.body;
 
         try {
             const existingService = await ServiceModel.findByPk(id);
@@ -92,6 +93,7 @@ module.exports = {
 
             existingService.serviceName = serviceName;
             existingService.serviceDescription = serviceDescription;
+            existingService.highlights = highlights ?? [];
 
             if (image) {
                 await deleteFileIfExists(existingService.serviceImage);
@@ -102,7 +104,7 @@ module.exports = {
             res.json({ message: 'Service updated successfully', service: existingService });
         } catch (error) {
             console.error(error);
-            res.status(500).json({ message: 'Internal Server Error' });
+            res.status(500).json({ message: error?.message ?? 'Internal Server Error' });
         }
     },
     updateCarousel: async (req, res) => {
@@ -146,7 +148,7 @@ module.exports = {
             console.error(error);
             res.status(500).json({ message: 'Internal Server Error' });
         }
-    },  
+    },
     countTotal: async (req, res) => {
         try {
             const count = await ServiceModel.count({
