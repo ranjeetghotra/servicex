@@ -17,7 +17,7 @@ const Services = () => {
     return (
         <>
             <PageHeader title="Our Services" />
-            <div className="container-xxl py-5">
+            <div className="container-xxl py-5" data-aos="fade-up">
                 <div className="container">
                     <div className="row g-5 align-items-end mb-5">
                         <div className="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
@@ -30,12 +30,12 @@ const Services = () => {
                             <a className="btn btn-primary py-3 px-5" href="/appointment">BOOK NOW</a>
                         </div>
                     </div>
-                    <div className="row g-4 mt-5 justify-content-center">
+                    <div className="row g-4 mt-5 justify-content-center" >
 
                         {
                             !!services.length && services.map(service => {
                                 return (
-                                    <div key={service.serviceId} onClick={() => { handleServiceClick(service.serviceSlug) }} style={{ cursor: "pointer" }} className="col-lg-4 col-md-6 wow fadeInUp  " data-wow-delay="0.1s"  >
+                                    <div key={service.serviceId} onClick={() => { handleServiceClick(service.serviceSlug) }} style={{ cursor: "pointer" }} className="col-lg-4 col-md-6 wow fadeInUp  " data-wow-delay="0.1s"  data-aos="fade-up">
                                         <div className="service-item bg-light text-center overflow-hidden h-100    ">
                                             <img className=" equal-height-image" src={`${process.env.REACT_APP_API_BASE_URL}/static/${service.serviceImage}`} alt="" />
                                             <div className="service-text position-relative text-center h-100 p-4">

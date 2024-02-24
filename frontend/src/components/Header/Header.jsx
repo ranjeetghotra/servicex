@@ -32,7 +32,7 @@ const Header = () => {
     const stickyTopClass = `navbar navbar-expand-lg bg-white navbar-light sticky-top px-4 px-lg-5 py-lg-0 ${isScrolled ? 'shadow-sm' : ''}`;
     return (
         <>
-            <div className="container-fluid bg-light p-0">
+            <div className="container-fluid bg-light p-0" >
                 <div className="row gx-0 d-none d-lg-flex">
                     <div className="col-lg-7 px-5 text-start">
                         {/* <div className="h-100 d-inline-flex align-items-center border-start border-end px-3">
@@ -41,7 +41,7 @@ const Header = () => {
                         </div> */}
                         <div className="h-100 d-inline-flex align-items-center border-end px-3">
                             <small className="far fa-envelope-open me-2"></small>
-                            <small>info@servicex.co.nz</small>
+                            <small> <a href="mailto:info@servicex.co.nz" style={{color:'#8d9297'}}>info@servicex.co.nz</a></small>
                         </div>
                         <div className="h-100 d-inline-flex align-items-center border-end px-3">
                             <small className="far fa-clock me-2"></small>

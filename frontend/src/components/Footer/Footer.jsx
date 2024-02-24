@@ -11,7 +11,7 @@ const Footer = () => {
     }, [dispatch]);
 
     return (
-        <div className="container-fluid bg-primary footer mt-5 pt-5 wow fadeIn" data-wow-delay="0.1s">
+        <div className="container-fluid bg-primary footer mt-5 pt-5 wow fadeIn" data-wow-delay="0.1s" data-aos="fade-up">
             <div className="container py-5">
                 <div className="row g-5">
                     <div className="col-lg-3 col-md-6">
@@ -21,7 +21,7 @@ const Footer = () => {
                         <div className="d-flex pt-2">
                             <a className="btn btn-square btn-outline-light me-1" href=""><i className="fab fa-twitter"></i></a>
                             <a className="btn btn-square btn-outline-light me-1" href=""><i className="fab fa-facebook-f"></i></a>
-                            <a className="btn btn-square btn-outline-light me-1" href=""><i className="fab fa-youtube"></i></a>
+                            <a className="btn btn-square btn-outline-light me-1 p-0 d-flex align-items-center" href=""><i className="fab fa-youtube"></i></a>
                             <a className="btn btn-square btn-outline-light me-0" href=""><i className="fab fa-linkedin-in"></i></a>
                         </div>
                     </div>
@@ -29,14 +29,12 @@ const Footer = () => {
                         <h4 className="text-light mb-4">Address</h4>
                         <p><i className="fa fa-map-marker-alt me-3"></i>Hastings, New Zealand</p>
                         {/* <p><i className="fa fa-phone-alt me-3"></i>+012 345 67890</p> */}
-                        <p><i className="fa fa-envelope me-3"></i>info@servicex.co.nz</p>
+                        <p><i className="fa fa-envelope me-3"></i> <a href="mailto:info@servicex.co.nz" style={{color:'#8d9297'}}>info@servicex.co.nz</a></p>
                     </div>
                     <div className="col-lg-3 col-md-6">
                         <h4 className="text-light mb-4">Services</h4>
                         {
-                            services.map(s =>
-                                <Link className="btn btn-link" to={"/service/" + s.serviceSlug}>{s.serviceName}</Link>
-                            )
+                            services.map((s, index) =>(<Link className="btn btn-link" key={index} to={"/service/" + s.serviceSlug}>{s.serviceName}</Link>))
                         }
                     </div>
                     <div className="col-lg-3 col-md-6">

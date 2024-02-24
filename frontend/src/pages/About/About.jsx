@@ -10,7 +10,7 @@ const About = () => {
     return (
         <>
             <PageHeader title="About us" />
-            <div className="container-xxl py-5">
+            <div className="container-xxl py-5" data-aos="fade-up">
                 <div className="container">
                     <div className="row g-5">
                         <div className="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">

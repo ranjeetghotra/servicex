@@ -31,7 +31,7 @@ const ServiceOne = () => {
     return (
         <>
             <PageHeader title={serviceDetail?.serviceName} backgroundUrl={serviceImage} breadcrumb={[{ title: 'Services', to: '/services' }]} />
-            <div className="container-xxl py-5">
+            <div className="container-xxl py-5" data-aos="fade-up">
                 <div className="container">
                     <div className="row g-5">
 

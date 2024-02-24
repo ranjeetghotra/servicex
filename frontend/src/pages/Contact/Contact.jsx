@@ -39,7 +39,7 @@ const Contact = () => {
     return (
         <>
             <PageHeader title="Contact Us" />
-            <div className="container-xxl py-5">
+            <div className="container-xxl py-5" data-aos="fade-up">
                 <div className="container">
                     <div className="row g-5">
                         {/* <div className="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
@@ -72,15 +72,15 @@ const Contact = () => {
                                 </div>
                             </div>
                         </div> */}
-                        <div className="col-lg-6 wow fadeInUp" data-wow-delay="0.1s" style={{ minHeight: "450px" }}>
-                            <div className="position-relative h-100">
+                        <div className="col-lg-6 wow fadeInUp" data-wow-delay="0.1s" style={{ minHeight: "450px" }} data-aos="fade-up">
+                            <div className="position-relative h-100" >
                                 <iframe className="position-relative w-100 h-100" title='Map Location'
                                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d98318.54618256209!2d176.73198804507103!3d-39.63948321781622!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6d6851486a538aeb%3A0x500ef6143a29918!2sHastings%2C%20New%20Zealand!5e0!3m2!1sen!2sin!4v1701162988172!5m2!1sen!2sin"
                                     frameborder="0" style={{ minHeight: "450px", border: 0 }} allowfullscreen="" aria-hidden="false"
                                     tabindex="0"></iframe>
                             </div>
                         </div>
-                        <div className="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
+                        <div className="col-lg-6 wow fadeInUp" data-wow-delay="0.5s" data-aos="fade-up"> 
                             <div className="border-start border-5 border-primary ps-4 mb-5">
                                 <h6 className="text-body text-uppercase mb-2">Contact Us</h6>
                                 <h1 className="display-6 mb-0">Get in Touch with ServiceX</h1>

@@ -5,12 +5,19 @@ import App from './App';
 import { NotificationContainer } from 'react-notifications';
 import { Provider } from 'react-redux'
 import { store } from './store'
+import ReactGA from "react-ga4";
+import { BrowserRouter } from 'react-router-dom';
+
 // import reportWebVitals from './reportWebVitals';
+ReactGA.initialize(`${process.env.REACT_APP_MEASUREMENT_ID}`);
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
      <Provider store={store}>
-          <App />
+          <BrowserRouter>
+               <App />
+          </BrowserRouter>
           <NotificationContainer />
      </Provider>
 );

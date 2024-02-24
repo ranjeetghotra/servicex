@@ -12,7 +12,7 @@ import ServiceOne from './pages/Services/ServiceOne';
 
 const AppRoutes = () => {
     return (
-        <Router>
+        <>
             <ScrollToTop />
             <Routes>
                 <Route path="/" element={<BaseLayout><Home /></BaseLayout>} />
@@ -24,7 +24,7 @@ const AppRoutes = () => {
                 <Route path="/service/:serviceSlug" element={ <BaseLayout><ServiceOne/></BaseLayout>} />
                 <Route path="*" element={<Navigate to="/404" />} />
             </Routes>
-        </Router>
+        </>
     );
 };
 

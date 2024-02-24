@@ -1,4 +1,19 @@
 .equal-height-image {
-    height: 15rem; 
-    object-fit: cover; 
+    height: 15rem;
+    object-fit: cover;
+}
+
+.facts-overlay>a {
+    padding: 10px 0;
+    transition: 1s;
+}
+
+.facts-overlay>a:hover {
+
+    padding: 10px;
+    color: #000 !important;
+    width: 100% !important;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.785) !important;
+
 }

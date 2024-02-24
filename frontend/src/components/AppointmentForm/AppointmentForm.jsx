@@ -108,18 +108,18 @@ const AppointmentHeader = (props) => {
 
     return (
         <>
-            <div className="container-xxl py-5">
+            <div className="container-xxl py-5" >
 
                 <div className="container">
                     <div className="row g-5">
-                        <div className="col-lg-5 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                        <div className="col-lg-5 col-md-6 wow fadeInUp" data-wow-delay="0.1s" data-aos="fade-up">
                             <div className="border-start border-5 border-primary ps-4 mb-5">
                                 <h6 className="text-body text-uppercase mb-2">Appointment</h6>
                                 <h1 className="display-6 mb-0">Schedule Your Service with Ease!</h1>
                             </div>
                             <p className="mb-0">We're thrilled to assist you in booking our top-notch services. Please fill out the form below to schedule a convenient time for our team to take care of your cleaning, AC repair, or filter replacement needs.</p>
                         </div>
-                        <div className="col-lg-7 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                        <div className="col-lg-7 col-md-6 wow fadeInUp" data-wow-delay="0.5s" data-aos="fade-up">
                             <form onSubmit={handleSubmit}>
                                 <div className="row g-3">
                                     <div className="col-sm-6">
@@ -136,7 +136,7 @@ const AppointmentHeader = (props) => {
                                     </div>
                                     <div className="col-sm-6">
                                         <div className="form-floating">
-                                            <input type="tel" value={formData.customerPhone} keyboardType="numeric" maxLength={10} className="form-control bg-light border-0" id="customerPhone" onChange={handleInputChange} placeholder="Child Name" required />
+                                            <input type="tel" value={formData.customerPhone} keyboardtype="numeric" maxLength={10} className="form-control bg-light border-0" id="customerPhone" onChange={handleInputChange} placeholder="Child Name" required />
                                             <label for="mobile">Your Mobile</label>
                                         </div>
                                     </div>
@@ -214,7 +214,8 @@ const AppointmentHeader = (props) => {
                         </div>
                     </div>
                 </div>
-            </div></>
+            </div>
+        </>
     );
 };
 

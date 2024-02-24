@@ -4,6 +4,9 @@ import { fetchServices } from '../../store/slices/servicesSlice';
 import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate, Link } from 'react-router-dom'
 import './Home.css'
+
+
+
 const Home = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate()
@@ -36,11 +39,11 @@ const Home = () => {
     return (
         <>
             {!!slides?.length && <div className="container-fluid p-0 mb-5 wow fadeIn" data-wow-delay="0.1s">
-                <div id="header-carousel" className="carousel slide" data-bs-ride="carousel">
+                <div id="header-carousel" className="carousel slide" data-bs-ride="carousel" data-aos="fade-up">
                     <div className="carousel-inner">
                         {slides.map((service, index) => {
                             return (
-                                <div key={service.serviceId} className={carouselNumber == index ? "carousel-item active " : "carousel-item "}>
+                                <div key={service.serviceId} className={carouselNumber == index ? "carousel-item active " : "carousel-item "} >
                                     <img className="w-100" style={{ maxHeight: 700, objectFit: 'cover' }} src={process.env.REACT_APP_API_BASE_URL + '/static/' + service.serviceImage} alt={service.serviceName} />
                                     <div className="carousel-caption">
                                         <div className="container">
@@ -75,10 +78,10 @@ const Home = () => {
                 </div>
             </div>}
 
-            <div className="container-xxl py-5">
+            <div className="container-xxl py-5" >
                 <div className="container">
-                    <div className="row g-5">
-                        <div className="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div className="row g-5" >
+                        <div className="col-lg-6 wow fadeInUp" data-wow-delay="0.5s" data-aos="fade-up" >
                             <div className="position-relative overflow-hidden ps-5 pt-5 h-100" style={{ minHeight: "400px" }}>
                                 <img className="position-absolute w-100 h-100" src="img/about.jpg" alt="" style={{ objectFit: "cover" }} />
                                 <div className="position-absolute top-0 start-0 bg-white pe-3 pb-3" style={{ width: "200px", height: "200px" }}>
@@ -90,7 +93,7 @@ const Home = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
+                        <div className="col-lg-6 wow fadeInUp" data-wow-delay="0.5s" data-aos="fade-up">
                             <div className="h-100">
                                 <div className="border-start border-5 border-primary ps-4 mb-5">
                                     <h6 className="text-body text-uppercase mb-2">About Us</h6>
@@ -120,7 +123,7 @@ const Home = () => {
                 </div>
             </div>
 
-            <div className="container-fluid my-5 p-0">
+            <div className="container-fluid my-5 p-0" data-aos="fade-up">
                 <div className="row g-0">
                     <div className="col-xl-3 col-sm-6 wow fadeIn" data-wow-delay="0.1s">
                         <div className="position-relative">
@@ -129,7 +132,7 @@ const Home = () => {
                                 <h1 className="display-1">01</h1>
                                 <h4 className="text-white mb-3">Cleaning Services</h4>
                                 <p className="text-white">Spotless homes and offices, enhancing well-being with meticulous residential and commercial cleaning</p>
-                                <Link className="text-white small" to="/services">READ MORE<i className="fa fa-arrow-right ms-3"></i></Link>
+                                <Link className="text-white small  " to="/services">READ MORE<i className="fa fa-arrow-right ms-3"></i></Link>
                             </div>
                         </div>
                     </div>
@@ -140,7 +143,7 @@ const Home = () => {
                                 <h1 className="display-1">02</h1>
                                 <h4 className="text-white mb-3">HVAC Services</h4>
                                 <p className="text-white">Efficient AC repair, preventive maintenance, and filter replacements for optimal comfort and longevity</p>
-                                <Link className="text-white small" to="/services">READ MORE<i className="fa fa-arrow-right ms-3"></i></Link>
+                                <Link className="text-white small " to="/services">READ MORE<i className="fa fa-arrow-right ms-3"></i></Link>
                             </div>
                         </div>
                     </div>
@@ -151,7 +154,7 @@ const Home = () => {
                                 <h1 className="display-1">03</h1>
                                 <h4 className="text-white mb-3">Specialized Solutions</h4>
                                 <p className="text-white">Deep cleaning, air purifier filter changes, and custom filtration for a healthier environment</p>
-                                <Link className="text-white small" to="/services">READ MORE<i className="fa fa-arrow-right ms-3"></i></Link>
+                                <Link className="text-white small " to="/services">READ MORE<i className="fa fa-arrow-right ms-3"></i></Link>
                             </div>
                         </div>
                     </div>
@@ -162,14 +165,14 @@ const Home = () => {
                                 <h1 className="display-1">04</h1>
                                 <h4 className="text-white mb-3">Additional Services</h4>
                                 <p className="text-white">Comprehensive solutions like window cleaning and office organization for well-maintained and organized spaces</p>
-                                <Link className="text-white small" to="/services">READ MORE<i className="fa fa-arrow-right ms-3"></i></Link>
+                                <Link className="text-white small " to="/services">READ MORE<i className="fa fa-arrow-right ms-3"></i></Link>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div className="container-xxl py-5">
+            <div className="container-xxl py-5" data-aos="fade-up">
                 <div className="container">
                     <div className="row g-5">
                         <div className="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
@@ -225,8 +228,8 @@ const Home = () => {
                 </div>
             </div>
 
-            <div className="container-xxl py-5">
-                <div className="container">
+            <div className="container-xxl py-5" data-aos="fade-up">
+                <div className="container" >
                     <div className="row g-5 align-items-end mb-5">
                         <div className="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
                             <div className="border-start border-5 border-primary ps-4">
@@ -262,7 +265,7 @@ const Home = () => {
                 </div>
             </div>
 
-            <AppointmentForm title='Appointment' />
+            <AppointmentForm title='Appointment'  />
 
             {/* <div className="container-xxl py-5">
                 <div className="container">
