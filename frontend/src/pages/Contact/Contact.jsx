@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-// import { Link } from 'react-router-dom';
 import { NotificationManager } from 'react-notifications';
 import PageHeader from '../../components/PageHeader/PageHeader';
 import axios from './../../services/axios';
@@ -76,8 +75,8 @@ const Contact = () => {
                             <div className="position-relative h-100">
                                 <iframe className="position-relative w-100 h-100" title='Map Location'
                                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d98318.54618256209!2d176.73198804507103!3d-39.63948321781622!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6d6851486a538aeb%3A0x500ef6143a29918!2sHastings%2C%20New%20Zealand!5e0!3m2!1sen!2sin!4v1701162988172!5m2!1sen!2sin"
-                                    frameborder="0" style={{ minHeight: "450px", border: 0 }} allowfullscreen="" aria-hidden="false"
-                                    tabindex="0"></iframe>
+                                    style={{ minHeight: "450px", border: 0 }} allowFullScreen="" aria-hidden="false"
+                                    tabndex="0"></iframe>
                             </div>
                         </div>
                         <div className="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
@@ -91,25 +90,25 @@ const Contact = () => {
                                     <div className="col-md-6">
                                         <div className="form-floating">
                                             <input type="text" value={formData.customerName} className="form-control border-0 bg-light" id="customerName" placeholder="Your Name" onChange={handleInputChange} required />
-                                            <label for="name">Your Name</label>
+                                            <label htmlFor="name">Your Name</label>
                                         </div>
                                     </div>
                                     <div className="col-md-6">
                                         <div className="form-floating">
                                             <input type="email" value={formData.customerEmail} className="form-control border-0 bg-light" id="customerEmail" placeholder="Your Email" onChange={handleInputChange} required />
-                                            <label for="email">Your Email</label>
+                                            <label htmlFor="email">Your Email</label>
                                         </div>
                                     </div>
                                     <div className="col-12">
                                         <div className="form-floating">
                                             <input type="text" value={formData.subject} className="form-control border-0 bg-light" id="subject" placeholder="Subject" onChange={handleInputChange} required />
-                                            <label for="subject">Subject</label>
+                                            <label htmlFor="subject">Subject</label>
                                         </div>
                                     </div>
                                     <div className="col-12">
                                         <div className="form-floating">
                                             <textarea className="form-control border-0 bg-light" placeholder="Leave a message here" value={formData.message} id="message" onChange={handleInputChange} style={{ height: "150px" }} required></textarea>
-                                            <label for="message">Message</label>
+                                            <label htmlFor="message">Message</label>
                                         </div>
                                     </div>
                                     <div className="col-12">

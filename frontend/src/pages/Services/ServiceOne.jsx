@@ -46,36 +46,19 @@ const ServiceOne = () => {
                                     serviceDetail.serviceDescription
                                 }
                             </p>
-                            {/* <div className="row gy-5 gx-4">
-                                <div className="col-sm-6 wow fadeIn" data-wow-delay="0.1s">
-                                    <div className="d-flex align-items-center mb-3">
-                                        <i className="fa fa-check fa-2x text-primary flex-shrink-0 me-3"></i>
-                                        <h6 className="mb-0">Large number of services provided</h6>
-                                    </div>
-                                    <span>Magna sea eos sit dolor, ipsum amet ipsum lorem diam</span>
-                                </div>
-                                <div className="col-sm-6 wow fadeIn" data-wow-delay="0.2s">
-                                    <div className="d-flex align-items-center mb-3">
-                                        <i className="fa fa-check fa-2x text-primary flex-shrink-0 me-3"></i>
-                                        <h6 className="mb-0">5+ years of professional experience</h6>
-                                    </div>
-                                    <span>Magna sea eos sit dolor, ipsum amet ipsum lorem diam</span>
-                                </div>
-                                <div className="col-sm-6 wow fadeIn" data-wow-delay="0.3s">
-                                    <div className="d-flex align-items-center mb-3">
-                                        <i className="fa fa-check fa-2x text-primary flex-shrink-0 me-3"></i>
-                                        <h6 className="mb-0">A large number of grateful customers</h6>
-                                    </div>
-                                    <span>Magna sea eos sit dolor, ipsum amet ipsum lorem diam</span>
-                                </div>
-                                <div className="col-sm-6 wow fadeIn" data-wow-delay="0.4s">
-                                    <div className="d-flex align-items-center mb-3">
-                                        <i className="fa fa-check fa-2x text-primary flex-shrink-0 me-3"></i>
-                                        <h6 className="mb-0">Always reliable and affordable prices</h6>
-                                    </div>
-                                    <span>Magna sea eos sit dolor, ipsum amet ipsum lorem diam</span>
-                                </div>
-                            </div> */}
+                            <div className="row gy-5 gx-4">
+                                {
+                                    (serviceDetail.highlights ?? []).map(highlight =>
+                                        <div className="col-sm-6 wow fadeIn" data-wow-delay="0.1s">
+                                            <div className="d-flex align-items-center mb-3">
+                                                <i className="fa fa-check fa-2x text-primary flex-shrink-0 me-3"></i>
+                                                <h6 className="mb-0">{highlight.title}</h6>
+                                            </div>
+                                            <span>{highlight.description}</span>
+                                        </div>
+                                    )
+                                }
+                            </div>
                         </div>
                         <div className="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
                             <div className="position-relative overflow-hidden ps-5 pt-5 h-100" style={{ minHeight: '400px' }}>

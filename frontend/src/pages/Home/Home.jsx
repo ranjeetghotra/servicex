@@ -25,7 +25,7 @@ const Home = () => {
 
 
     useEffect(() => {
-        dispatch(fetchServices());
+        // dispatch(fetchServices());
         document.title = `ServiceX`
     }, [dispatch]);
 
