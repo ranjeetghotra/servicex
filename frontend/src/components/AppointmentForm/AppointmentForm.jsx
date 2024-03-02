@@ -67,7 +67,7 @@ const AppointmentHeader = (props) => {
     useEffect(() => {
 
         //in future it will fetch only list of serviceId
-        dispatch(fetchServices())
+        // dispatch(fetchServices())
         dispatch(fetchHolidays())
         // setFormData({ ...formData, serviceId: serviceId ? serviceId : "" });
 
@@ -125,25 +125,25 @@ const AppointmentHeader = (props) => {
                                     <div className="col-sm-6">
                                         <div className="form-floating">
                                             <input type="text" value={formData.customerName} className="form-control bg-light border-0" id="customerName" onChange={handleInputChange} placeholder="Gurdian Name" required />
-                                            <label for="name">Your Name</label>
+                                            <label htmlFor="name">Your Name</label>
                                         </div>
                                     </div>
                                     <div className="col-sm-6">
                                         <div className="form-floating">
                                             <input type="email" value={formData.customerEmail} className="form-control bg-light border-0" id="customerEmail" onChange={handleInputChange} placeholder="Gurdian Email" required />
-                                            <label for="gmail">Your Email</label>
+                                            <label htmlFor="gmail">Your Email</label>
                                         </div>
                                     </div>
                                     <div className="col-sm-6">
                                         <div className="form-floating">
                                             <input type="tel" value={formData.customerPhone} keyboardtype="numeric" maxLength={10} className="form-control bg-light border-0" id="customerPhone" onChange={handleInputChange} placeholder="Child Name" required />
-                                            <label for="mobile">Your Mobile</label>
+                                            <label htmlFor="mobile">Your Mobile</label>
                                         </div>
                                     </div>
                                     <div className="col-sm-6">
                                         <div className="form-floating">
 
-                                            <label for="service"></label>
+                                            <label htmlFor="service"></label>
                                             <select id="serviceId" value={formData.serviceId} style={{ padding: '1rem 0.75rem' }} className="form-control bg-light border-0" name="cars" onChange={handleInputChange} placeholder="Child Name" required>
                                                 <option value="" hidden>Service Type</option>
                                                 {!!services.length && services.map(service => {
@@ -194,7 +194,7 @@ const AppointmentHeader = (props) => {
                                     <div className="col-12">
                                         <div className="form-floating">
                                             <textarea className="form-control bg-light border-0" placeholder="Leave a message here" value={formData.message} onChange={handleInputChange} id="message" style={{ height: "100px" }} required></textarea>
-                                            <label for="message">Message</label>
+                                            <label htmlFor="message">Message</label>
                                         </div>
                                     </div>
                                     <div className="col-12">
