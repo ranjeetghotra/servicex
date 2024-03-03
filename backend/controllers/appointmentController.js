@@ -56,16 +56,14 @@ module.exports = {
         }
     },
     book: async (req, res) => {
-        const { appointmentDate, customerName, customerEmail, customerPhone, serviceId } = req.body;
+        const { appointmentDate, customerName, customerEmail, customerPhone, serviceId, token } = req.body;
         const timestamp = DateTime.fromISO(appointmentDate, { zone: "Pacific/Auckland" }).toUTC();
-        // const timestamp = DateTime.fromISO(appointmentDate,{ zone: "Asia/Kolkata"}).toUTC();
 
         try {
-            // Validate date format
-            // if ( !isValidDate(appointmentDate)) {
-            //     console.log("error throwon ")
-            //     return res.status(400).json({ message: 'Invalid date format. Use YYYY-MM-DDTHH:mm:ss.' });
-            // }
+            const isValid = await verifyCaptchaToken(token)
+            if (!isValid) {
+                throw Error('Invalid reCaptcha token')
+            }
 
             const newAppointment = await AppointmentModel.create({
                 appointmentDate: timestamp,

@@ -1,5 +1,6 @@
 const { ContactModel } = require('../models');
-const  { sendMail } = require('./../services/email')
+const { verifyCaptchaToken } = require('../services/recaptchaService');
+const { sendMail } = require('./../services/email')
 module.exports = {
     list: async (req, res) => {
         const page = parseInt(req.query.page) || 1;
@@ -33,13 +34,13 @@ module.exports = {
         }
     },
     add: async (req, res) => {
-        const { customerName, customerEmail, subject,message } = req.body;
-        
+        const { customerName, customerEmail, subject, message, token } = req.body;
+
         try {
-            // Validate date format
-            // if (false && !isValidDate(appointmentDate)) {
-            //     return res.status(400).json({ message: 'Invalid date format. Use YYYY-MM-DDTHH:mm:ss.' });
-            // }
+            const isValid = await verifyCaptchaToken(token)
+            if (!isValid) {
+                throw Error('Invalid reCaptcha token')
+            }
 
             const newAppointment = await ContactModel.create({
                 customerEmail,
@@ -49,14 +50,14 @@ module.exports = {
             });
             res.status(201).json({ message: 'Contact  Registered  successfully', appointment: newAppointment });
             //sending mail after sending response 
-            const result =   await sendMail(customerEmail,"testing",`<h1>Hii! ${customerName}, Your request for contact  has been register successfully !</h1>`)
+            const result = await sendMail(customerEmail, "testing", `<h1>Hii! ${customerName}, Your request for contact  has been register successfully !</h1>`)
         } catch (error) {
             console.error(error);
             res.status(500).json({ message: 'Internal Server Error' });
         }
     },
     count: async (req, res) => {
-        
+
         try {
             // Validate date format
             // if (false && !isValidDate(appointmentDate)) {
@@ -66,16 +67,16 @@ module.exports = {
             const count = await ContactModel.count({
 
             })
-            
-            res.status(201).json({ count});
-    
+
+            res.status(201).json({ count });
+
         } catch (error) {
             console.error(error);
             res.status(500).json({ message: 'Internal Server Error' });
         }
     },
-  
-   
+
+
 };
 
 const isValidDate = (dateString) => {

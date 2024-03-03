@@ -17,7 +17,7 @@ const PageHeader = ({ title, breadcrumb,backgroundUrl }) => {
                             {
                                 breadcrumb &&
                                 breadcrumb.map(bc =>
-                                    <li key={bc} className="breadcrumb-item"><Link className='text-white' to={bc.to}>{bc.title}</Link></li>
+                                    <li key={bc.to} className="breadcrumb-item"><Link className='text-white' to={bc.to}>{bc.title}</Link></li>
                                 )
                             }
                             <li className="breadcrumb-item text-body active">{title}</li>

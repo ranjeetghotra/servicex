@@ -19,11 +19,11 @@ const Footer = () => {
                         {/* <h1 className="text-white"><i className="fab fa-xing me-3"></i>SERVICE X</h1> */}
                         <p>Welcome to ServiceX - Your Trusted Partner for Home and Commercial Services</p>
                         <div className="d-flex pt-2">
-                            <a className="btn btn-square btn-outline-light me-1" href=""><i className="fab fa-twitter"></i></a>
-                            <a className="btn btn-square btn-outline-light me-1" href="https://www.facebook.com/ServiceXNZ" target='_blank'><i className="fab fa-facebook-f"></i></a>
-                            <a className="btn btn-square btn-outline-light me-1" href=""><i className="fab fa-youtube"></i></a>
-                            <a className="btn btn-square btn-outline-light me-1" href="https://www.instagram.com/servicex_/" target='_blank'><i className="fab fa-instagram"></i></a>
-                            <a className="btn btn-square btn-outline-light me-0" href=""><i className="fab fa-linkedin-in"></i></a>
+                            {/* <a className="btn btn-square btn-outline-light me-1" href=""><i className="fab fa-twitter"></i></a> */}
+                            <a className="btn btn-square btn-outline-light me-1" href="https://www.facebook.com/ServiceXNZ" target='_blank' rel="noreferrer"><i className="fab fa-facebook-f"></i></a>
+                            {/* <a className="btn btn-square btn-outline-light me-1" href=""><i className="fab fa-youtube"></i></a> */}
+                            <a className="btn btn-square btn-outline-light me-1" href="https://www.instagram.com/servicex_/" target='_blank' rel="noreferrer"><i className="fab fa-instagram"></i></a>
+                            {/* <a className="btn btn-square btn-outline-light me-0" href=""><i className="fab fa-linkedin-in"></i></a> */}
                         </div>
                     </div>
                     <div className="col-lg-3 col-md-6">
@@ -36,7 +36,7 @@ const Footer = () => {
                         <h4 className="text-light mb-4">Services</h4>
                         {
                             services.map(s =>
-                                <Link key={s.id} className="btn btn-link" to={"/service/" + s.serviceSlug}>{s.serviceName}</Link>
+                                <Link key={s.serviceId} className="btn btn-link" to={"/service/" + s.serviceSlug}>{s.serviceName}</Link>
                             )
                         }
                     </div>

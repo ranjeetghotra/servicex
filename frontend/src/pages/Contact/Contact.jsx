@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { NotificationManager } from 'react-notifications';
+import * as ReCaptcha from '../../services/recaptcha'
 import PageHeader from '../../components/PageHeader/PageHeader';
 import axios from './../../services/axios';
 
@@ -16,6 +17,7 @@ const Contact = () => {
 
     useEffect(() => {
         document.title = `Contact us - ServiceX`
+        ReCaptcha.loadScript()
     }, [])
 
     const handleSubmit = async (event) => {
@@ -23,7 +25,8 @@ const Contact = () => {
         event.preventDefault();
 
         try {
-            await axios.post('/contact', formData);
+            const token = await ReCaptcha.verifyCaptcha()
+            await axios.post('/contact', { ...formData, token });
             NotificationManager.success('Message Sent Successfully');
             setFormData(initialFormValues)
         } catch (error) {
@@ -79,7 +82,7 @@ const Contact = () => {
                                     tabndex="0"></iframe>
                             </div>
                         </div>
-                        <div className="col-lg-6 wow fadeInUp" data-wow-delay="0.5s" data-aos="fade-up"> 
+                        <div className="col-lg-6 wow fadeInUp" data-wow-delay="0.5s" data-aos="fade-up">
                             <div className="border-start border-5 border-primary ps-4 mb-5">
                                 <h6 className="text-body text-uppercase mb-2">Contact Us</h6>
                                 <h1 className="display-6 mb-0">Get in Touch with ServiceX</h1>

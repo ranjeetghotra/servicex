@@ -50,10 +50,10 @@ const Header = () => {
                     </div>
                     <div className="col-lg-5 px-5 text-end">
                         <div className="h-100 d-inline-flex align-items-center">
-                            <a className="btn btn-square border-end border-start" href=""><i className="fab fa-facebook-f"></i></a>
-                            <a className="btn btn-square border-end" href=""><i className="fab fa-twitter"></i></a>
-                            <a className="btn btn-square border-end" href=""><i className="fab fa-linkedin-in"></i></a>
-                            <a className="btn btn-square border-end" href=""><i className="fab fa-instagram"></i></a>
+                            <a className="btn btn-square border-end border-start" href="https://www.facebook.com/ServiceXNZ" target='_blank' rel="noreferrer"><i className="fab fa-facebook-f"></i></a>
+                            {/* <a className="btn btn-square border-end" href=""><i className="fab fa-twitter"></i></a> */}
+                            {/* <a className="btn btn-square border-end" href=""><i className="fab fa-linkedin-in"></i></a> */}
+                            <a className="btn btn-square border-end" href="https://www.instagram.com/servicex_/" target='_blank' rel="noreferrer"><i className="fab fa-instagram"></i></a>
                         </div>
                     </div>
                 </div>

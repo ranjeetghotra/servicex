@@ -49,7 +49,7 @@ const ServiceOne = () => {
                             <div className="row gy-5 gx-4">
                                 {
                                     (serviceDetail.highlights ?? []).map(highlight =>
-                                        <div className="col-sm-6 wow fadeIn" data-wow-delay="0.1s">
+                                        <div key={highlight.title} className="col-sm-6 wow fadeIn" data-wow-delay="0.1s">
                                             <div className="d-flex align-items-center mb-3">
                                                 <i className="fa fa-check fa-2x text-primary flex-shrink-0 me-3"></i>
                                                 <h6 className="mb-0">{highlight.title}</h6>

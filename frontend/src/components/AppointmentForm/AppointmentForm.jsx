@@ -1,9 +1,8 @@
 import React, { useEffect } from 'react';
 import { useState } from 'react';
 import axios from './../../services/axios';
-// import { GoogleReCaptchaProvider } from 'react-google-recaptcha-v3';
 import { useSelector, useDispatch } from 'react-redux'
-import { fetchServices } from './../../store/slices/servicesSlice'
+import * as ReCaptcha from '../../services/recaptcha'
 import { NotificationManager } from 'react-notifications';
 import DatePicker from 'react-datepicker'
 import { fetchHolidays } from '../../store/slices/holidaysSlice';
@@ -26,12 +25,8 @@ const AppointmentHeader = (props) => {
     const [isVerified, setIsVerified] = useState(false);
     // const { serviceId } = useParams()
     const dispatch = useDispatch()
-    const services = useSelector((state) => {
-        return state.services.services;
-    })
-    const holidays = useSelector((state) => {
-        return state.holidays.holidays;
-    })
+    const services = useSelector((state) => state.services.services)
+    const holidays = useSelector((state) => state.holidays.holidays)
 
     const [date, setDate] = useState("");
     //filter function for date timepicker
@@ -65,22 +60,15 @@ const AppointmentHeader = (props) => {
 
 
     useEffect(() => {
-
-        //in future it will fetch only list of serviceId
-        // dispatch(fetchServices())
         dispatch(fetchHolidays())
-        // setFormData({ ...formData, serviceId: serviceId ? serviceId : "" });
-
+        ReCaptcha.loadScript()
     }, [])
-    // const handleRecaptchaChange = (value) => {
-    //     // This function will be called when the user interacts with the reCAPTCHA widget
-    //     setIsVerified(!!value);
-    // };
+
     const handleSubmit = async (event) => {
         event.preventDefault();
-        // handleRecaptchaChange()
         try {
-            const response = await axios.post('/appointment', formData);
+            const token = await ReCaptcha.verifyCaptcha()
+            const response = await axios.post('/appointment', { ...formData, token });
             NotificationManager.success('Appointment requested');
             setFormData(initialFormData);
             setDate("")
@@ -88,14 +76,6 @@ const AppointmentHeader = (props) => {
             // Perform further actions with the response data as needed
         } catch (error) {
             console.error('Error:', error);
-        }
-
-        if (isVerified) {
-            // Your form submission logic here
-            console.log('Form submitted successfully!');
-        } else {
-            // Show an error or prevent the form submission
-            console.error('reCAPTCHA verification failed!');
         }
     };
 
@@ -175,9 +155,7 @@ const AppointmentHeader = (props) => {
                                             //     })
                                             // ]}
                                             excludeDates={[
-                                                ...holidays?.map(holiday => {
-                                                    return new Date(holiday.holidayDate)
-                                                })
+                                                ...holidays?.map(holiday => new Date(holiday.holidayDate))
                                             ]}
                                             minTime={new Date().setHours(9, 0, 0)}
                                             maxTime={new Date().setHours(21, 0, 0)}
