@@ -6,7 +6,7 @@ module.exports = {
     list: async (req, res) => {
         try {
             const rows = await ServiceModel.findAll({
-                order: [['serviceImage', 'ASC']],
+                order: [['createdAt', 'ASC']]
             });
 
             res.json({

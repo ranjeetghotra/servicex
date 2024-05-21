@@ -11,6 +11,16 @@ const Service = sequelize.define('Service', {
     type: DataTypes.STRING,
     allowNull: false,
   },
+  pageTitle: {
+    type: DataTypes.STRING,
+    allowNull: false,
+    defaultValue: '',
+  },
+  pageDescription: {
+    type: DataTypes.STRING,
+    allowNull: false,
+    defaultValue: '',
+  },
   serviceImage: {
     type: DataTypes.STRING,
     allowNull: true,
@@ -33,7 +43,7 @@ const Service = sequelize.define('Service', {
     allowNull: false,
     defaultValue: '[]',
     get: function () {
-      return JSON.parse(this.getDataValue('highlights'));
+      return JSON.parse(this.getDataValue('highlights') || '[]');
     },
     set: function (val) {
       return this.setDataValue('highlights', JSON.stringify(val));

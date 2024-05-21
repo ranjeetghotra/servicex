@@ -2,6 +2,7 @@ const { DateTime } = require('luxon');
 const { AppointmentModel, ServiceModel } = require('../models');
 const { sendMail } = require('./../services/email')
 const generateInvoiceNumber = require('../services/generateInvoiceNumber');
+const { verifyCaptchaToken } = require('../services/recaptchaService');
 const { STATUS } = require('./../core/types')
 const { filterObject } = require('../utils')
 
@@ -76,7 +77,17 @@ module.exports = {
             });
             res.status(201).json({ message: 'Appointment booked successfully', appointment: newAppointment });
             //sending mail after sending response 
-            // const result =   await sendMail(customerEmail,"testing",`<h1>Hii! ${customerName}, Your appointment has been booked successfully !</h1>`)
+            await sendMail(customerEmail, "Appointment Requested", `Hi! ${customerName}, Your appointment has been booked successfully!`)
+            const text = `<p>Hi Pankaj,</p>
+            <p>Just received a new appointment request:</p>
+            <ul>
+                <li><strong>Customer Name:</strong> ${customerName}</li>
+                <li><strong>Customer Email:</strong> ${customerEmail}</li>
+                <li><strong>Customer Phone:</strong> ${customerPhone}</li>
+                <li><strong>Appointment Date:</strong> ${new Date(appointmentDate).toLocaleString("en-NZ")}</li>
+            </ul>
+            <p>Please check it out when you get a chance.</p>`
+            await sendMail('info@servicex.co.nz', "Appointment Requested", text)
         } catch (error) {
             console.error(error);
             res.status(500).json({ message: 'Internal Server Error' });
@@ -105,7 +116,7 @@ module.exports = {
             const { customerEmail, customerName } = appointment.dataValues
 
             res.json({ message: 'Appointment status updated successfully' });
-            await sendMail(customerEmail, `Appointment ${status}`, `Hii! ${customerName}, Your appointment has been ${status}!`)
+            await sendMail(customerEmail, `Appointment ${status}`, `Hi! ${customerName}, Your appointment has been ${status}!`)
         } catch (error) {
             console.error(error);
             res.status(500).json({ message: 'Internal Server Error' });

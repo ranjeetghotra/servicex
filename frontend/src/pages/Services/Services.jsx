@@ -12,7 +12,11 @@ const Services = () => {
         navigate(`/service/${serviceSlug}`);
     }
     useEffect(() => {
-        document.title = `Our Services - ServiceX`
+        document.title = `Heatpump service IN Hawkesbay Heat pump installations Hawkes bay Ventilation System Installation Hawkesbay Heat Pump Deep Clean IN Hawkesbay`
+        const metaDescription = document.querySelector('meta[name="description"]');
+        if (metaDescription) {
+            metaDescription.setAttribute('content', "Servicex offering Heatpump service IN Hawkesbay Heat pump installations Hawkes bay Ventilation System Installation Hawkesbay Heat Pump Deep Clean IN Hawkesbay servicex.co.nz");
+        }
     }, [])
     return (
         <>
@@ -30,17 +34,33 @@ const Services = () => {
                             <a className="btn btn-primary py-3 px-5" href="/appointment">BOOK NOW</a>
                         </div>
                     </div>
-                    <div className="row g-4 mt-5 justify-content-center" >
+                    <div itemScope itemType="http://schema.org/ItemList" className="row g-4 mt-5 justify-content-center" >
 
                         {
                             !!services.length && services.map(service => {
                                 return (
-                                    <div key={service.serviceId} onClick={() => { handleServiceClick(service.serviceSlug) }} style={{ cursor: "pointer" }} className="col-lg-4 col-md-6 wow fadeInUp  " data-wow-delay="0.1s"  data-aos="fade-up">
-                                        <div className="service-item bg-light text-center overflow-hidden h-100    ">
-                                            <img className=" equal-height-image" src={`${process.env.REACT_APP_API_BASE_URL}/static/${service.serviceImage}`} alt="" />
+                                    <div itemProp="itemListElement" itemScope itemType="http://schema.org/ListItem" key={service.serviceId} onClick={() => { handleServiceClick(service.serviceSlug) }} style={{ cursor: "pointer" }} className="col-lg-4 col-md-6 wow fadeInUp  " data-wow-delay="0.1s"  data-aos="fade-up">
+                                        <div itemScope itemType="http://schema.org/Service" className="service-item bg-light text-center overflow-hidden h-100    ">
+                                            <img itemProp="image" className=" equal-height-image" src={`${process.env.REACT_APP_API_BASE_URL}/static/${service.serviceImage}`} alt="Heat pump deep cleaning in Hawkesbay
+Heat pump Lagging in Hawkesbay
+Heat pump service and maintenance Hawkesbay*
+Heat pump remote controller in Hawkesbay
+Ventilation filters in Hawkesbay
+Heat pump installations Hawkesbay
+Heat pump Parts replacement Hawkesba
+Heat pump Parts replacement in Hawkesbay
+Heat pump Lid Hawkesbay
+Chillers Servicing and cleaning  Hawkesbay
+HRV Filters Replacement  Hawkesbay
+DVS filter Replacement Hawkesbay
+Smartvent Filter Replacement  Hawkesbay
+Pest Control Services  Hawkesbay
+Carpet Cleaning service  Hawkesbay
+Oven Cleaning service in Hawkesbay
+Gutter Cleaning service Hawkesbay" />
                                             <div className="service-text position-relative text-center h-100 p-4">
-                                                <h5 className="mb-3">{service.serviceName}</h5>
-                                                <p className='ellipses' >{service.serviceDescription}</p>
+                                                <h5 itemProp="name" className="mb-3">{service.serviceName}</h5>
+                                                <p itemProp="description" className='ellipses' >{service.serviceDescription}</p>
                                                 <Link className="small" to={`/service/${service.serviceSlug}`}>READ MORE<i className="fa fa-arrow-right ms-3"></i></Link>
                                             </div>
                                         </div>

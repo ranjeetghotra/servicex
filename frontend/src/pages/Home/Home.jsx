@@ -1,10 +1,123 @@
 import React, { useState, useEffect } from 'react';
-import AppointmentForm from '../../components/AppointmentForm/AppointmentForm';
-import { fetchServices } from '../../store/slices/servicesSlice';
+// import AppointmentForm from '../../components/AppointmentForm/AppointmentForm';
+// import { fetchServices } from '../../store/slices/servicesSlice';
 import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate, Link } from 'react-router-dom'
 import './Home.css'
 
+const cleaningServicePackages = [
+    {
+        name: "The Deep Clean",
+        price: "$99.00",
+        services: [
+            {
+                name: "Indoor",
+                tasks: [
+                    "Filter reconditioning and sanitisation",
+                    "Barrel fan inspection",
+                    "Coil treatment application",
+                    "Pressure wash evaporator coils",
+                    "Condensate tray purge & line",
+                    "Full chassis Sanitisation",
+                    "Operational test",
+                    "Temperature test",
+                    "Remote Control inspection"
+                ]
+            },
+            {
+                name: "Outdoor",
+                tasks: [
+                    "Coil clean application and treatment",
+                    "Pressure wash condenser coils",
+                    "Clean condenser unit",
+                    "Remove external blockages",
+                    "Condenser Safety inspection",
+                    "Lagging inspection",
+                    "Fan inspection",
+                    "Outdoor unit switch inspection"
+                ]
+            }
+        ]
+    },
+    {
+        name: "Deep Clean Plus",
+        price: "$149.00",
+        services: [
+            {
+                name: "Indoor",
+                tasks: [
+                    "Remove, Clean and Sanitise Filters",
+                    "Remove evaporator housing & cover",
+                    "Coil treatment application",
+                    "Pressure wash evaporator coils",
+                    "Pressure wash blower fan & air well",
+                    "Condensate tray purge & line",
+                    "Application of PermaSafe Mould Protection",
+                    "Anti-mould - Filter treatment application",
+                    "Anti-mould - Evaporator coil treatment",
+                    "Full chassis Sanitisation",
+                    "Operational test",
+                    "Temperature test",
+                    "Remote control inspection"
+                ]
+            },
+            {
+                name: "Outdoor",
+                tasks: [
+                    "Coil clean application and treatment",
+                    "Pressure wash condenser coils",
+                    "Clean condenser unit",
+                    "Remove external blockages",
+                    "Condenser safety inspection",
+                    "Lagging inspection",
+                    "Fan inspection",
+                    "Outdoor unit switch inspection"
+                ]
+            }
+        ]
+    },
+    {
+        name: "Mould Master",
+        price: "$189.00",
+        services: [
+            {
+                name: "Indoor",
+                tasks: [
+                    "Remove, Clean and Sanitise Filters",
+                    "Remove evaporator housing & cover",
+                    "Attach treatment bag",
+                    "Apply coil clean treatment",
+                    "Pressure wash evaporator coils",
+                    "Pressure wash blower fan & air well",
+                    "Clean condensate tray & line",
+                    "Application of PermaSafe Mould Protection",
+                    "Anti-mould - Filter treatment application",
+                    "Anti-mould - Evaporator coil treatment",
+                    "Anti-mould - Condensate tray treatment",
+                    "Anti-mould - Blower fan & air well treatment",
+                    "Full chassis Sanitisation",
+                    "Operational test",
+                    "Temperature test",
+                    "Remote control inspection",
+                    "ADVANCED MOULD EXTRACTION"
+                ]
+            },
+            {
+                name: "Outdoor",
+                tasks: [
+                    "Coil clean application and treatment",
+                    "Pressure wash condenser coils",
+                    "Clean condenser unit",
+                    "Remove external blockages",
+                    "Condenser safety inspection",
+                    "Lagging inspection",
+                    "Fan inspection",
+                    "Outdoor unit switch inspection"
+                ]
+            }
+        ]
+    }
+];
 
 
 const Home = () => {
@@ -29,7 +142,14 @@ const Home = () => {
 
     useEffect(() => {
         // dispatch(fetchServices());
-        document.title = `ServiceX`
+        document.title = `Servicex offering  Heat pump deep cleaning in Hawkesbay Heat pump Lagging in Hawkesbay Heat pump service and maintenance Hawkesbay Heat pump remote controller in Hawkesbay
+        Ventilation filters in Hawkesbay Heat pump installations Hawkesbay Heat pump Parts replacement Hawkesbay Heat pump Parts replacement in Hawkesbay Heat pump Lid Hawkesbay
+        Chillers Servicing and cleaning  Hawkesbay HRV Filters Replacement  Hawkesbay DVS filter Replacement Hawkesbay Smartvent Filter Replacement  Hawkesbay Pest Control Services  Hawkesbay
+        Carpet Cleaning service  Hawkesbay Oven Cleaning service in Hawkesbay Gutter Cleaning service Hawkesbay`
+        const metaDescription = document.querySelector('meta[name="description"]');
+        if (metaDescription) {
+            metaDescription.setAttribute('content', 'Servicex offering Servicex offering  Heat pump deep cleaning in Hawkesbay Heat pump Lagging in Hawkesbay Heat pump service and maintenance Hawkesbay Heat pump remote controller in Hawkesbay Ventilation filters in Hawkesbay Heat pump installations Hawkesbay Heat pump Parts replacement Hawkesbay Heat pump Parts replacement in Hawkesbay Heat pump Lid Hawkesbay Chillers Servicing and cleaning  Hawkesbay HRV Filters Replacement  Hawkesbay DVS filter Replacement Hawkesbay Smartvent Filter Replacement  Hawkesbay Pest Control Services  Hawkesbay Carpet Cleaning service  Hawkesbay Oven Cleaning service in Hawkesbay Gutter Cleaning service Hawkesbay service.co.nz');
+        }
     }, [dispatch]);
 
     const handleServiceClick = (serviceSlug) => {
@@ -44,7 +164,23 @@ const Home = () => {
                         {slides.map((service, index) => {
                             return (
                                 <div key={service.serviceId} className={carouselNumber == index ? "carousel-item active " : "carousel-item "} >
-                                    <img className="w-100" style={{ maxHeight: 700, objectFit: 'cover' }} src={process.env.REACT_APP_API_BASE_URL + '/static/' + service.serviceImage} alt={service.serviceName} />
+                                    <img className="w-100" style={{ maxHeight: 700, objectFit: 'cover' }} src={process.env.REACT_APP_API_BASE_URL + '/static/' + service.serviceImage} alt={service.serviceName} alt="Heat pump deep cleaning in Hawkesbay
+Heat pump Lagging in Hawkesbay
+Heat pump service and maintenance Hawkesbay*
+Heat pump remote controller in Hawkesbay
+Ventilation filters in Hawkesbay
+Heat pump installations Hawkesbay
+Heat pump Parts replacement Hawkesba
+Heat pump Parts replacement in Hawkesbay
+Heat pump Lid Hawkesbay
+Chillers Servicing and cleaning  Hawkesbay
+HRV Filters Replacement  Hawkesbay
+DVS filter Replacement Hawkesbay
+Smartvent Filter Replacement  Hawkesbay
+Pest Control Services  Hawkesbay
+Carpet Cleaning service  Hawkesbay
+Oven Cleaning service in Hawkesbay
+Gutter Cleaning service Hawkesbay" />
                                     <div className="carousel-caption">
                                         <div className="container">
                                             <div className="row justify-content-center">
@@ -77,13 +213,72 @@ const Home = () => {
                     </button>
                 </div>
             </div>}
+            <section class="section" id="pricing">
+                <div class="container">
+                    <div class="row mt-5 pt-4">
+                        {
+                            cleaningServicePackages.map((sp, index) =>
+                                <div class="col-lg-4 pb-4">
+                                    <div class="pricing-box h-100">
+                                        {
+                                            index === 1 &&
+                                            <div class="pricing-badge"><span class="badge">Recommended</span></div>
+                                        }
 
-            <div className="container-xxl py-5" >
+                                        <i class="mdi mdi-account-multiple h1 text-primary"></i>
+                                        <h4 class="f-20 text-primary">{sp.name}</h4>
+
+                                        <div class="pricing-plan my-2 pt-3">
+                                            <h4 class="text-muted">
+                                                {/* <s> $19.99</s> */}
+                                                <span class="plan pl-3 text-dark">{sp.price}</span></h4>
+                                            {/* <p class="text-muted mb-0">Per Month</p> */}
+                                        </div>
+                                        {
+                                            sp.services.map(ss =>
+                                                <div class="mt-4 pt-2">
+                                                    <h5 class="mb-2">{ss.name}</h5>
+                                                    {
+                                                        ss.tasks.map(st =>
+                                                            <p class="mb-2"><i class="fas fa-check-circle f-18 me-2"></i>{st}</p>
+                                                        )
+                                                    }
+                                                </div>
+                                            )
+                                        }
+
+                                        <div style={{ position: 'absolute', bottom: 0, width: '100%', left: 0 }}>
+                                            <a href="https://bookings.gettimely.com/servicex/bb/book" class="btn btn-primary w-100 py-3 px-5" target='_blank' rel="noreferrer">Book Now</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            )
+                        }
+                    </div>
+                </div>
+            </section>  
+            <div className="container-xxl py-5 mt-5" >
                 <div className="container">
                     <div className="row g-5" >
                         <div className="col-lg-6 wow fadeInUp" data-wow-delay="0.5s" data-aos="fade-up" >
                             <div className="position-relative overflow-hidden ps-5 pt-5 h-100" style={{ minHeight: "400px" }}>
-                                <img className="position-absolute w-100 h-100" src="img/about.jpg" alt="" style={{ objectFit: "cover" }} />
+                                <img className="position-absolute w-100 h-100" src="img/about.jpg" alt="Heat pump deep cleaning in Hawkesbay
+Heat pump Lagging in Hawkesbay
+Heat pump service and maintenance Hawkesbay*
+Heat pump remote controller in Hawkesbay
+Ventilation filters in Hawkesbay
+Heat pump installations Hawkesbay
+Heat pump Parts replacement Hawkesba
+Heat pump Parts replacement in Hawkesbay
+Heat pump Lid Hawkesbay
+Chillers Servicing and cleaning  Hawkesbay
+HRV Filters Replacement  Hawkesbay
+DVS filter Replacement Hawkesbay
+Smartvent Filter Replacement  Hawkesbay
+Pest Control Services  Hawkesbay
+Carpet Cleaning service  Hawkesbay
+Oven Cleaning service in Hawkesbay
+Gutter Cleaning service Hawkesbay" style={{ objectFit: "cover" }} />
                                 <div className="position-absolute top-0 start-0 bg-white pe-3 pb-3" style={{ width: "200px", height: "200px" }}>
                                     <div className="d-flex flex-column justify-content-center text-center bg-primary h-100 p-3">
                                         <h1 className="text-white">5</h1>
@@ -123,7 +318,7 @@ const Home = () => {
                 </div>
             </div>
 
-            <div className="container-fluid my-5 p-0" data-aos="fade-up">
+            {/* <div className="container-fluid my-5 p-0" data-aos="fade-up">
                 <div className="row g-0">
                     <div className="col-xl-3 col-sm-6 wow fadeIn" data-wow-delay="0.1s">
                         <div className="position-relative">
@@ -170,7 +365,7 @@ const Home = () => {
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> */}
 
             <div className="container-xxl py-5" data-aos="fade-up">
                 <div className="container">
@@ -214,7 +409,23 @@ const Home = () => {
                         </div>
                         <div className="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
                             <div className="position-relative overflow-hidden ps-5 pt-5 h-100" style={{ minHeight: "400px" }}>
-                                <img className="position-absolute w-100 h-100" src="img/feature.jpg" alt="" style={{ objectFit: "cover" }} />
+                                <img className="position-absolute w-100 h-100" src="img/feature.jpg" alt="Heat pump deep cleaning in Hawkesbay
+Heat pump Lagging in Hawkesbay
+Heat pump service and maintenance Hawkesbay*
+Heat pump remote controller in Hawkesbay
+Ventilation filters in Hawkesbay
+Heat pump installations Hawkesbay
+Heat pump Parts replacement Hawkesba
+Heat pump Parts replacement in Hawkesbay
+Heat pump Lid Hawkesbay
+Chillers Servicing and cleaning  Hawkesbay
+HRV Filters Replacement  Hawkesbay
+DVS filter Replacement Hawkesbay
+Smartvent Filter Replacement  Hawkesbay
+Pest Control Services  Hawkesbay
+Carpet Cleaning service  Hawkesbay
+Oven Cleaning service in Hawkesbay
+Gutter Cleaning service Hawkesbay" style={{ objectFit: "cover" }} />
                                 <div className="position-absolute top-0 start-0 bg-white pe-3 pb-3" style={{ width: "200px", height: "200px" }}>
                                     <div className="d-flex flex-column justify-content-center text-center bg-primary h-100 p-3">
                                         <h1 className="text-white">5</h1>
@@ -248,7 +459,23 @@ const Home = () => {
 
                                     <div key={service.serviceId} onClick={() => { handleServiceClick(service.serviceSlug) }} style={{ cursor: "pointer" }} className="col-lg-4 col-md-6 wow fadeInUp  " data-wow-delay="0.1s"  >
                                         <div className="service-item bg-light text-center overflow-hidden h-100    ">
-                                            <img className=" equal-height-image" src={`${process.env.REACT_APP_API_BASE_URL}/static/${service.serviceImage}`} alt="" />
+                                            <img className=" equal-height-image" src={`${process.env.REACT_APP_API_BASE_URL}/static/${service.serviceImage}`} alt="Heat pump deep cleaning in Hawkesbay
+Heat pump Lagging in Hawkesbay
+Heat pump service and maintenance Hawkesbay*
+Heat pump remote controller in Hawkesbay
+Ventilation filters in Hawkesbay
+Heat pump installations Hawkesbay
+Heat pump Parts replacement Hawkesba
+Heat pump Parts replacement in Hawkesbay
+Heat pump Lid Hawkesbay
+Chillers Servicing and cleaning  Hawkesbay
+HRV Filters Replacement  Hawkesbay
+DVS filter Replacement Hawkesbay
+Smartvent Filter Replacement  Hawkesbay
+Pest Control Services  Hawkesbay
+Carpet Cleaning service  Hawkesbay
+Oven Cleaning service in Hawkesbay
+Gutter Cleaning service Hawkesbay" />
                                             <div className="service-text position-relative text-center h-100 p-4">
                                                 <h5 className="mb-3">{service.serviceName}</h5>
                                                 <p className='ellipses' >{service.serviceDescription}</p>
@@ -265,7 +492,7 @@ const Home = () => {
                 </div>
             </div>
 
-            <AppointmentForm title='Appointment'  />
+            {/* <AppointmentForm title='Appointment'  /> */}
 
             {/* <div className="container-xxl py-5">
                 <div className="container">

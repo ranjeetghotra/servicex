@@ -15,14 +15,30 @@ const Footer = () => {
             <div className="container py-5">
                 <div className="row g-5">
                     <div className="col-lg-3 col-md-6">
-                        <img className='mb-4' src="/logo-light.svg" alt="ServiceX" style={{ height: 50 }} />
+                        <img className='mb-4' src="/logo-light.svg" alt="Heat pump deep cleaning in Hawkesbay
+Heat pump Lagging in Hawkesbay
+Heat pump service and maintenance Hawkesbay*
+Heat pump remote controller in Hawkesbay
+Ventilation filters in Hawkesbay
+Heat pump installations Hawkesbay
+Heat pump Parts replacement Hawkesba
+Heat pump Parts replacement in Hawkesbay
+Heat pump Lid Hawkesbay
+Chillers Servicing and cleaning  Hawkesbay
+HRV Filters Replacement  Hawkesbay
+DVS filter Replacement Hawkesbay
+Smartvent Filter Replacement  Hawkesbay
+Pest Control Services  Hawkesbay
+Carpet Cleaning service  Hawkesbay
+Oven Cleaning service in Hawkesbay
+Gutter Cleaning service Hawkesbay" style={{ height: 50 }} />
                         {/* <h1 className="text-white"><i className="fab fa-xing me-3"></i>SERVICE X</h1> */}
                         <p>Welcome to ServiceX - Your Trusted Partner for Home and Commercial Services</p>
-                        <div className="d-flex pt-2">
+                        <div itemScope itemType="http://schema.org/Organization" className="d-flex pt-2">
                             {/* <a className="btn btn-square btn-outline-light me-1" href=""><i className="fab fa-twitter"></i></a> */}
-                            <a className="btn btn-square btn-outline-light me-1" href="https://www.facebook.com/ServiceXNZ" target='_blank' rel="noreferrer"><i className="fab fa-facebook-f"></i></a>
+                            <a itemProp="sameAs" className="btn btn-square btn-outline-light me-1" href="https://www.facebook.com/profile.php?id=61558935705606" target='_blank' rel="noreferrer"><i className="fab fa-facebook-f"></i></a>
                             {/* <a className="btn btn-square btn-outline-light me-1" href=""><i className="fab fa-youtube"></i></a> */}
-                            <a className="btn btn-square btn-outline-light me-1" href="https://www.instagram.com/servicex_/" target='_blank' rel="noreferrer"><i className="fab fa-instagram"></i></a>
+                            <a itemProp="sameAs" className="btn btn-square btn-outline-light me-1" href="https://www.instagram.com/servicex_/" target='_blank' rel="noreferrer"><i className="fab fa-instagram"></i></a>
                             {/* <a className="btn btn-square btn-outline-light me-0" href=""><i className="fab fa-linkedin-in"></i></a> */}
                         </div>
                     </div>
@@ -30,7 +46,7 @@ const Footer = () => {
                         <h4 className="text-light mb-4">Address</h4>
                         <p><i className="fa fa-map-marker-alt me-3"></i>Hastings, New Zealand</p>
                         {/* <p><i className="fa fa-phone-alt me-3"></i>+012 345 67890</p> */}
-                        <p><i className="fa fa-envelope me-3"></i> <a href="mailto:info@servicex.co.nz" style={{color:'#8d9297'}}>info@servicex.co.nz</a></p>
+                        <p><i className="fa fa-envelope me-3"></i><a href="mailto:info@servicex.co.nz" style={{color:'#bbb'}}>info@servicex.co.nz</a></p>
                     </div>
                     <div className="col-lg-3 col-md-6">
                         <h4 className="text-light mb-4">Services</h4>
@@ -70,7 +86,7 @@ const Footer = () => {
                     </div>
                 </div>
             </div>
-        </div>
+        </div >
     );
 };
 

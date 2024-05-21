@@ -6,6 +6,10 @@
     --dark: #182333;
 }
 
+body {
+    color: #6b6f74 !important;
+}
+
 .back-to-top {
     position: fixed;
     display: none;
@@ -190,7 +194,7 @@
 }
 
 .page-header .breadcrumb-item+.breadcrumb-item::before {
-    color: #999999;
+    color: #bbb;
 }
 
 
@@ -313,7 +317,7 @@
 
 /*** Footer ***/
 .footer {
-    color: #999999;
+    color: #bbb;
 }
 
 .footer .btn.btn-link {
@@ -321,7 +325,7 @@
     margin-bottom: 5px;
     padding: 0;
     text-align: left;
-    color: #999999;
+    color: #bbb;
     font-weight: normal;
     text-transform: capitalize;
     transition: .3s;
@@ -332,7 +336,7 @@
     content: "\f105";
     font-family: "Font Awesome 5 Free";
     font-weight: 900;
-    color: #999999;
+    color: #bbb;
     margin-right: 10px;
 }
 

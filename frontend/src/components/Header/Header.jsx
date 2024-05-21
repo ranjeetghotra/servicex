@@ -49,11 +49,11 @@ const Header = () => {
                         </div>
                     </div>
                     <div className="col-lg-5 px-5 text-end">
-                        <div className="h-100 d-inline-flex align-items-center">
-                            <a className="btn btn-square border-end border-start" href="https://www.facebook.com/ServiceXNZ" target='_blank' rel="noreferrer"><i className="fab fa-facebook-f"></i></a>
+                        <div itemScope itemType="http://schema.org/Organization" className="h-100 d-inline-flex align-items-center">
+                            <a itemProp="sameAs" className="btn btn-square border-end border-start" href="https://www.facebook.com/profile.php?id=61558935705606" target='_blank' rel="noreferrer"><i className="fab fa-facebook-f"></i></a>
                             {/* <a className="btn btn-square border-end" href=""><i className="fab fa-twitter"></i></a> */}
                             {/* <a className="btn btn-square border-end" href=""><i className="fab fa-linkedin-in"></i></a> */}
-                            <a className="btn btn-square border-end" href="https://www.instagram.com/servicex_/" target='_blank' rel="noreferrer"><i className="fab fa-instagram"></i></a>
+                            <a itemProp="sameAs" className="btn btn-square border-end" href="https://www.instagram.com/servicex_/" target='_blank' rel="noreferrer"><i className="fab fa-instagram"></i></a>
                         </div>
                     </div>
                 </div>
@@ -62,20 +62,36 @@ const Header = () => {
             <nav className={stickyTopClass} style={{ top: isScrolled ? '0px' : '-100px' }}>
                 <Link to="/" className="navbar-brand">
                     {/* <img src="/logo.png" alt="ServiceX" style={{ height: 50 }} /> */}
-                    <Logo  alt="ServiceX"  style={{ height: 50 }} />
+                    <Logo  alt="Heat pump deep cleaning in Hawkesbay
+Heat pump Lagging in Hawkesbay
+Heat pump service and maintenance Hawkesbay*
+Heat pump remote controller in Hawkesbay
+Ventilation filters in Hawkesbay
+Heat pump installations Hawkesbay
+Heat pump Parts replacement Hawkesba
+Heat pump Parts replacement in Hawkesbay
+Heat pump Lid Hawkesbay
+Chillers Servicing and cleaning  Hawkesbay
+HRV Filters Replacement  Hawkesbay
+DVS filter Replacement Hawkesbay
+Smartvent Filter Replacement  Hawkesbay
+Pest Control Services  Hawkesbay
+Carpet Cleaning service  Hawkesbay
+Oven Cleaning service in Hawkesbay
+Gutter Cleaning service Hawkesbay"  style={{ height: 50, width: 'auto' }} />
                     {/* <h1 className="m-0"><i className="fab fa-xing text-primary me-3"></i>SERVICE X</h1> */}
                 </Link>
                 <button type="button" onClick={handleClick} className="navbar-toggler" style={{ boxShadow: 'none'}} data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                     <span className="navbar-toggler-icon"></span>
                 </button>
                 <div className={isActive ? "collapse navbar-collapse show" : "collapse navbar-collapse"} id="navbarCollapse">
-                    <div className="navbar-nav ms-auto py-3 py-lg-0">
-                        <Link to="/" onClick={handleClick} className={currentRoute == '/' ? "nav-item nav-link active" : "nav-item nav-link "}>Home</Link>
-                        <Link to="/about" onClick={handleClick} className={currentRoute.includes("about") ? "nav-item nav-link active" : "nav-item nav-link"}>About Us</Link>
-                        <Link to="/services" onClick={handleClick} className={currentRoute.includes("services") ? "nav-item nav-link active" : "nav-item nav-link"}>Our Services</Link>
-                        <Link to="/appointment" onClick={handleClick} className={currentRoute.includes("appointment") ? "nav-item nav-link active" : "nav-item nav-link"}>Appointment</Link>
+                    <div itemScope itemType="http://schema.org/SiteNavigationElement" className="navbar-nav ms-auto py-3 py-lg-0">
+                        <Link itemProp="name" to="/" onClick={handleClick} className={currentRoute == '/' ? "nav-item nav-link active" : "nav-item nav-link "}>Home</Link>
+                        <Link itemProp="name" to="/about" onClick={handleClick} className={currentRoute.includes("about") ? "nav-item nav-link active" : "nav-item nav-link"}>About Us</Link>
+                        <Link itemProp="name" to="/services" onClick={handleClick} className={currentRoute.includes("services") ? "nav-item nav-link active" : "nav-item nav-link"}>Our Services</Link>
+                        {/* <Link itemProp="name" to="/appointment" onClick={handleClick} className={currentRoute.includes("appointment") ? "nav-item nav-link active" : "nav-item nav-link"}>Appointment</Link> */}
             
-                        <Link to="/contact" onClick={handleClick} className={currentRoute.includes("contact") ? "nav-item nav-link active" : "nav-item nav-link"}>Contact Us</Link>
+                        <Link itemProp="name" to="/contact" onClick={handleClick} className={currentRoute.includes("contact") ? "nav-item nav-link active" : "nav-item nav-link"}>Contact Us</Link>
                     </div>
                 </div>
             </nav>
