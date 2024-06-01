@@ -256,7 +256,7 @@ Gutter Cleaning service Hawkesbay" />
                         }
                     </div>
                 </div>
-            </section>  
+            </section>
             <div className="container-xxl py-5 mt-5" >
                 <div className="container">
                     <div className="row g-5" >
@@ -586,6 +586,26 @@ Gutter Cleaning service Hawkesbay" />
                     </div>
                 </div>
             </div> */}
+            <div className="container-xxl pt-5" data-aos="fade-up">
+                <div className="container" >
+                    <div className="row g-5 align-items-end mb-5">
+                        <div className="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
+                            <div className="border-start border-5 border-primary ps-4">
+                                {/* <h6 className="text-body text-uppercase mb-2">Our Services</h6> */}
+                                <h1 className="display-6 mb-0">Our Partners</h1>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="row g-4 justify-content-around">
+                        <div className="col-6 col-lg-3 d-flex align-items-center"  >
+                            <img style={{ width: '100%' }} src="images/hc.webp" alt="" />
+                        </div>
+                        <div className="col-6 col-lg-3 d-flex align-items-center"  >
+                            <img style={{ width: '100%' }} src="images/dvs.webp" alt="" />
+                        </div>
+                    </div>
+                </div>
+            </div>
         </>
     );
 };

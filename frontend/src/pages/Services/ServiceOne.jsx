@@ -3,9 +3,10 @@ import PageHeader from '../../components/PageHeader/PageHeader';
 // import AppointmentForm from '../../components/AppointmentForm/AppointmentForm';
 import { useRef } from 'react';
 import axios from './../../services/axios';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 const ServiceOne = () => {
+    const navigate = useNavigate()
     const myRef = useRef();
     const { serviceSlug } = useParams();
     const handleClick = () => {
@@ -21,15 +22,16 @@ const ServiceOne = () => {
         try {
             const response = await axios.get(`/admin/service/${serviceSlug}`);
             const data = await response.data;
-            document.title = data?.service?.pageTitle ?? `${data?.service?.serviceName} - ServiceX`
+            document.title = data?.service?.pageTitle ? data?.service?.pageTitle : `${data?.service?.serviceName} - ServiceX`
             const metaDescription = document.querySelector('meta[name="description"]');
             if (metaDescription) {
-                metaDescription.setAttribute('content', data?.service?.pageDescription ?? data?.service?.serviceDescription);
+                metaDescription.setAttribute('content', data?.service?.pageDescription || data?.service?.serviceDescription);
             }
             setServiceDetail(data?.service);
         }
         catch (error) {
             console.log(error.message);
+            navigate('/services')
         }
     }
     const serviceImage = process.env.REACT_APP_API_BASE_URL + '/static/' + serviceDetail?.serviceImage
