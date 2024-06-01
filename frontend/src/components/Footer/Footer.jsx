@@ -46,7 +46,7 @@ Gutter Cleaning service Hawkesbay" style={{ height: 50 }} />
                         <h4 className="text-light mb-4">Address</h4>
                         <p><i className="fa fa-map-marker-alt me-3"></i>Hastings, New Zealand</p>
                         {/* <p><i className="fa fa-phone-alt me-3"></i>+012 345 67890</p> */}
-                        <p><i className="fa fa-envelope me-3"></i><a href="mailto:info@servicex.co.nz" style={{color:'#bbb'}}>info@servicex.co.nz</a></p>
+                        <p><i className="fa fa-envelope me-3"></i><a href="mailto:info@servicex.co.nz" style={{ color: '#bbb' }}>info@servicex.co.nz</a></p>
                     </div>
                     <div className="col-lg-3 col-md-6">
                         <h4 className="text-light mb-4">Services</h4>
@@ -57,13 +57,24 @@ Gutter Cleaning service Hawkesbay" style={{ height: 50 }} />
                         }
                     </div>
                     <div className="col-lg-3 col-md-6">
+                        <h4 className="text-light mb-4">Area we service </h4>
+                        <span className="btn btn-link">Hastings</span>
+                        <span className="btn btn-link">Napier</span>
+                        <span className="btn btn-link">Taradale</span>
+                        <span className="btn btn-link">Havelock North</span>
+                        <span className="btn btn-link">Flaxmere</span>
+                        <span className="btn btn-link">Haumoana</span>
+                        <span className="btn btn-link">Puketapu</span>
+                        <span className="btn btn-link">Central Hawkesbay</span>
+                    </div>
+                    {/* <div className="col-lg-3 col-md-6">
                         <h4 className="text-light mb-4">Quick Links</h4>
                         <Link className="btn btn-link" to="/about">About Us</Link>
                         <Link className="btn btn-link" to="/contact">Contact Us</Link>
                         <Link className="btn btn-link" to="/services">Our Services</Link>
                         <Link className="btn btn-link" to="/">Terms & Condition</Link>
                         <Link className="btn btn-link" to="/">Support</Link>
-                    </div>
+                    </div> */}
                     {/* <div className="col-lg-3 col-md-6">
                         <h4 className="text-light mb-4">Newsletter</h4>
                         <p>Dolor amet sit justo amet elitr clita ipsum elitr est.</p>
