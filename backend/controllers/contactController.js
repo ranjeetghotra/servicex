@@ -50,7 +50,17 @@ module.exports = {
             });
             res.status(201).json({ message: 'Contact  Registered  successfully', appointment: newAppointment });
             //sending mail after sending response 
-            const result = await sendMail(customerEmail, "testing", `<h1>Hii! ${customerName}, Your request for contact  has been register successfully !</h1>`)
+            await sendMail(customerEmail, "Request Received", `Hi! ${customerName}, Your request for contact has been register successfully!`)
+            const text = `<p>Hi Pankaj,</p>
+            <p>Just received a new contact request:</p>
+            <ul>
+                <li><strong>Name:</strong> ${customerName}</li>
+                <li><strong>Email:</strong> ${customerEmail}</li>
+                <li><strong>Phone:</strong> ${subject}</li>
+                <li><strong>Message:</strong> ${message}</li>
+            </ul>
+            <p>Please check it out when you get a chance.</p>`
+            await sendMail('info@servicex.co.nz', "Contact Requested", text)
         } catch (error) {
             console.error(error);
             res.status(500).json({ message: 'Internal Server Error' });

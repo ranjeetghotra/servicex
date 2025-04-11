@@ -80,7 +80,7 @@ const Appointments = () => {
                         </td>
                         <td>{DateTime.fromISO(appointment.appointmentDate).setZone('Pacific/Auckland').toLocaleString(DateTime.DATETIME_MED)}</td>
                         <td>{appointment.customerName}</td>
-                        <td>{appointment.service.serviceName}</td>
+                        <td>{appointment.service?.serviceName}</td>
                         <td>
                           <Link to={`/appointment/${appointment.appointmentId}`} className='btn btn-light btn-sm'>
                             <i className="fas fa-eye fa-sm text-primary"></i>

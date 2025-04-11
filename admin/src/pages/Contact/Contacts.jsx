@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchContacts } from '../../store/slices/contactSlice';
 import { useSearchParams } from 'react-router-dom'
+import { DateTime } from "luxon";
 
 
 const Contacts = () => {
@@ -41,8 +42,8 @@ const Contacts = () => {
               <tfoot>
                 <tr>
                   <th>#</th>
+                  <th>Time</th>
                   <th>Name</th>
-                  <th>Email</th>
                   <th>Subject</th>
                   <th>Messge</th>
                 </tr>
@@ -54,8 +55,8 @@ const Contacts = () => {
                       <tr key={contact.contactId} >
 
                         <td>{contact.contactId}</td>
-                        <td>{contact.customerName}</td>
-                        <td>{contact.customerEmail}</td>
+                        <td>{DateTime.fromISO(contact.createdAt).toLocaleString(DateTime.DATETIME_MED)}</td>
+                        <td>{contact.customerName}<br />{contact.customerEmail}</td>
                         <td>{contact.subject}</td>
                         <td>{contact.message}</td>
                       </tr>
