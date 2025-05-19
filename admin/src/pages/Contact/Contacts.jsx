@@ -36,7 +36,8 @@ const Contacts = () => {
                   <th>Name</th>
                   <th>Email</th>
                   <th>Subject</th>
-                  <th>Messge</th>
+                  <th>Source</th>
+                  <th>Message</th>
                 </tr>
               </thead>
               <tfoot>
@@ -45,7 +46,8 @@ const Contacts = () => {
                   <th>Time</th>
                   <th>Name</th>
                   <th>Subject</th>
-                  <th>Messge</th>
+                  <th>Source</th>
+                  <th>Message</th>
                 </tr>
               </tfoot>
               <tbody>
@@ -53,21 +55,16 @@ const Contacts = () => {
                   !!contacts?.length && contacts.map(contact => {
                     return (
                       <tr key={contact.contactId} >
-
                         <td>{contact.contactId}</td>
                         <td>{DateTime.fromISO(contact.createdAt).toLocaleString(DateTime.DATETIME_MED)}</td>
                         <td>{contact.customerName}<br />{contact.customerEmail}</td>
                         <td>{contact.subject}</td>
+                        <td>{contact.source}</td>
                         <td>{contact.message}</td>
                       </tr>
                     )
                   })
-
-
-
-
                 }
-
               </tbody>
             </table>
             <nav aria-label="Page navigation example">

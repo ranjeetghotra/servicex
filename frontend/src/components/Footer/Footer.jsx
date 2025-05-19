@@ -38,13 +38,13 @@ Gutter Cleaning service Hawkesbay" style={{ height: 50 }} />
                             {/* <a className="btn btn-square btn-outline-light me-1" href=""><i className="fab fa-twitter"></i></a> */}
                             <a itemProp="sameAs" className="btn btn-square btn-outline-light me-1" href="https://www.facebook.com/profile.php?id=61558935705606" target='_blank' rel="noreferrer"><i className="fab fa-facebook-f"></i></a>
                             {/* <a className="btn btn-square btn-outline-light me-1" href=""><i className="fab fa-youtube"></i></a> */}
-                            <a itemProp="sameAs" className="btn btn-square btn-outline-light me-1" href="https://www.instagram.com/servicex_/" target='_blank' rel="noreferrer"><i className="fab fa-instagram"></i></a>
+                            <a itemProp="sameAs" className="btn btn-square btn-outline-light me-1" href="https://www.instagram.com/servicex_nz/" target='_blank' rel="noreferrer"><i className="fab fa-instagram"></i></a>
                             {/* <a className="btn btn-square btn-outline-light me-0" href=""><i className="fab fa-linkedin-in"></i></a> */}
                         </div>
                     </div>
                     <div className="col-lg-3 col-md-6">
                         <h4 className="text-light mb-4">Address</h4>
-                        <p><i className="fa fa-map-marker-alt me-3"></i>Hastings, New Zealand</p>
+                        <p><i className="fa fa-map-marker-alt me-3"></i>402 Lyndon Road West, Hastings 4122</p>
                         {/* <p><i className="fa fa-phone-alt me-3"></i>+012 345 67890</p> */}
                         <p><i className="fa fa-envelope me-3"></i><a href="mailto:info@servicex.co.nz" style={{ color: '#bbb' }}>info@servicex.co.nz</a></p>
                     </div>

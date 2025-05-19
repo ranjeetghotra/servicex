@@ -142,13 +142,10 @@ const Home = () => {
 
     useEffect(() => {
         // dispatch(fetchServices());
-        document.title = `Servicex offering  Heat pump deep cleaning in Hawkesbay Heat pump Lagging in Hawkesbay Heat pump service and maintenance Hawkesbay Heat pump remote controller in Hawkesbay
-        Ventilation filters in Hawkesbay Heat pump installations Hawkesbay Heat pump Parts replacement Hawkesbay Heat pump Parts replacement in Hawkesbay Heat pump Lid Hawkesbay
-        Chillers Servicing and cleaning  Hawkesbay HRV Filters Replacement  Hawkesbay DVS filter Replacement Hawkesbay Smartvent Filter Replacement  Hawkesbay Pest Control Services  Hawkesbay
-        Carpet Cleaning service  Hawkesbay Oven Cleaning service in Hawkesbay Gutter Cleaning service Hawkesbay`
+        document.title = `ServiceX - Professional Heat Pump & Ventilation Services in Hawkes Bay`
         const metaDescription = document.querySelector('meta[name="description"]');
         if (metaDescription) {
-            metaDescription.setAttribute('content', 'Servicex offering Servicex offering  Heat pump deep cleaning in Hawkesbay Heat pump Lagging in Hawkesbay Heat pump service and maintenance Hawkesbay Heat pump remote controller in Hawkesbay Ventilation filters in Hawkesbay Heat pump installations Hawkesbay Heat pump Parts replacement Hawkesbay Heat pump Parts replacement in Hawkesbay Heat pump Lid Hawkesbay Chillers Servicing and cleaning  Hawkesbay HRV Filters Replacement  Hawkesbay DVS filter Replacement Hawkesbay Smartvent Filter Replacement  Hawkesbay Pest Control Services  Hawkesbay Carpet Cleaning service  Hawkesbay Oven Cleaning service in Hawkesbay Gutter Cleaning service Hawkesbay service.co.nz');
+            metaDescription.setAttribute('content', 'ServiceX offers professional heat pump services in Hawkes Bay including deep cleaning, maintenance, installations, and parts replacement. We also provide ventilation filter replacements for HRV, DVS, and SmartVent systems. Expert technicians, competitive pricing, and guaranteed satisfaction.');
         }
     }, [dispatch]);
 
@@ -164,23 +161,7 @@ const Home = () => {
                         {slides.map((service, index) => {
                             return (
                                 <div key={service.serviceId} className={carouselNumber == index ? "carousel-item active " : "carousel-item "} >
-                                    <img className="w-100" style={{ maxHeight: 700, objectFit: 'cover' }} src={process.env.REACT_APP_API_BASE_URL + '/static/' + service.serviceImage} alt={service.serviceName} alt="Heat pump deep cleaning in Hawkesbay
-Heat pump Lagging in Hawkesbay
-Heat pump service and maintenance Hawkesbay*
-Heat pump remote controller in Hawkesbay
-Ventilation filters in Hawkesbay
-Heat pump installations Hawkesbay
-Heat pump Parts replacement Hawkesba
-Heat pump Parts replacement in Hawkesbay
-Heat pump Lid Hawkesbay
-Chillers Servicing and cleaning  Hawkesbay
-HRV Filters Replacement  Hawkesbay
-DVS filter Replacement Hawkesbay
-Smartvent Filter Replacement  Hawkesbay
-Pest Control Services  Hawkesbay
-Carpet Cleaning service  Hawkesbay
-Oven Cleaning service in Hawkesbay
-Gutter Cleaning service Hawkesbay" />
+                                    <img className="w-100" style={{ maxHeight: 700, objectFit: 'cover' }} src={process.env.REACT_APP_API_BASE_URL + '/static/' + service.serviceImage} alt={service.serviceName} />
                                     <div className="carousel-caption">
                                         <div className="container">
                                             <div className="row justify-content-center">
@@ -192,7 +173,7 @@ Gutter Cleaning service Hawkesbay" />
                                                         <li className="breadcrumb-item fs-5 text-light">Residential</li>
                                                         <li className="breadcrumb-item fs-5 text-light">Industrial</li>
                                                     </ol>
-                                                    <Link to={`/service/${service.serviceSlug}`} className="btn btn-primary py-3 px-5">Book Appointment</Link>
+                                                    <Link to={`/service/${service.serviceSlug}`} className="btn btn-primary py-3 px-5">Book Free Quote</Link>
                                                 </div>
                                             </div>
                                         </div>
@@ -262,23 +243,7 @@ Gutter Cleaning service Hawkesbay" />
                     <div className="row g-5" >
                         <div className="col-lg-6 wow fadeInUp" data-wow-delay="0.5s" data-aos="fade-up" >
                             <div className="position-relative overflow-hidden ps-5 pt-5 h-100" style={{ minHeight: "400px" }}>
-                                <img className="position-absolute w-100 h-100" src="img/about.jpg" alt="Heat pump deep cleaning in Hawkesbay
-Heat pump Lagging in Hawkesbay
-Heat pump service and maintenance Hawkesbay*
-Heat pump remote controller in Hawkesbay
-Ventilation filters in Hawkesbay
-Heat pump installations Hawkesbay
-Heat pump Parts replacement Hawkesba
-Heat pump Parts replacement in Hawkesbay
-Heat pump Lid Hawkesbay
-Chillers Servicing and cleaning  Hawkesbay
-HRV Filters Replacement  Hawkesbay
-DVS filter Replacement Hawkesbay
-Smartvent Filter Replacement  Hawkesbay
-Pest Control Services  Hawkesbay
-Carpet Cleaning service  Hawkesbay
-Oven Cleaning service in Hawkesbay
-Gutter Cleaning service Hawkesbay" style={{ objectFit: "cover" }} />
+                                <img className="position-absolute w-100 h-100" src="img/about.jpg" alt="ServiceX About Us" style={{ objectFit: "cover" }} />
                                 <div className="position-absolute top-0 start-0 bg-white pe-3 pb-3" style={{ width: "200px", height: "200px" }}>
                                     <div className="d-flex flex-column justify-content-center text-center bg-primary h-100 p-3">
                                         <h1 className="text-white">5</h1>
@@ -409,23 +374,7 @@ Gutter Cleaning service Hawkesbay" style={{ objectFit: "cover" }} />
                         </div>
                         <div className="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
                             <div className="position-relative overflow-hidden ps-5 pt-5 h-100" style={{ minHeight: "400px" }}>
-                                <img className="position-absolute w-100 h-100" src="img/feature.jpg" alt="Heat pump deep cleaning in Hawkesbay
-Heat pump Lagging in Hawkesbay
-Heat pump service and maintenance Hawkesbay*
-Heat pump remote controller in Hawkesbay
-Ventilation filters in Hawkesbay
-Heat pump installations Hawkesbay
-Heat pump Parts replacement Hawkesba
-Heat pump Parts replacement in Hawkesbay
-Heat pump Lid Hawkesbay
-Chillers Servicing and cleaning  Hawkesbay
-HRV Filters Replacement  Hawkesbay
-DVS filter Replacement Hawkesbay
-Smartvent Filter Replacement  Hawkesbay
-Pest Control Services  Hawkesbay
-Carpet Cleaning service  Hawkesbay
-Oven Cleaning service in Hawkesbay
-Gutter Cleaning service Hawkesbay" style={{ objectFit: "cover" }} />
+                                <img className="position-absolute w-100 h-100" src="img/feature.jpg" alt="ServiceX Features" style={{ objectFit: "cover" }} />
                                 <div className="position-absolute top-0 start-0 bg-white pe-3 pb-3" style={{ width: "200px", height: "200px" }}>
                                     <div className="d-flex flex-column justify-content-center text-center bg-primary h-100 p-3">
                                         <h1 className="text-white">5</h1>
@@ -459,23 +408,7 @@ Gutter Cleaning service Hawkesbay" style={{ objectFit: "cover" }} />
 
                                     <div key={service.serviceId} onClick={() => { handleServiceClick(service.serviceSlug) }} style={{ cursor: "pointer" }} className="col-lg-4 col-md-6 wow fadeInUp  " data-wow-delay="0.1s"  >
                                         <div className="service-item bg-light text-center overflow-hidden h-100    ">
-                                            <img className=" equal-height-image" src={`${process.env.REACT_APP_API_BASE_URL}/static/${service.serviceImage}`} alt="Heat pump deep cleaning in Hawkesbay
-Heat pump Lagging in Hawkesbay
-Heat pump service and maintenance Hawkesbay*
-Heat pump remote controller in Hawkesbay
-Ventilation filters in Hawkesbay
-Heat pump installations Hawkesbay
-Heat pump Parts replacement Hawkesba
-Heat pump Parts replacement in Hawkesbay
-Heat pump Lid Hawkesbay
-Chillers Servicing and cleaning  Hawkesbay
-HRV Filters Replacement  Hawkesbay
-DVS filter Replacement Hawkesbay
-Smartvent Filter Replacement  Hawkesbay
-Pest Control Services  Hawkesbay
-Carpet Cleaning service  Hawkesbay
-Oven Cleaning service in Hawkesbay
-Gutter Cleaning service Hawkesbay" />
+                                            <img className=" equal-height-image" src={`${process.env.REACT_APP_API_BASE_URL}/static/${service.serviceImage}`} alt={service.serviceName} />
                                             <div className="service-text position-relative text-center h-100 p-4">
                                                 <h5 className="mb-3">{service.serviceName}</h5>
                                                 <p className='ellipses' >{service.serviceDescription}</p>

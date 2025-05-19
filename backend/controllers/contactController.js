@@ -34,7 +34,7 @@ module.exports = {
         }
     },
     add: async (req, res) => {
-        const { customerName, customerEmail, subject, message, token } = req.body;
+        const { customerName, customerEmail, subject, message, token, source } = req.body;
 
         try {
             const isValid = await verifyCaptchaToken(token)
@@ -46,7 +46,8 @@ module.exports = {
                 customerEmail,
                 customerName,
                 subject,
-                message
+                message,
+                source
             });
             res.status(201).json({ message: 'Contact  Registered  successfully', appointment: newAppointment });
             //sending mail after sending response 
@@ -56,7 +57,8 @@ module.exports = {
             <ul>
                 <li><strong>Name:</strong> ${customerName}</li>
                 <li><strong>Email:</strong> ${customerEmail}</li>
-                <li><strong>Phone:</strong> ${subject}</li>
+                <li><strong>Subject:</strong> ${subject}</li>
+                <li><strong>Source:</strong> ${source}</li>
                 <li><strong>Message:</strong> ${message}</li>
             </ul>
             <p>Please check it out when you get a chance.</p>`

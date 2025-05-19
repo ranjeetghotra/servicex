@@ -23,7 +23,10 @@ const Contact = sequelize.define('Contact', {
     type: DataTypes.TEXT,
     allowNull: false,
   },
-
+  source: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
 });
 
 module.exports = Contact;

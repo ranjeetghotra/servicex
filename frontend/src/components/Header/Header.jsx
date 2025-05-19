@@ -45,7 +45,7 @@ const Header = () => {
                         </div>
                         <div className="h-100 d-inline-flex align-items-center border-end px-3">
                             <small className="far fa-clock me-2"></small>
-                            <small>Mon - Sat : 09 AM - 09 PM</small>
+                            <small>Mon - Fri : 7:30AM to 5PM | Sat : 7:30AM to 12:30PM</small>
                         </div>
                     </div>
                     <div className="col-lg-5 px-5 text-end">
@@ -53,7 +53,7 @@ const Header = () => {
                             <a itemProp="sameAs" className="btn btn-square border-end border-start" href="https://www.facebook.com/profile.php?id=61558935705606" target='_blank' rel="noreferrer"><i className="fab fa-facebook-f"></i></a>
                             {/* <a className="btn btn-square border-end" href=""><i className="fab fa-twitter"></i></a> */}
                             {/* <a className="btn btn-square border-end" href=""><i className="fab fa-linkedin-in"></i></a> */}
-                            <a itemProp="sameAs" className="btn btn-square border-end" href="https://www.instagram.com/servicex_/" target='_blank' rel="noreferrer"><i className="fab fa-instagram"></i></a>
+                            <a itemProp="sameAs" className="btn btn-square border-end" href="https://www.instagram.com/servicex_nz/" target='_blank' rel="noreferrer"><i className="fab fa-instagram"></i></a>
                         </div>
                     </div>
                 </div>
@@ -62,23 +62,7 @@ const Header = () => {
             <nav className={stickyTopClass} style={{ top: isScrolled ? '0px' : '-100px' }}>
                 <Link to="/" className="navbar-brand">
                     {/* <img src="/logo.png" alt="ServiceX" style={{ height: 50 }} /> */}
-                    <Logo  alt="Heat pump deep cleaning in Hawkesbay
-Heat pump Lagging in Hawkesbay
-Heat pump service and maintenance Hawkesbay*
-Heat pump remote controller in Hawkesbay
-Ventilation filters in Hawkesbay
-Heat pump installations Hawkesbay
-Heat pump Parts replacement Hawkesba
-Heat pump Parts replacement in Hawkesbay
-Heat pump Lid Hawkesbay
-Chillers Servicing and cleaning  Hawkesbay
-HRV Filters Replacement  Hawkesbay
-DVS filter Replacement Hawkesbay
-Smartvent Filter Replacement  Hawkesbay
-Pest Control Services  Hawkesbay
-Carpet Cleaning service  Hawkesbay
-Oven Cleaning service in Hawkesbay
-Gutter Cleaning service Hawkesbay"  style={{ height: 50, width: 'auto' }} />
+                    <Logo  alt="ServiceX"  style={{ height: 50, width: 'auto' }} />
                     {/* <h1 className="m-0"><i className="fab fa-xing text-primary me-3"></i>SERVICE X</h1> */}
                 </Link>
                 <button type="button" onClick={handleClick} className="navbar-toggler" style={{ boxShadow: 'none'}} data-bs-toggle="collapse" data-bs-target="#navbarCollapse">

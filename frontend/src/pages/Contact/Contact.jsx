@@ -11,7 +11,8 @@ const Contact = () => {
         customerEmail: "",
         customerName: "",
         subject: "",
-        message: ""
+        message: "",
+        source: ""
     }
     const [formData, setFormData] = useState(initialFormValues);
 
@@ -77,7 +78,7 @@ const Contact = () => {
                         <div className="col-lg-6 wow fadeInUp" data-wow-delay="0.1s" style={{ minHeight: "450px" }} data-aos="fade-up">
                             <div className="position-relative h-100" >
                                 <iframe className="position-relative w-100 h-100" title='Map Location'
-                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d98282.0786157886!2d176.79981431497478!3d-39.66512918665383!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6d6834f7b0056bc9%3A0x500ef6143a2caa0!2sHavelock%20North%2C%20New%20Zealand!5e0!3m2!1sen!2sin!4v1709455021644!5m2!1sen!2sin"
+                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3072.424256287841!2d176.834852076641!3d-39.640165540613545!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6d69ca3756ac6f59%3A0x4ca4909d0b8e087e!2s402%20Lyndon%20Road%20West%2C%20Hastings%204122%2C%20New%20Zealand!5e0!3m2!1sen!2sin!4v1747587792466!5m2!1sen!2sin"
                                     style={{ minHeight: "450px", border: 0 }} allowFullScreen="" aria-hidden="false"
                                     tabndex="0"></iframe>
                             </div>
@@ -106,6 +107,18 @@ const Contact = () => {
                                         <div className="form-floating">
                                             <input type="text" value={formData.subject} className="form-control border-0 bg-light" id="subject" placeholder="Subject" onChange={handleInputChange} required />
                                             <label htmlFor="subject">Subject</label>
+                                        </div>
+                                    </div>
+                                    <div className="col-12">
+                                        <div className="form-floating">
+                                            <select className="form-select border-0 bg-light" id="source" value={formData.source} onChange={handleInputChange} required>
+                                                <option value="">Select where you heard about us</option>
+                                                <option value="Google">Google</option>
+                                                <option value="Social Media">Social Media</option>
+                                                <option value="Word of Mouth Referral">Word of Mouth Referral</option>
+                                                <option value="Existing Customer">I'm an existing customer</option>
+                                            </select>
+                                            <label htmlFor="source">Where did you hear about us?</label>
                                         </div>
                                     </div>
                                     <div className="col-12">
