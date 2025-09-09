@@ -5,7 +5,7 @@ import AppointmentForm from '../../components/AppointmentForm/AppointmentForm';
 
 const Appointment = () => {
     useEffect(() => {
-        document.title = `Book Appointment - ServiceX`
+        document.title = `Book Appointment - Service X NZ`
     }, [])
     return (
         <>

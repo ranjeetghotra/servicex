@@ -4,7 +4,7 @@ import PageHeader from '../../components/PageHeader/PageHeader';
 const About = () => {
 
     useEffect(() => {
-        document.title = `About us - ServiceX`
+        document.title = `About us - Service X NZ`
     }, [])
 
     return (
@@ -47,7 +47,7 @@ Gutter Cleaning service Hawkesbay" style={{ objectFit: "cover" }} />
                                     <h6 className="text-body text-uppercase mb-2">About Us</h6>
                                     <h1 className="display-6 mb-0">Your Trusted Partner for Exceptional Services!</h1>
                                 </div>
-                                <p>At ServiceX, our mission is simple yet profound: to enhance the comfort and well-being of our customers by providing top-notch services. We believe in transforming spaces into clean, cool, and healthy environments, ensuring satisfaction and peace of mind for every client we serve.</p>
+                                <p>At Service X NZ, our mission is simple yet profound: to enhance the comfort and well-being of our customers by providing top-notch services. We believe in transforming spaces into clean, cool, and healthy environments, ensuring satisfaction and peace of mind for every client we serve.</p>
                                 <p className="mb-4">Our vision is to be the go-to service provider known for reliability, professionalism, and excellence in every aspect. We aspire to set the industry standard, continually raising the bar to meet and exceed the evolving needs of our valued customers.</p>
                                 <div className="border-top mt-4 pt-4">
                                     <div className="row g-4">

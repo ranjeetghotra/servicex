@@ -22,7 +22,7 @@ const ServiceOne = () => {
         try {
             const response = await axios.get(`/admin/service/${serviceSlug}`);
             const data = await response.data;
-            document.title = data?.service?.pageTitle ? data?.service?.pageTitle : `${data?.service?.serviceName} - ServiceX`
+            document.title = data?.service?.pageTitle ? data?.service?.pageTitle : `${data?.service?.serviceName} - Service X NZ`
             const metaDescription = document.querySelector('meta[name="description"]');
             if (metaDescription) {
                 metaDescription.setAttribute('content', data?.service?.pageDescription || data?.service?.serviceDescription);

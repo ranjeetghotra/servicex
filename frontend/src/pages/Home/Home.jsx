@@ -142,10 +142,10 @@ const Home = () => {
 
     useEffect(() => {
         // dispatch(fetchServices());
-        document.title = `ServiceX - Professional Heat Pump & Ventilation Services in Hawkes Bay`
+        document.title = `Service X NZ - Professional Heat Pump & Ventilation Services in Hawkes Bay`
         const metaDescription = document.querySelector('meta[name="description"]');
         if (metaDescription) {
-            metaDescription.setAttribute('content', 'ServiceX offers professional heat pump services in Hawkes Bay including deep cleaning, maintenance, installations, and parts replacement. We also provide ventilation filter replacements for HRV, DVS, and SmartVent systems. Expert technicians, competitive pricing, and guaranteed satisfaction.');
+            metaDescription.setAttribute('content', 'Service X NZ offers professional heat pump services in Hawkes Bay including deep cleaning, maintenance, installations, and parts replacement. We also provide ventilation filter replacements for HRV, DVS, and SmartVent systems. Expert technicians, competitive pricing, and guaranteed satisfaction.');
         }
     }, [dispatch]);
 
@@ -166,7 +166,7 @@ const Home = () => {
                                         <div className="container">
                                             <div className="row justify-content-center">
                                                 <div className="col-12 col-lg-10">
-                                                    <h5 className="text-light text-uppercase mb-3 animated slideInDown">Welcome to ServiceX</h5>
+                                                    <h5 className="text-light text-uppercase mb-3 animated slideInDown">Welcome to Service X NZ</h5>
                                                     <h1 className="display-2 text-light mb-3 animated slideInDown">{service.serviceName}</h1>
                                                     <ol className="breadcrumb mb-4 pb-2">
                                                         <li className="breadcrumb-item fs-5 text-light">Commercial</li>
@@ -243,7 +243,7 @@ const Home = () => {
                     <div className="row g-5" >
                         <div className="col-lg-6 wow fadeInUp" data-wow-delay="0.5s" data-aos="fade-up" >
                             <div className="position-relative overflow-hidden ps-5 pt-5 h-100" style={{ minHeight: "400px" }}>
-                                <img className="position-absolute w-100 h-100" src="img/about.jpg" alt="ServiceX About Us" style={{ objectFit: "cover" }} />
+                                <img className="position-absolute w-100 h-100" src="img/about.jpg" alt="Service X NZ About Us" style={{ objectFit: "cover" }} />
                                 <div className="position-absolute top-0 start-0 bg-white pe-3 pb-3" style={{ width: "200px", height: "200px" }}>
                                     <div className="d-flex flex-column justify-content-center text-center bg-primary h-100 p-3">
                                         <h1 className="text-white">5</h1>
@@ -259,7 +259,7 @@ const Home = () => {
                                     <h6 className="text-body text-uppercase mb-2">About Us</h6>
                                     <h1 className="display-6 mb-0">Your Trusted Partner for Exceptional Services!</h1>
                                 </div>
-                                <p>At ServiceX, our mission is simple yet profound: to enhance the comfort and well-being of our customers by providing top-notch services. We believe in transforming spaces into clean, cool, and healthy environments, ensuring satisfaction and peace of mind for every client we serve.</p>
+                                <p>At Service X NZ, our mission is simple yet profound: to enhance the comfort and well-being of our customers by providing top-notch services. We believe in transforming spaces into clean, cool, and healthy environments, ensuring satisfaction and peace of mind for every client we serve.</p>
                                 <p className="mb-4">Our vision is to be the go-to service provider known for reliability, professionalism, and excellence in every aspect. We aspire to set the industry standard, continually raising the bar to meet and exceed the evolving needs of our valued customers.</p>
                                 <div className="border-top mt-4 pt-4">
                                     <div className="row g-4">
@@ -340,7 +340,7 @@ const Home = () => {
                                 <h6 className="text-body text-uppercase mb-2">Why Choose Us!</h6>
                                 <h1 className="display-6 mb-0">Elevating Your Space with Excellence and Satisfaction</h1>
                             </div>
-                            <p className="mb-5">ServiceX is your trusted partner for a seamless service experience – from reliable professionals and timely service to affordable pricing and a commitment to customer satisfaction. Choose ServiceX for excellence in cleaning, AC repair, and filter replacements.</p>
+                            <p className="mb-5">Service X NZ is your trusted partner for a seamless service experience – from reliable professionals and timely service to affordable pricing and a commitment to customer satisfaction. Choose Service X NZ for excellence in cleaning, AC repair, and filter replacements.</p>
                             <div className="row gy-5 gx-4">
                                 <div className="col-sm-6 wow fadeIn" data-wow-delay="0.1s">
                                     <div className="d-flex align-items-center mb-3">
@@ -354,7 +354,7 @@ const Home = () => {
                                         <i className="fa fa-check fa-2x text-primary flex-shrink-0 me-3"></i>
                                         <h6 className="mb-0">Timely Service</h6>
                                     </div>
-                                    <span>At ServiceX, we value your time and guarantee prompt service delivery, ensuring your schedule is respected and services are completed efficiently.</span>
+                                    <span>At Service X NZ, we value your time and guarantee prompt service delivery, ensuring your schedule is respected and services are completed efficiently.</span>
                                 </div>
                                 <div className="col-sm-6 wow fadeIn" data-wow-delay="0.3s">
                                     <div className="d-flex align-items-center mb-3">
@@ -368,13 +368,13 @@ const Home = () => {
                                         <i className="fa fa-check fa-2x text-primary flex-shrink-0 me-3"></i>
                                         <h6 className="mb-0">Customer Satisfaction Guaranteed</h6>
                                     </div>
-                                    <span>Your satisfaction is our priority. ServiceX goes the extra mile to ensure every service exceeds expectations, leaving you delighted with the results.</span>
+                                    <span>Your satisfaction is our priority. Service X NZ goes the extra mile to ensure every service exceeds expectations, leaving you delighted with the results.</span>
                                 </div>
                             </div>
                         </div>
                         <div className="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
                             <div className="position-relative overflow-hidden ps-5 pt-5 h-100" style={{ minHeight: "400px" }}>
-                                <img className="position-absolute w-100 h-100" src="img/feature.jpg" alt="ServiceX Features" style={{ objectFit: "cover" }} />
+                                <img className="position-absolute w-100 h-100" src="img/feature.jpg" alt="Service X NZ Features" style={{ objectFit: "cover" }} />
                                 <div className="position-absolute top-0 start-0 bg-white pe-3 pb-3" style={{ width: "200px", height: "200px" }}>
                                     <div className="d-flex flex-column justify-content-center text-center bg-primary h-100 p-3">
                                         <h1 className="text-white">5</h1>

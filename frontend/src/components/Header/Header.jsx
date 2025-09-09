@@ -40,6 +40,10 @@ const Header = () => {
                             <small>+012 345 6789</small>
                         </div> */}
                         <div className="h-100 d-inline-flex align-items-center border-end px-3">
+                            <small className="fa fa-phone-alt me-2"></small>
+                            <small><a href="tel:0800444868" style={{color:'#8d9297'}}>0800 444 868</a></small>
+                        </div>
+                        <div className="h-100 d-inline-flex align-items-center border-end px-3">
                             <small className="far fa-envelope-open me-2"></small>
                             <small> <a href="mailto:info@servicex.co.nz" style={{color:'#8d9297'}}>info@servicex.co.nz</a></small>
                         </div>
@@ -61,8 +65,8 @@ const Header = () => {
 
             <nav className={stickyTopClass} style={{ top: isScrolled ? '0px' : '-100px' }}>
                 <Link to="/" className="navbar-brand">
-                    {/* <img src="/logo.png" alt="ServiceX" style={{ height: 50 }} /> */}
-                    <Logo  alt="ServiceX"  style={{ height: 50, width: 'auto' }} />
+                    {/* <img src="/logo.png" alt="Service X NZ" style={{ height: 50 }} /> */}
+                    <Logo  alt="Service X NZ"  style={{ height: 50, width: 'auto' }} />
                     {/* <h1 className="m-0"><i className="fab fa-xing text-primary me-3"></i>SERVICE X</h1> */}
                 </Link>
                 <button type="button" onClick={handleClick} className="navbar-toggler" style={{ boxShadow: 'none'}} data-bs-toggle="collapse" data-bs-target="#navbarCollapse">

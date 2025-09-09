@@ -5,7 +5,7 @@ import PageHeader from '../../components/PageHeader/PageHeader';
 const Header = () => {
 
     useEffect(() => {
-        document.title = `Not Found - ServiceX`
+        document.title = `Not Found - Service X NZ`
     }, [])
 
     return (

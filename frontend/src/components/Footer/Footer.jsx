@@ -33,7 +33,7 @@ Carpet Cleaning service  Hawkesbay
 Oven Cleaning service in Hawkesbay
 Gutter Cleaning service Hawkesbay" style={{ height: 50 }} />
                         {/* <h1 className="text-white"><i className="fab fa-xing me-3"></i>SERVICE X</h1> */}
-                        <p>Welcome to ServiceX - Your Trusted Partner for Home and Commercial Services</p>
+                        <p>Welcome to Service X NZ - Your Trusted Partner for Home and Commercial Services</p>
                         <div itemScope itemType="http://schema.org/Organization" className="d-flex pt-2">
                             {/* <a className="btn btn-square btn-outline-light me-1" href=""><i className="fab fa-twitter"></i></a> */}
                             <a itemProp="sameAs" className="btn btn-square btn-outline-light me-1" href="https://www.facebook.com/profile.php?id=61558935705606" target='_blank' rel="noreferrer"><i className="fab fa-facebook-f"></i></a>
@@ -45,7 +45,7 @@ Gutter Cleaning service Hawkesbay" style={{ height: 50 }} />
                     <div className="col-lg-3 col-md-6">
                         <h4 className="text-light mb-4">Address</h4>
                         <p><i className="fa fa-map-marker-alt me-3"></i>402 Lyndon Road West, Hastings 4122</p>
-                        {/* <p><i className="fa fa-phone-alt me-3"></i>+012 345 67890</p> */}
+                        <p><i className="fa fa-phone-alt me-3"></i><a href="tel:0800444868" style={{ color: '#bbb' }}>0800 444 868</a></p>
                         <p><i className="fa fa-envelope me-3"></i><a href="mailto:info@servicex.co.nz" style={{ color: '#bbb' }}>info@servicex.co.nz</a></p>
                     </div>
                     <div className="col-lg-3 col-md-6">
@@ -89,7 +89,7 @@ Gutter Cleaning service Hawkesbay" style={{ height: 50 }} />
                 <div className="container">
                     <div className="row">
                         <div className="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                            &copy; {new Date().getFullYear()} <Link to="/">ServiceX</Link>, All Right Reserved.
+                            &copy; {new Date().getFullYear()} <Link to="/">Service X NZ</Link>, All Right Reserved.
                         </div>
                         {/* <div className="col-md-6 text-center text-md-end">
                             Designed By <a href="https://htmlcodex.com">HTML Codex</a>

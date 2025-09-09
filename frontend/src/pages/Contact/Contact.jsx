@@ -17,7 +17,7 @@ const Contact = () => {
     const [formData, setFormData] = useState(initialFormValues);
 
     useEffect(() => {
-        document.title = `Contact us - ServiceX`
+        document.title = `Contact us - Service X NZ`
         ReCaptcha.loadScript()
     }, [])
 
@@ -86,7 +86,10 @@ const Contact = () => {
                         <div className="col-lg-6 wow fadeInUp" data-wow-delay="0.5s" data-aos="fade-up">
                             <div className="border-start border-5 border-primary ps-4 mb-5">
                                 <h6 className="text-body text-uppercase mb-2">Contact Us</h6>
-                                <h1 className="display-6 mb-0">Get in Touch with ServiceX</h1>
+                                <h1 className="display-6 mb-0">Get in Touch with Service X NZ</h1>
+                            </div>
+                            <div className="mb-4">
+                                <p className="mb-2"><i className="fa fa-phone-alt me-2 text-primary"></i><a href="tel:0800444868" className="text-decoration-none">0800 444 868</a></p>
                             </div>
                             <p className="mb-4">Have a question or need information? Fill out the form below, and we'll get back to you as soon as possible.</p>
                             <form onSubmit={handleSubmit}>
