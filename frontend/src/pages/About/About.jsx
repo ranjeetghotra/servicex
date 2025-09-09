@@ -15,23 +15,7 @@ const About = () => {
                     <div className="row g-5">
                         <div className="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
                             <div className="position-relative overflow-hidden ps-5 pt-5 h-100" style={{ minHeight: "400px" }}>
-                                <img className="position-absolute w-100 h-100" src="img/about.jpg" alt="Heat pump deep cleaning in Hawkesbay
-Heat pump Lagging in Hawkesbay
-Heat pump service and maintenance Hawkesbay*
-Heat pump remote controller in Hawkesbay
-Ventilation filters in Hawkesbay
-Heat pump installations Hawkesbay
-Heat pump Parts replacement Hawkesba
-Heat pump Parts replacement in Hawkesbay
-Heat pump Lid Hawkesbay
-Chillers Servicing and cleaning  Hawkesbay
-HRV Filters Replacement  Hawkesbay
-DVS filter Replacement Hawkesbay
-Smartvent Filter Replacement  Hawkesbay
-Pest Control Services  Hawkesbay
-Carpet Cleaning service  Hawkesbay
-Oven Cleaning service in Hawkesbay
-Gutter Cleaning service Hawkesbay" style={{ objectFit: "cover" }} />
+                                <img className="position-absolute w-100 h-100" src="img/about.jpg" alt="Service X NZ team providing professional heat pump services in Hawkes Bay" style={{ objectFit: "cover" }} />
                                 <div className="position-absolute top-0 start-0 bg-white pe-3 pb-3" style={{ width: "200px", height: "200px" }}>
                                     <div className="d-flex flex-column justify-content-center text-center bg-primary h-100 p-3">
                                         <h1 className="text-white">5</h1>
@@ -87,7 +71,7 @@ Gutter Cleaning service Hawkesbay" style={{ objectFit: "cover" }} />
                     <div className="row g-4">
                         <div className="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                             <div className="team-item position-relative">
-                                <img className="img-fluid" src="img/team-1.jpg" alt="" />
+                                <img className="img-fluid" src="img/team-1.jpg" alt="Service X NZ team member - Professional heat pump technician" />
                                 <div className="team-text bg-white p-4">
                                     <h5>Full Name</h5>
                                     <span>Engineer</span>
@@ -96,7 +80,7 @@ Gutter Cleaning service Hawkesbay" style={{ objectFit: "cover" }} />
                         </div>
                         <div className="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
                             <div className="team-item position-relative">
-                                <img className="img-fluid" src="img/team-2.jpg" alt="" />
+                                <img className="img-fluid" src="img/team-2.jpg" alt="Service X NZ team member - HVAC specialist" />
                                 <div className="team-text bg-white p-4">
                                     <h5>Full Name</h5>
                                     <span>Engineer</span>
@@ -105,7 +89,7 @@ Gutter Cleaning service Hawkesbay" style={{ objectFit: "cover" }} />
                         </div>
                         <div className="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
                             <div className="team-item position-relative">
-                                <img className="img-fluid" src="img/team-3.jpg" alt="" />
+                                <img className="img-fluid" src="img/team-3.jpg" alt="Service X NZ team member - Heat pump maintenance expert" />
                                 <div className="team-text bg-white p-4">
                                     <h5>Full Name</h5>
                                     <span>Engineer</span>

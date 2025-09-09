@@ -48,7 +48,7 @@ const Contact = () => {
                         {/* <div className="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
                             <div className="row g-4 align-items-center">
                                 <div className="col-sm-6">
-                                    <img className="img-fluid" src="img/team-1.jpg" alt="" />
+                                    <img className="img-fluid" src="img/team-1.jpg" alt="Service X NZ team member - Professional heat pump technician" />
                                 </div>
                                 <div className="col-sm-6">
                                     <h3 className="mb-0">Full Name</h3>
@@ -63,7 +63,7 @@ const Contact = () => {
                         <div className="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
                             <div className="row g-4 align-items-center">
                                 <div className="col-sm-6">
-                                    <img className="img-fluid" src="img/team-2.jpg" alt="" />
+                                    <img className="img-fluid" src="img/team-2.jpg" alt="Service X NZ team member - HVAC specialist" />
                                 </div>
                                 <div className="col-sm-6">
                                     <h3 className="mb-0">Full Name</h3>

@@ -287,7 +287,7 @@ const Home = () => {
                 <div className="row g-0">
                     <div className="col-xl-3 col-sm-6 wow fadeIn" data-wow-delay="0.1s">
                         <div className="position-relative">
-                            <img className="img-fluid w-100" src="img/fact-1.jpg" alt="" />
+                            <img className="img-fluid w-100" src="img/fact-1.jpg" alt="Professional cleaning services in Hawkes Bay" />
                             <div className="facts-overlay">
                                 <h1 className="display-1">01</h1>
                                 <h4 className="text-white mb-3">Cleaning Services</h4>
@@ -298,7 +298,7 @@ const Home = () => {
                     </div>
                     <div className="col-xl-3 col-sm-6 wow fadeIn" data-wow-delay="0.3s">
                         <div className="position-relative">
-                            <img className="img-fluid w-100" src="img/fact-2.jpg" alt="" />
+                            <img className="img-fluid w-100" src="img/fact-2.jpg" alt="HVAC services and air conditioning repair in Hawkes Bay" />
                             <div className="facts-overlay">
                                 <h1 className="display-1">02</h1>
                                 <h4 className="text-white mb-3">HVAC Services</h4>
@@ -309,7 +309,7 @@ const Home = () => {
                     </div>
                     <div className="col-xl-3 col-sm-6 wow fadeIn" data-wow-delay="0.5s">
                         <div className="position-relative">
-                            <img className="img-fluid w-100" src="img/fact-3.jpg" alt="" />
+                            <img className="img-fluid w-100" src="img/fact-3.jpg" alt="Specialized heat pump solutions and air purifier services" />
                             <div className="facts-overlay">
                                 <h1 className="display-1">03</h1>
                                 <h4 className="text-white mb-3">Specialized Solutions</h4>
@@ -320,7 +320,7 @@ const Home = () => {
                     </div>
                     <div className="col-xl-3 col-sm-6 wow fadeIn" data-wow-delay="0.7s">
                         <div className="position-relative">
-                            <img className="img-fluid w-100" src="img/fact-4.jpg" alt="" />
+                            <img className="img-fluid w-100" src="img/fact-4.jpg" alt="Additional home maintenance services in Hawkes Bay" />
                             <div className="facts-overlay">
                                 <h1 className="display-1">04</h1>
                                 <h4 className="text-white mb-3">Additional Services</h4>
@@ -443,7 +443,7 @@ const Home = () => {
                     <div className="row g-4">
                         <div className="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                             <div className="team-item position-relative">
-                                <img className="img-fluid" src="img/team-1.jpg" alt="" />
+                                <img className="img-fluid" src="img/team-1.jpg" alt="Service X NZ team member - Professional heat pump technician" />
                                 <div className="team-text bg-white p-4">
                                     <h5>Full Name</h5>
                                     <span>Engineer</span>
@@ -452,7 +452,7 @@ const Home = () => {
                         </div>
                         <div className="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
                             <div className="team-item position-relative">
-                                <img className="img-fluid" src="img/team-2.jpg" alt="" />
+                                <img className="img-fluid" src="img/team-2.jpg" alt="Service X NZ team member - HVAC specialist" />
                                 <div className="team-text bg-white p-4">
                                     <h5>Full Name</h5>
                                     <span>Engineer</span>
@@ -461,7 +461,7 @@ const Home = () => {
                         </div>
                         <div className="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
                             <div className="team-item position-relative">
-                                <img className="img-fluid" src="img/team-3.jpg" alt="" />
+                                <img className="img-fluid" src="img/team-3.jpg" alt="Service X NZ team member - Heat pump maintenance expert" />
                                 <div className="team-text bg-white p-4">
                                     <h5>Full Name</h5>
                                     <span>Engineer</span>
@@ -501,14 +501,14 @@ const Home = () => {
                         <div className="col-lg-7 wow fadeInUp" data-wow-delay="0.5s">
                             <div className="owl-carousel testimonial-carousel">
                                 <div className="testimonial-item">
-                                    <img className="img-fluid mb-4" src="img/testimonial-1.jpg" alt="" />
+                                    <img className="img-fluid mb-4" src="img/testimonial-1.jpg" alt="Happy customer testimonial for Service X NZ heat pump services" />
                                     <p className="fs-5">Dolores sed duo clita tempor justo dolor et stet lorem kasd labore dolore lorem ipsum. At lorem lorem magna ut et, nonumy et labore et tempor diam tempor erat.</p>
                                     <div className="bg-primary mb-3" style={{ width: "60px", height: "5px" }}></div>
                                     <h5>Client Name</h5>
                                     <span>Profession</span>
                                 </div>
                                 <div className="testimonial-item">
-                                    <img className="img-fluid mb-4" src="img/testimonial-2.jpg" alt="" />
+                                    <img className="img-fluid mb-4" src="img/testimonial-2.jpg" alt="Satisfied customer review for Service X NZ professional services" />
                                     <p className="fs-5">Dolores sed duo clita tempor justo dolor et stet lorem kasd labore dolore lorem ipsum. At lorem lorem magna ut et, nonumy et labore et tempor diam tempor erat.</p>
                                     <div className="bg-primary mb-3" style={{ width: "60px", height: "5px" }}></div>
                                     <h5>Client Name</h5>
@@ -530,10 +530,10 @@ const Home = () => {
                     </div>
                     <div className="row g-4 justify-content-around">
                         <div className="col-6 col-lg-3 d-flex align-items-center"  >
-                            <img style={{ width: '100%' }} src="images/hc.webp" alt="" />
+                            <img style={{ width: '100%' }} src="images/hc.webp" alt="Heat Controller - Service X NZ partner brand" />
                         </div>
                         <div className="col-6 col-lg-3 d-flex align-items-center"  >
-                            <img style={{ width: '100%' }} src="images/dvs.webp" alt="" />
+                            <img style={{ width: '100%' }} src="images/dvs.webp" alt="DVS - Service X NZ partner brand" />
                         </div>
                     </div>
                 </div>

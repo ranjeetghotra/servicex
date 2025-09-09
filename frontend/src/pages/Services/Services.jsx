@@ -41,23 +41,7 @@ const Services = () => {
                                 return (
                                     <div itemProp="itemListElement" itemScope itemType="http://schema.org/ListItem" key={service.serviceId} onClick={() => { handleServiceClick(service.serviceSlug) }} style={{ cursor: "pointer" }} className="col-lg-4 col-md-6 wow fadeInUp  " data-wow-delay="0.1s"  data-aos="fade-up">
                                         <div itemScope itemType="http://schema.org/Service" className="service-item bg-light text-center overflow-hidden h-100    ">
-                                            <img itemProp="image" className=" equal-height-image" src={`${process.env.REACT_APP_API_BASE_URL}/static/${service.serviceImage}`} alt="Heat pump deep cleaning in Hawkesbay
-Heat pump Lagging in Hawkesbay
-Heat pump service and maintenance Hawkesbay*
-Heat pump remote controller in Hawkesbay
-Ventilation filters in Hawkesbay
-Heat pump installations Hawkesbay
-Heat pump Parts replacement Hawkesba
-Heat pump Parts replacement in Hawkesbay
-Heat pump Lid Hawkesbay
-Chillers Servicing and cleaning  Hawkesbay
-HRV Filters Replacement  Hawkesbay
-DVS filter Replacement Hawkesbay
-Smartvent Filter Replacement  Hawkesbay
-Pest Control Services  Hawkesbay
-Carpet Cleaning service  Hawkesbay
-Oven Cleaning service in Hawkesbay
-Gutter Cleaning service Hawkesbay" />
+                                            <img itemProp="image" className=" equal-height-image" src={`${process.env.REACT_APP_API_BASE_URL}/static/${service.serviceImage}`} alt={`${service.serviceName} - Professional heat pump services by Service X NZ in Hawkes Bay`} />
                                             <div className="service-text position-relative text-center h-100 p-4">
                                                 <h5 itemProp="name" className="mb-3">{service.serviceName}</h5>
                                                 <p itemProp="description" className='ellipses' >{service.serviceDescription}</p>

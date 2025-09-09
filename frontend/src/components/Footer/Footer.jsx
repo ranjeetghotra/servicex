@@ -15,23 +15,7 @@ const Footer = () => {
             <div className="container py-5">
                 <div className="row g-5">
                     <div className="col-lg-3 col-md-6">
-                        <img className='mb-4' src="/logo-light.svg" alt="Heat pump deep cleaning in Hawkesbay
-Heat pump Lagging in Hawkesbay
-Heat pump service and maintenance Hawkesbay*
-Heat pump remote controller in Hawkesbay
-Ventilation filters in Hawkesbay
-Heat pump installations Hawkesbay
-Heat pump Parts replacement Hawkesba
-Heat pump Parts replacement in Hawkesbay
-Heat pump Lid Hawkesbay
-Chillers Servicing and cleaning  Hawkesbay
-HRV Filters Replacement  Hawkesbay
-DVS filter Replacement Hawkesbay
-Smartvent Filter Replacement  Hawkesbay
-Pest Control Services  Hawkesbay
-Carpet Cleaning service  Hawkesbay
-Oven Cleaning service in Hawkesbay
-Gutter Cleaning service Hawkesbay" style={{ height: 50 }} />
+                        <img className='mb-4' src="/logo-light.svg" alt="Service X NZ - Professional Heat Pump Services in Hawkes Bay" style={{ height: 50 }} />
                         {/* <h1 className="text-white"><i className="fab fa-xing me-3"></i>SERVICE X</h1> */}
                         <p>Welcome to Service X NZ - Your Trusted Partner for Home and Commercial Services</p>
                         <div itemScope itemType="http://schema.org/Organization" className="d-flex pt-2">
