@@ -519,12 +519,11 @@ const Home = () => {
                     </div>
                 </div>
             </div> */}
-            <div className="container-xxl pt-5" data-aos="fade-up">
+            {/* <div className="container-xxl pt-5" data-aos="fade-up">
                 <div className="container" >
                     <div className="row g-5 align-items-end mb-5">
                         <div className="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
                             <div className="border-start border-5 border-primary ps-4">
-                                {/* <h6 className="text-body text-uppercase mb-2">Our Services</h6> */}
                                 <h1 className="display-6 mb-0">Our Partners</h1>
                             </div>
                         </div>
@@ -538,7 +537,7 @@ const Home = () => {
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> */}
         </>
     );
 };
