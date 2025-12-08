@@ -23,7 +23,7 @@ ServiceModel.hasMany(AppointmentModel, {
   as: 'appointments',
 });
 
-sequelize.sync({ alter: true });
+sequelize.sync();
 
 // Express setup
 app.use(express.json({ limit: '50mb' }));
