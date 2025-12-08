@@ -52,6 +52,7 @@ app.use('/user', routes.userRoutes);
 app.use('/appointment', routes.appointmentRoutes)
 app.use('/contact', routes.contactRoutes)
 app.use('/holiday', routes.holidayRoutes);
+app.use('/upload', routes.uploadRoutes);
 // Start the server
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
